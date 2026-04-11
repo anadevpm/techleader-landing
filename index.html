@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#1B2D5E">
-<title>Платформа Технолидерства — канал к семьям, которые выбрали инженерное будущее</title>
+<title>Платформа Технолидерства · канал к родителям с инженерным выбором</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700;800;900&family=Nunito+Sans:ital,opsz,wght@0,6..12,400;0,6..12,500;0,6..12,600;0,6..12,700;0,6..12,800;1,6..12,400&display=swap" rel="stylesheet">
@@ -175,18 +175,22 @@ header {
 }
 .hero-inner {
   display: grid; grid-template-columns: 1fr;
-  gap: 56px; align-items: center; position: relative;
+  gap: 56px; align-items: start; position: relative;
 }
-@media(min-width:1000px){ .hero-inner { grid-template-columns: 54% 46%; } }
+@media(min-width:1000px){ .hero-inner { grid-template-columns: 55% 45%; gap: 48px; } }
 
 .hero-content { animation: fadeUp 0.65s ease both; }
 .hero-eyebrow {
-  display: flex; align-items: center; gap: 10px; margin-bottom: 24px; flex-wrap: wrap;
+  display: flex; align-items: center; gap: 12px; margin-bottom: 22px; flex-wrap: wrap;
 }
 .hero-eyebrow-divider { width: 1px; height: 16px; background: var(--neutral-300); }
+.hero-eyebrow-label {
+  font-size: 11px; font-weight: 700; letter-spacing: 0.6px; text-transform: uppercase;
+  color: var(--text-muted);
+}
 .hero h1 {
-  font-size: 52px; font-weight: 900; letter-spacing: -1.5px;
-  margin-bottom: 22px; line-height: 1.05;
+  font-size: 56px; font-weight: 900; letter-spacing: -1.8px;
+  margin-bottom: 22px; line-height: 1.02;
 }
 .hero h1 .accent { color: var(--garnet); position: relative; display: inline-block; }
 .hero h1 .accent::after {
@@ -194,13 +198,39 @@ header {
   position: absolute; bottom: -4px; left: 0; right: 0; height: 3px;
   background: var(--garnet-200); border-radius: 2px;
 }
-@media(max-width:768px){ .hero h1 { font-size: 36px; } }
-@media(max-width:640px){ .hero h1 { font-size: 32px; letter-spacing: -0.5px; } }
+.hero h1 .h1-sub {
+  display: block; margin-top: 14px;
+  font-size: 26px; font-weight: 800; letter-spacing: -0.4px;
+  line-height: 1.2; color: var(--navy);
+}
+@media(max-width:768px){
+  .hero h1 { font-size: 38px; letter-spacing: -1px; }
+  .hero h1 .h1-sub { font-size: 20px; margin-top: 10px; }
+}
+@media(max-width:640px){
+  .hero h1 { font-size: 32px; letter-spacing: -0.5px; }
+  .hero h1 .h1-sub { font-size: 18px; }
+}
 .hero-desc {
   font-size: 18px; color: var(--text-secondary); max-width: 520px;
   line-height: 1.65; margin-bottom: 36px;
 }
-.hero-actions { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 20px; }
+.hero-actions { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 24px; }
+.hero-value-list {
+  list-style: none; display: grid; grid-template-columns: 1fr; gap: 10px;
+  margin: 4px 0 0; padding: 0;
+}
+.hero-value-list li {
+  position: relative; padding-left: 28px; font-size: 14px;
+  color: var(--text-secondary); line-height: 1.5; font-weight: 600;
+}
+.hero-value-list li::before {
+  content: ''; position: absolute; left: 2px; top: 8px;
+  width: 14px; height: 8px;
+  border-left: 2px solid var(--garnet);
+  border-bottom: 2px solid var(--garnet);
+  transform: rotate(-45deg);
+}
 .hero-proof { display: flex; flex-wrap: wrap; gap: 0; }
 .hero-proof-item {
   display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--text-muted);
@@ -216,7 +246,21 @@ header {
 }
 
 /* Hero right — composed visual stack */
-.hero-visual { animation: fadeUp 0.65s 0.15s ease both; display: flex; flex-direction: column; gap: 12px; }
+.hero-visual {
+  animation: fadeUp 0.65s 0.15s ease both;
+  display: flex; flex-direction: column; gap: 12px;
+  align-self: start;
+}
+@media(min-width:1000px){
+  .hero-visual { position: sticky; top: 96px; margin-top: 8px; }
+}
+.hero-map-img {
+  width: 100%; height: auto; display: block;
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-xl);
+  background: var(--surface);
+  border: 1px solid var(--neutral-200);
+}
 
 .hero-card-main {
   background: var(--surface); border-radius: var(--radius-xl);
@@ -1018,6 +1062,15 @@ footer {
 
 /* ── QUIZ BRANCH SELECTOR ───────────────── */
 .q-branch { display: flex; gap: 12px; margin-bottom: 24px; flex-wrap: wrap; }
+.q-branch-4 {
+  display: grid; gap: 10px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.q-branch-4 .q-branch-btn {
+  min-width: 0; padding: 16px 14px;
+}
+.q-branch-4 .qb-title { font-size: 14px; }
+.q-branch-4 .qb-sub { font-size: 11px; }
 .q-branch-btn {
   flex: 1; min-width: 200px; padding: 20px 18px;
   border: 2px solid var(--neutral-200); border-radius: var(--radius-lg);
@@ -1046,9 +1099,9 @@ footer {
     <img src="logo (1).png" alt="Платформа Технолидерства" class="logo-img">
   </a>
   <nav class="nav">
-    <a href="#mission">Зачем</a>
-    <a href="#how-it-works">Как работает</a>
-    <a href="#ecosystem-path">Резидентство</a>
+    <a href="#ecosystem">Зачем</a>
+    <a href="#growth">Как работает</a>
+    <a href="#how-resident">Резидентство</a>
     <a href="#team">Команда</a>
     <a href="#register">Подать заявку</a>
   </nav>
@@ -1067,95 +1120,34 @@ footer {
 
       <div class="hero-content">
         <div class="hero-eyebrow" data-export-skip>
-          <span class="badge badge-garnet">Ядро экосистемы</span>
-          <div class="hero-eyebrow-divider"></div>
-          <span style="font-size:13px;color:var(--text-muted);font-weight:600;">Единая программа Платформы Технолидерства</span>
+          <span class="badge badge-garnet">Станьте партнером</span>
+          <span class="hero-eyebrow-divider"></span>
+          <span class="hero-eyebrow-label">участником или резидентом</span>
         </div>
-        <h1 data-export-title="Кулибинская карта — ядро экосистемы технолидерства">
-          <span class="accent">Кулибинская карта</span><br>
-          ядро экосистемы<br>
-          технолидерства
+        <h1 data-export-title="Кулибинская карта · экосистема поощрений для будущих инженеров">
+          <span class="accent">Кулибинская карта</span>
+          <span class="h1-sub">экосистема поощрений для будущих инженеров</span>
         </h1>
         <p class="hero-desc" data-export-desc>
-          Родители, выбравшие для ребенка инженерно-технологическое направление, копят кулибинские баллы в экосистеме и тратят их у резидентов. Карта экономит им силы, время и деньги на поиске проверенных программ и экспертов. Вы получаете прямой канал к мотивированной целевой аудитории и встраиваете свои программы в единый образовательный контур.
+          Родитель ведет ребенка к инженерной профессии 14 лет. Кружки, курсы, вузы, десятки несвязанных сервисов, месяцы поисков и неочевидный результат.
+        </p>
+        <p class="hero-desc" data-export-desc>
+          Кулибинская карта собирает экспертов, кружки, учреждения и индустрию в единый контур. Родитель видит маршрут, ребенок копит баллы за реальные шаги, резидент получает прямой канал к мотивированной аудитории, которая уже выбрала инженерное будущее.
         </p>
         <div class="hero-actions" data-export-skip>
-          <a href="#register" class="btn btn-garnet btn-xl">Стать резидентом</a>
-          <a href="#how-it-works" class="btn btn-outline btn-lg">Как это работает</a>
+          <a href="#register" class="btn btn-garnet btn-xl">Получить максимум выгоды</a>
+          <a href="#ecosystem" class="btn btn-outline btn-lg">Подробнее о Платформе</a>
         </div>
-        <div class="hero-proof" data-export-perks>
-          <div class="hero-proof-item" data-export-perk="Бесплатно на этапе пилота">
-            <div class="hero-proof-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
-            <span>Бесплатно на этапе пилота</span>
-          </div>
-        </div>
+        <ul class="hero-value-list" data-export-perks>
+          <li data-export-perk="Проект национального масштаба в русле курса на технологическое лидерство">Национальный масштаб и курс государства на технологическое лидерство</li>
+          <li data-export-perk="100% отвечает запросам общества и государства">100% запрос общества и государства</li>
+          <li data-export-perk="Собирает выдающихся экспертов и лидеров отрасли">Выдающиеся эксперты и лидеры отрасли в одном контуре</li>
+          <li data-export-perk="Ваш вклад возвращается с прибылью в короткие сроки">Ваш вклад возвращается с прибылью в короткие сроки</li>
+        </ul>
       </div>
 
       <div class="hero-visual" data-export-skip>
-        <!-- ═══ LTV TEASER: 3 simplified tracks — full graph moved to Mission ═══ -->
-        <div class="hero-card-main">
-          <div class="hero-card-head">
-            <div class="hch-top">
-              <div class="hch-title">Один ученик — 14 лет в экосистеме</div>
-              <div class="hch-live"><span class="pulse"></span>LTV</div>
-            </div>
-          </div>
-
-          <div class="hero-card-body" style="padding:18px 18px 14px;">
-            <svg viewBox="0 0 520 180" style="width:100%;height:auto;display:block;" xmlns="http://www.w3.org/2000/svg" aria-label="LTV: за одним учеником стоят несколько резидентов на 14 лет">
-
-              <!-- Phase divider at age 15 -->
-              <line x1="190" y1="20" x2="190" y2="130" stroke="#B8BDCC" stroke-width="1" stroke-dasharray="2,3"/>
-
-              <!-- Phase labels at top -->
-              <text x="120" y="14" fill="#C2185B" font-size="10" font-weight="900" text-anchor="middle" font-family="Onest,sans-serif" letter-spacing="0.8">ПРОФОРИЕНТАЦИЯ</text>
-              <text x="350" y="14" fill="#7B68EE" font-size="10" font-weight="900" text-anchor="middle" font-family="Onest,sans-serif" letter-spacing="0.8">ТЕХНОЛИДЕРСТВО</text>
-
-              <!-- Track 1: кружок (9-15) -->
-              <g>
-                <rect x="55" y="32" width="170" height="20" rx="10" fill="#C2185B" fill-opacity="0.14" stroke="#C2185B" stroke-opacity="0.4" stroke-width="1"/>
-                <text x="68" y="46" fill="#C2185B" font-size="11" font-weight="800" font-family="Onest,sans-serif">кружок · школа</text>
-              </g>
-
-              <!-- Track 2: онлайн-курс (11-25) -->
-              <g>
-                <rect x="85" y="64" width="410" height="20" rx="10" fill="#7B68EE" fill-opacity="0.14" stroke="#7B68EE" stroke-opacity="0.4" stroke-width="1"/>
-                <text x="98" y="78" fill="#7B68EE" font-size="11" font-weight="800" font-family="Onest,sans-serif">онлайн-курс</text>
-              </g>
-
-              <!-- Track 3: ВУЗ + корп. программа (13-25) -->
-              <g>
-                <rect x="130" y="96" width="365" height="20" rx="10" fill="#7B68EE" fill-opacity="0.14" stroke="#7B68EE" stroke-opacity="0.4" stroke-width="1"/>
-                <text x="143" y="110" fill="#7B68EE" font-size="11" font-weight="800" font-family="Onest,sans-serif">ВУЗ · корп. программа</text>
-              </g>
-
-              <!-- Baseline -->
-              <line x1="44" y1="130" x2="500" y2="130" stroke="#E5E7EB" stroke-width="1" stroke-dasharray="3,4"/>
-
-              <!-- X axis: age ticks -->
-              <text x="65" y="148" fill="#8A92A6" font-size="10" font-weight="700" text-anchor="middle" font-family="Onest,sans-serif">9</text>
-              <text x="190" y="148" fill="#8A92A6" font-size="10" font-weight="700" text-anchor="middle" font-family="Onest,sans-serif">15</text>
-              <text x="495" y="148" fill="#8A92A6" font-size="10" font-weight="700" text-anchor="middle" font-family="Onest,sans-serif">25</text>
-              <text x="44" y="168" fill="#B8BDCC" font-size="9" font-weight="600" font-family="Onest,sans-serif">возраст, лет</text>
-            </svg>
-          </div>
-        </div>
-
-        <!-- ═══ Hero metrics row — 3 large numbers ═══ -->
-        <div class="hero-card-row" style="grid-template-columns:1fr 1fr 1fr;gap:10px;">
-          <div class="hero-mini" style="flex-direction:column;align-items:flex-start;gap:2px;padding:14px 16px;">
-            <div style="font-size:26px;font-weight:900;font-family:'Onest',sans-serif;color:var(--garnet);line-height:1.1;">14 лет</div>
-            <div class="hm-sub">LTV семьи</div>
-          </div>
-          <div class="hero-mini" style="flex-direction:column;align-items:flex-start;gap:2px;padding:14px 16px;">
-            <div style="font-size:26px;font-weight:900;font-family:'Onest',sans-serif;color:var(--violet);line-height:1.1;">5 типов</div>
-            <div class="hm-sub">резидентов</div>
-          </div>
-          <div class="hero-mini" style="flex-direction:column;align-items:flex-start;gap:2px;padding:14px 16px;">
-            <div style="font-size:26px;font-weight:900;font-family:'Onest',sans-serif;color:var(--text-primary);line-height:1.1;">1 карта</div>
-            <div class="hm-sub">экосистема</div>
-          </div>
-        </div>
+        <img src="карта.png" alt="Кулибинская карта" class="hero-map-img">
       </div>
 
     </div>
@@ -1195,9 +1187,9 @@ footer {
 
     </div>
 
-    <div class="stats-conclusion" data-export-card data-export-card-value="Точка сборки" data-export-card-label="Кулибинская карта собирает спрос, господдержку и бюджеты семей в одну экосистему">
-      Спрос, господдержка и бюджеты семей есть — но живут в разных вселенных.<br>
-      <strong>Кулибинская карта</strong> собирает их в одну экосистему. Резидент получает канал к семьям, которые уже готовы платить.
+    <div class="stats-conclusion" data-export-card data-export-card-value="Точка сборки" data-export-card-label="Кулибинская карта собирает спрос, господдержку и запрос родителей в одну экосистему">
+      Спрос, господдержка и запрос родителей есть, но живут в разных вселенных.<br>
+      <strong>Кулибинская карта</strong> собирает их в одну экосистему. Резидент получает канал к мотивированной аудитории, которая уже выбрала инженерное будущее.
     </div>
 
     <div class="stats-footnote">Источники: Минцифры, АСИ, hh.ru (февраль 2026), ВЦИОМ (2023) · 2025-2026</div>
@@ -1205,28 +1197,28 @@ footer {
 </div>
 
 
-<!-- ══ 2. MISSION ═════════════════════════════════════════════ -->
-<section class="mission" id="mission" data-export-section="mission" data-export-title="Почему это работает">
+<!-- ══ 2. ECOSYSTEM — Платформа и резиденты ═══════════════════ -->
+<section class="mission" id="ecosystem" data-export-section="ecosystem" data-export-title="Платформа и резиденты">
   <div class="container">
     <div class="mission-inner">
 
-      <div class="mission-text" style="max-width:820px;margin:0 auto;">
-        <span class="sec-label">Почему это работает</span>
-        <h2 class="sec-title">Одна карта вместо <span>десятков разрозненных сервисов</span></h2>
+      <div class="mission-text" style="max-width:880px;margin:0 auto;">
+        <span class="sec-label">Экосистема</span>
+        <h2 class="sec-title">Платформа и <span>резиденты</span></h2>
         <div class="mission-text-body" data-export-desc>
         <p>
-          Семьи ищут техническое будущее для ребенка в десятках несвязанных сервисов: тесты, консультации, кружки, курсы. На поиск уходят месяцы и тысячи рублей. Результат часто разочаровывает.
+          Платформа Технолидерства это цифровой контур, где встречаются родители с инженерным выбором и те, кто ведет их дальше. Внутри работает <strong>Кулибинская карта</strong>, через нее родители копят баллы и обменивают на программы резидентов.
         </p>
         <p>
-          <strong>Кулибинская карта</strong> собирает экспертов, школы и индустрию в одну экосистему. Баллы за реальные шаги ребенка обмениваются на привилегии всех резидентов — консультации, курсы, мастер-классы, стажировки.
+          Резидент экосистемы это проверенное образовательное учреждение, онлайн-школа, кружок, корпорация, университет или НКО, чьи продукты встроены в единый трек ребенка. Мы не ведем на платформу всех подряд. Мы уже сделали работу за родителей и отобрали лучших.
         </p>
         <p>
-          Резидент получает <strong>готовый канал дистрибуции</strong>: к вам приходит семья, которая уже приняла решение о техническом направлении и готова платить. Без борьбы за холодный трафик.
+          Аудиторию набирает платформа через открытые инструменты, эфиры, Барометр и контент экспертов. Резидент получает готовую связку с родителем, который уже в движении.
         </p>
         </div>
         <div class="mission-cta" data-export-skip>
-          <a href="#register" class="btn btn-garnet btn-lg">Стать резидентом</a>
-          <a href="#how-it-works" class="btn btn-outline btn-lg">Как работает карта</a>
+          <a href="#register" class="btn btn-garnet btn-lg">Подать заявку</a>
+          <a href="#how-resident" class="btn btn-outline btn-lg">Как стать резидентом</a>
         </div>
       </div>
 
@@ -1289,33 +1281,35 @@ footer {
 </section>
 
 
-<!-- ══ 3. MECHANIC — Как Карта работает для семьи (moved above Directions) ═══ -->
-<section class="trends" id="how-it-works-section" data-export-section="how-it-works" data-export-title="Как Карта работает для семьи">
+<!-- ══ 3. GROWTH — Карта как точка роста, сборки, притяжения ═══ -->
+<section class="trends" id="growth" data-export-section="growth" data-export-title="Карта как точка роста">
   <div class="container">
     <div class="trends-head">
-      <span class="sec-label">Ядро экосистемы</span>
-      <h2 class="sec-title">Как Карта работает <span style="color:var(--garnet)">для семьи</span></h2>
-      <p class="sec-sub">Бесплатная регистрация. Баллы — за реальные шаги ребенка. Привилегии — от резидентов экосистемы.</p>
+      <span class="sec-label">Карта как драйвер</span>
+      <h2 class="sec-title">Точка роста, сборки <span style="color:var(--garnet)">и притяжения</span></h2>
+      <p class="sec-sub">Родитель и ребенок проходят путь, резидент получает аудиторию, платформа видит всю картину. Каждый шаг в экосистеме работает на всех сразу.</p>
     </div>
 
-    <!-- Kulibin Card mechanic — 3 steps for family -->
-    <div class="kulibin-block" id="how-it-works" data-export-section="how-it-works" data-export-title="Как Карта работает для семьи" data-export-desc="Три шага: регистрация, накопление баллов, обмен на привилегии резидентов.">
-      <h3><span>Три шага</span> — от регистрации до привилегий</h3>
-      <p>Родитель видит прозрачную экономику пути ребенка. Резидент — мотивированную аудиторию, которая уже в движении.</p>
-      <div class="kulibin-perks">
-        <div class="kp-item" data-export-card data-export-card-icon="1" data-export-card-title="Регистрация" data-export-card-desc="Семья получает карту бесплатно за минуту.">
-          <div class="kp-icon">1</div>
-          <span><strong>Регистрация.</strong> Семья получает карту бесплатно за минуту.</span>
-        </div>
-        <div class="kp-item" data-export-card data-export-card-icon="2" data-export-card-title="Баллы за реальные шаги" data-export-card-desc="Баллы копятся за тесты, консультации, курсы и эфиры резидентов.">
-          <div class="kp-icon">2</div>
-          <span><strong>Баллы за реальные шаги.</strong> Тесты, консультации, курсы и эфиры резидентов — все идет в копилку ребенка.</span>
-        </div>
-        <div class="kp-item" data-export-card data-export-card-icon="3" data-export-card-title="Обмен на привилегии" data-export-card-desc="Скидки, закрытые консультации, мастер-классы и стажировки у резидентов.">
-          <div class="kp-icon">3</div>
-          <span><strong>Обмен на привилегии.</strong> Скидки, закрытые консультации, мастер-классы и стажировки у резидентов.</span>
-        </div>
+    <div class="trends-grid">
+      <div class="trend-card" data-export-card data-export-card-title="Точка роста" data-export-card-desc="Аудитория растет вместе с ребенком. Платформа накапливает историю, резидент получает мотивированный трафик по мере взросления ребенка.">
+        <div class="trend-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--garnet)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg></div>
+        <div class="trend-title">Точка роста</div>
+        <p class="trend-desc">Аудитория растет вместе с ребенком. Платформа накапливает историю шагов, резидент получает мотивированный трафик по мере взросления ребенка.</p>
       </div>
+      <div class="trend-card" data-export-card data-export-card-title="Точка сборки" data-export-card-desc="Кружки, школы, вузы, корпорации и НКО встречаются в одном контуре. Родитель перестает тонуть в разрозненных сервисах.">
+        <div class="trend-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--garnet)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v4"/><path d="M12 18v4"/><path d="M4.93 4.93l2.83 2.83"/><path d="M16.24 16.24l2.83 2.83"/><path d="M2 12h4"/><path d="M18 12h4"/><path d="M4.93 19.07l2.83-2.83"/><path d="M16.24 7.76l2.83-2.83"/></svg></div>
+        <div class="trend-title">Точка сборки</div>
+        <p class="trend-desc">Кружки, школы, вузы, корпорации и НКО встречаются в одном контуре. Родитель перестает тонуть в разрозненных сервисах.</p>
+      </div>
+      <div class="trend-card" data-export-card data-export-card-title="Точка притяжения" data-export-card-desc="Резидент становится точкой, куда приходят за баллами. Прямой канал к аудитории без аукционов и рекламных бюджетов.">
+        <div class="trend-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--garnet)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg></div>
+        <div class="trend-title">Точка притяжения</div>
+        <p class="trend-desc">Резидент становится точкой, куда приходят за баллами. Прямой канал к аудитории без аукционов и рекламных бюджетов.</p>
+      </div>
+    </div>
+
+    <div style="text-align:center;margin-top:40px;" data-export-skip>
+      <a href="#register" class="btn btn-garnet btn-xl">Подать заявку на резидентство</a>
     </div>
   </div>
 </section>
@@ -1333,20 +1327,12 @@ footer {
 
     <div class="dir-grid">
 
-      <!-- Barometer -->
-      <div class="dir-card" data-export-card data-export-card-icon="bar-chart-3" data-export-card-badge="Исследование" data-export-card-title="Барометр карьерных ожиданий" data-export-card-desc="Еженедельный опрос старшеклассников и родителей: какие отрасли, компании и профессии они выбирают. Данные по регионам. За участие — кулибинские баллы.">
+      <!-- Barometer (short mention) -->
+      <div class="dir-card" data-export-card data-export-card-icon="bar-chart-3" data-export-card-badge="Исследование" data-export-card-title="Барометр карьерных ожиданий" data-export-card-desc="Еженедельный срез отраслей, компаний и профессий, которые выбирают старшеклассники. Данные по регионам доступны резидентам.">
         <div class="dir-icon di-garnet"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--garnet)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v16a2 2 0 0 0 2 2h16"/><path d="M7 16h.01"/><path d="M11 12h.01"/><path d="M15 16h.01"/><path d="M7 11l4-4 4 4 4-4"/></svg></div>
         <div class="dir-badge"><span class="badge badge-amber">Исследование</span></div>
         <div class="dir-title">Барометр карьерных ожиданий</div>
-        <p class="dir-desc">Еженедельный опрос старшеклассников и родителей: какие отрасли, компании и профессии они выбирают. Данные по регионам. За участие — кулибинские баллы.</p>
-      </div>
-
-      <!-- Tests -->
-      <div class="dir-card" data-export-card data-export-card-icon="compass" data-export-card-badge="Открытый доступ" data-export-card-title="Бесплатные тесты по картам навыков" data-export-card-desc="Диагностика типа инженерно-технологического мышления по 13 направлениям. Результаты выводят семьи на профильных экспертов платформы.">
-        <div class="dir-icon di-garnet"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--garnet)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76" fill="var(--garnet)" opacity="0.15"/></svg></div>
-        <div class="dir-badge"><span class="badge badge-garnet">Открытый доступ</span></div>
-        <div class="dir-title">Бесплатные тесты по картам навыков</div>
-        <p class="dir-desc">Диагностика типа инженерно-технологического мышления по 13 направлениям. Результаты выводят семьи на профильных экспертов платформы.</p>
+        <p class="dir-desc">Еженедельный срез отраслей, компаний и профессий, которые выбирают старшеклассники. Данные по регионам доступны резидентам.</p>
       </div>
 
       <!-- Library -->
@@ -1362,21 +1348,13 @@ footer {
         <div class="dir-icon di-amber"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--garnet)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z"/><path d="M22 10v6"/><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"/></svg></div>
         <div class="dir-badge"><span class="badge badge-amber">В разработке</span></div>
         <div class="dir-title">Атлас передовых практик</div>
-        <p class="dir-desc">Реестр лучших практик в образовании со всей России. Педагоги публикуют методики, учреждения — методологии. Авторы получают кураторство и дополнительный доход.</p>
-      </div>
-
-      <!-- Indicator -->
-      <div class="dir-card" data-export-card data-export-card-icon="trending-up" data-export-card-badge="Следующая фаза" data-export-card-title="Индикатор карьерных ожиданий" data-export-card-desc="Аналитика на основе Барометра: как старшеклассники воспринимают отрасли и профессии по регионам. Запуск — после накопления первых данных.">
-        <div class="dir-icon di-garnet"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--garnet)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg></div>
-        <div class="dir-badge"><span class="badge badge-amber">Следующая фаза</span></div>
-        <div class="dir-title">Индикатор карьерных ожиданий</div>
-        <p class="dir-desc">Аналитика на основе Барометра: как старшеклассники воспринимают отрасли и профессии по регионам. Запуск — после накопления первых данных.</p>
+        <p class="dir-desc">Реестр лучших методик в образовании со всей России. Учреждения и практики публикуют авторские программы. Авторы получают кураторство и дополнительный доход.</p>
       </div>
 
     </div>
 
-    <!-- Barometer role-specific use cases -->
-    <div class="barometer-roles" data-export-group data-export-group-title="Барометр в работе" data-export-group-color="1B2D5E">
+    <!-- Barometer role-specific use cases (removed, kept short mention above) -->
+    <div class="barometer-roles" data-export-group data-export-group-title="Барометр в работе" data-export-group-color="1B2D5E" style="display:none">
       <div class="br-head">
         <div class="br-eyebrow" data-export-skip>
           <span class="badge badge-garnet">Исследование</span>
@@ -1387,7 +1365,7 @@ footer {
           <span class="accent">Как партнеры применяют</span><br>
           данные Барометра
         </h3>
-        <p class="br-sub" data-export-desc>Школы корректируют программы. Вузы планируют приемную кампанию. Эксперты говорят с семьями на языке их вопросов. Данные — одни и те же.</p>
+        <p class="br-sub" data-export-desc>Школы корректируют программы. Вузы планируют приемную кампанию. Эксперты говорят с родителями на языке их вопросов. Данные одни и те же.</p>
       </div>
 
       <div class="br-grid">
@@ -1430,7 +1408,7 @@ footer {
         </div>
 
         <!-- Эксперт / профориентолог -->
-        <div class="br-card" data-export-card data-export-card-icon="user-check" data-export-card-role="Эксперт · профориентолог · автор эфиров" data-export-card-title="Говорят с семьями на языке их вопросов" data-export-card-desc="Видят страхи и ожидания семей в своем регионе. Подбирают темы эфиров и консультаций под живой запрос." data-export-card-meta="62% боятся математики → эфиры про не-математические пути">
+        <div class="br-card" data-export-card data-export-card-icon="user-check" data-export-card-role="Эксперт · профориентолог · автор эфиров" data-export-card-title="Говорят с родителями на языке их вопросов" data-export-card-desc="Видят страхи и ожидания родителей в своем регионе. Подбирают темы эфиров и консультаций под живой запрос." data-export-card-meta="62% боятся математики → эфиры про не-математические пути">
           <div class="br-icon">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--garnet)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
               <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
@@ -1439,8 +1417,8 @@ footer {
             </svg>
           </div>
           <div class="br-role">Эксперт · профориентолог · автор эфиров</div>
-          <h4 class="br-cardtitle">Говорят с семьями на языке их вопросов</h4>
-          <p class="br-desc">Видят страхи и ожидания семей в своем регионе. Подбирают темы эфиров и консультаций под живой запрос.</p>
+          <h4 class="br-cardtitle">Говорят с родителями на языке их вопросов</h4>
+          <p class="br-desc">Видят страхи и ожидания родителей в своем регионе. Подбирают темы эфиров и консультаций под живой запрос.</p>
           <div class="br-example">
             <span class="br-ex-label">Пример</span>
             <p>62% 10-классников боятся математики → серия эфиров про «не-математические» пути в инженерию.</p>
@@ -1451,7 +1429,7 @@ footer {
     </div>
 
     <div class="dirs-cta" data-export-skip>
-      <a href="#register" class="btn btn-garnet btn-xl">Стать участником платформы</a>
+      <a href="#register" class="btn btn-garnet btn-xl">Подать заявку на резидентство</a>
     </div>
   </div>
 </section>
@@ -1464,133 +1442,141 @@ footer {
 <section class="benefits" id="benefits" data-export-section="benefits" data-export-title="Что дает участие в работе Платформы">
   <div class="container">
     <div class="benefits-head">
-      <span class="sec-label">Преимущества участия</span>
-      <h2 class="sec-title">Что дает участие в работе Платформы</h2>
-      <p class="sec-sub">Выберите свою роль — узнайте, какие возможности открываются</p>
+      <span class="sec-label">Направления выгоды</span>
+      <h2 class="sec-title">Что получает резидент</h2>
+      <p class="sec-sub">Мы выбираем резидентов вручную. Те, кто готов встроиться в единый контур и работать на качество результата.</p>
     </div>
 
     <div class="tabs-wrap" data-export-skip>
-      <button class="tab-btn on" onclick="switchTab(this,'consultants')" style="display:inline-flex;align-items:center;gap:7px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76" fill="currentColor" opacity="0.2"/></svg> Профориентологам</button>
-      <button class="tab-btn" onclick="switchTab(this,'education')" style="display:inline-flex;align-items:center;gap:7px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="3" x2="21" y1="22" y2="22"/><line x1="6" x2="6" y1="18" y2="11"/><line x1="10" x2="10" y1="18" y2="11"/><line x1="14" x2="14" y1="18" y2="11"/><line x1="18" x2="18" y1="18" y2="11"/><polygon points="12 2 20 7 4 7"/></svg> Образовательным организациям</button>
-      <button class="tab-btn" onclick="switchTab(this,'employers')" style="display:inline-flex;align-items:center;gap:7px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8l-7 5V8l-7 5V4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"/><path d="M17 18h1"/><path d="M12 18h1"/><path d="M7 18h1"/></svg> Корпорациям (подписка)</button>
-      <button class="tab-btn" onclick="switchTab(this,'teachers')" style="display:inline-flex;align-items:center;gap:7px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg> Педагогам и госструктурам</button>
+      <button class="tab-btn on" onclick="switchTab(this,'employers')" style="display:inline-flex;align-items:center;gap:7px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8l-7 5V8l-7 5V4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"/><path d="M17 18h1"/><path d="M12 18h1"/><path d="M7 18h1"/></svg> Корпорации</button>
+      <button class="tab-btn" onclick="switchTab(this,'education')" style="display:inline-flex;align-items:center;gap:7px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="3" x2="21" y1="22" y2="22"/><line x1="6" x2="6" y1="18" y2="11"/><line x1="10" x2="10" y1="18" y2="11"/><line x1="14" x2="14" y1="18" y2="11"/><line x1="18" x2="18" y1="18" y2="11"/><polygon points="12 2 20 7 4 7"/></svg> Образовательные организации</button>
+      <button class="tab-btn" onclick="switchTab(this,'ngo')" style="display:inline-flex;align-items:center;gap:7px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg> НКО</button>
+      <button class="tab-btn" onclick="switchTab(this,'consultants')" style="display:inline-flex;align-items:center;gap:7px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76" fill="currentColor" opacity="0.2"/></svg> Профориентологи</button>
     </div>
 
-    <!-- Таб 1: Профориентологам -->
-    <div class="tab-panel on ben-grid" id="tp-consultants" data-export-group data-export-group-title="Профориентологам" data-export-group-color="1B2D5E">
-      <div class="ben-card" data-export-card data-export-card-title="Экспертный статус и верификация" data-export-card-desc="Научно-методологическая верификация (кандидаты наук, действующие педагоги, практики отрасли), размещение в каталоге экспертов платформы. Ваш профиль и авторский контент доступны семьям, которые целенаправленно выбирают инженерно-технологическое будущее для ребенка.">
-        <div class="ben-num">01</div>
-        <h3 class="ben-title">Экспертный статус и верификация</h3>
-        <p class="ben-desc">Научно-методологическая верификация (кандидаты наук, действующие педагоги, практики отрасли), размещение в каталоге экспертов платформы. Ваш профиль и авторский контент доступны семьям, которые целенаправленно выбирают инженерно-технологическое будущее для ребенка.</p>
-      </div>
-      <div class="ben-card" data-export-card data-export-card-title="Авторский контент и эфиры" data-export-card-desc="Публикации в библиотеке, участие в прямых эфирах как спикер. Контент проходит экспертизу и работает на вашу профессиональную репутацию. На этапе запуска — бесплатно.">
-        <div class="ben-num">02</div>
-        <h3 class="ben-title">Авторский контент и эфиры</h3>
-        <p class="ben-desc">Публикации в библиотеке, участие в прямых эфирах как спикер. Контент проходит экспертизу и работает на вашу профессиональную репутацию. На этапе запуска — бесплатно.</p>
-      </div>
-      <div class="ben-card" data-export-card data-export-card-title="Исследования и профессиональное сообщество" data-export-card-desc="Доступ к данным Барометра, участие в формировании Атласа передовых практик, обмен опытом с коллегами. Кулибинская карта — дополнительный инструмент взаимодействия с аудиторией.">
-        <div class="ben-num">03</div>
-        <h3 class="ben-title">Исследования и профессиональное сообщество</h3>
-        <p class="ben-desc">Доступ к данным Барометра, участие в формировании Атласа передовых практик, обмен опытом с коллегами. Кулибинская карта — дополнительный инструмент взаимодействия с аудиторией.</p>
-      </div>
-    </div>
-
-    <!-- Таб 2: Образовательным организациям -->
+    <!-- Таб 1: Образовательные организации -->
     <div class="tab-panel ben-grid" id="tp-education" data-export-group data-export-group-title="Образовательным организациям" data-export-group-color="162450">
-      <div class="ben-card" data-export-card data-export-card-title="Резидентство Кулибинской карты" data-export-card-desc="Ваши программы и мастер-классы становятся привилегиями в экосистеме Кулибинской карты. Участники обменивают баллы на ваши услуги — вовлеченная аудитория приходит к вам. На этапе запуска — бесплатно.">
+      <div class="ben-card" data-export-card data-export-card-title="Резидентство Кулибинской карты" data-export-card-desc="Ваши программы и мастер-классы встроены в экосистему привилегий. Участники обменивают баллы на ваши услуги. Приходит уже вовлеченная аудитория.">
         <div class="ben-num">01</div>
         <h3 class="ben-title">Резидентство Кулибинской карты</h3>
-        <p class="ben-desc">Ваши программы и мастер-классы становятся привилегиями в экосистеме Кулибинской карты. Участники обменивают баллы на ваши услуги — вовлеченная аудитория приходит к вам. На этапе запуска — бесплатно.</p>
+        <p class="ben-desc">Ваши программы и мастер-классы встроены в экосистему привилегий. Участники обменивают баллы на ваши услуги. Приходит уже вовлеченная аудитория.</p>
       </div>
-      <div class="ben-card" data-export-card data-export-card-title="Участие в эфирах и контентные возможности" data-export-card-desc="Представляйте свои программы во время тематических эфиров. Размещайте материалы в библиотеке контента. Открытый формат участия для всех образовательных организаций.">
+      <div class="ben-card" data-export-card data-export-card-title="Эфиры и контент" data-export-card-desc="Представляйте программы в тематических эфирах. Размещайте материалы в библиотеке. Работайте с родителями через авторские форматы.">
         <div class="ben-num">02</div>
-        <h3 class="ben-title">Участие в эфирах и контентные возможности</h3>
-        <p class="ben-desc">Представляйте свои программы во время тематических эфиров. Размещайте материалы в библиотеке контента. Открытый формат участия для всех образовательных организаций.</p>
+        <h3 class="ben-title">Эфиры и контент</h3>
+        <p class="ben-desc">Представляйте программы в тематических эфирах. Размещайте материалы в библиотеке. Работайте с родителями через авторские форматы.</p>
       </div>
-      <div class="ben-card" data-export-card data-export-card-title="Интеграция с экосистемой" data-export-card-desc="Размещение в каталоге платформы, участие в исследованиях Барометра, доступ к аудитории. Данные о предпочтениях семей помогают выстраивать программы под реальный спрос.">
+      <div class="ben-card" data-export-card data-export-card-title="Интеграция в контур" data-export-card-desc="Размещение в каталоге, участие в исследованиях, доступ к данным Барометра. Помогает строить программы под реальный спрос региона.">
         <div class="ben-num">03</div>
-        <h3 class="ben-title">Интеграция с экосистемой</h3>
-        <p class="ben-desc">Размещение в каталоге платформы, участие в исследованиях Барометра, доступ к аудитории. Данные о предпочтениях семей помогают выстраивать программы под реальный спрос.</p>
+        <h3 class="ben-title">Интеграция в контур</h3>
+        <p class="ben-desc">Размещение в каталоге, участие в исследованиях, доступ к данным Барометра. Помогает строить программы под реальный спрос региона.</p>
       </div>
     </div>
 
-    <!-- Таб 3: Корпорациям (подписка) -->
-    <div class="tab-panel ben-grid" id="tp-employers" data-export-group data-export-group-title="Корпорациям (подписка)" data-export-group-color="0E1A33">
-      <div class="ben-card" data-export-card data-export-card-title="Корпоративная подписка на данные" data-export-card-desc="Расширенный доступ к Индикатору карьерных ожиданий: еженедельный срез привлекательности вашего HR-бренда среди старшеклассников — в разрезе регионов и возрастных групп.">
+    <!-- Таб 2: Корпорации -->
+    <div class="tab-panel on ben-grid" id="tp-employers" data-export-group data-export-group-title="Корпорациям" data-export-group-color="0E1A33">
+      <div class="ben-card" data-export-card data-export-card-title="Данные о будущих кадрах" data-export-card-desc="Расширенный доступ к Индикатору карьерных ожиданий. Еженедельный срез привлекательности вашего HR-бренда среди старшеклассников по регионам.">
         <div class="ben-num">01</div>
-        <h3 class="ben-title">Корпоративная подписка на данные</h3>
-        <p class="ben-desc">Расширенный доступ к Индикатору карьерных ожиданий: еженедельный срез привлекательности вашего HR-бренда среди старшеклассников — в разрезе регионов и возрастных групп.</p>
+        <h3 class="ben-title">Данные о будущих кадрах</h3>
+        <p class="ben-desc">Расширенный доступ к Индикатору карьерных ожиданий. Еженедельный срез привлекательности вашего HR-бренда среди старшеклассников по регионам.</p>
       </div>
-      <div class="ben-card" data-export-card data-export-card-title="Статус «Официальный Партнер Платформы»" data-export-card-desc="Присутствие на платформе как стратегический участник. Ваши эксперты выступают на прямых эфирах, компания представлена в экосистеме Кулибинской карты как резидент с брендированными привилегиями.">
+      <div class="ben-card" data-export-card data-export-card-title="Статус официального партнера" data-export-card-desc="Стратегическое присутствие на платформе. Ваши эксперты в эфирах, компания как резидент с брендированными привилегиями Карты.">
         <div class="ben-num">02</div>
-        <h3 class="ben-title">Статус «Официальный Партнер Платформы»</h3>
-        <p class="ben-desc">Присутствие на платформе как стратегический участник. Ваши эксперты выступают на прямых эфирах, компания представлена в экосистеме Кулибинской карты как резидент с брендированными привилегиями.</p>
+        <h3 class="ben-title">Статус официального партнера</h3>
+        <p class="ben-desc">Стратегическое присутствие на платформе. Ваши эксперты в эфирах, компания как резидент с брендированными привилегиями Карты.</p>
       </div>
-      <div class="ben-card" data-export-card data-export-card-title="Работа с будущими кадрами" data-export-card-desc="Стажировочные треки, брендированные тесты навыков и прямые эфиры с вашими специалистами. Формируйте интерес к профессиям вашей отрасли у следующего поколения.">
+      <div class="ben-card" data-export-card data-export-card-title="Работа с поколением" data-export-card-desc="Стажировочные треки, брендированные тесты навыков, прямые эфиры с вашими инженерами. Формируйте интерес к профессиям отрасли.">
         <div class="ben-num">03</div>
-        <h3 class="ben-title">Работа с будущими кадрами</h3>
-        <p class="ben-desc">Стажировочные треки, брендированные тесты навыков и прямые эфиры с вашими специалистами. Формируйте интерес к профессиям вашей отрасли у следующего поколения.</p>
+        <h3 class="ben-title">Работа с поколением</h3>
+        <p class="ben-desc">Стажировочные треки, брендированные тесты навыков, прямые эфиры с вашими инженерами. Формируйте интерес к профессиям отрасли.</p>
       </div>
     </div>
 
-    <!-- Таб 4: Педагогам и госструктурам -->
-    <div class="tab-panel ben-grid" id="tp-teachers" data-export-group data-export-group-title="Педагогам и госструктурам" data-export-group-color="2D4A8A">
-      <div class="ben-card" data-export-card data-export-card-title="Атлас практик и профессиональный статус" data-export-card-desc="Разместите свою методику в Атласе передовых практик. Бесплатное участие, профессиональный статус, дополнительный доход через кураторство.">
+    <!-- Таб 3: НКО -->
+    <div class="tab-panel ben-grid" id="tp-ngo" data-export-group data-export-group-title="НКО" data-export-group-color="2D4A8A">
+      <div class="ben-card" data-export-card data-export-card-title="Социальная миссия на витрине" data-export-card-desc="Ваши программы и стипендиальные треки становятся привилегиями Карты. Аудитория платформы получает доступ к вашим инициативам напрямую.">
         <div class="ben-num">01</div>
-        <h3 class="ben-title">Атлас практик и профессиональный статус</h3>
-        <p class="ben-desc">Разместите свою методику в Атласе передовых практик. Бесплатное участие, профессиональный статус, дополнительный доход через кураторство.</p>
+        <h3 class="ben-title">Социальная миссия на витрине</h3>
+        <p class="ben-desc">Ваши программы и стипендиальные треки становятся привилегиями Карты. Аудитория платформы получает доступ к вашим инициативам напрямую.</p>
       </div>
-      <div class="ben-card" data-export-card data-export-card-title="Профессиональное сообщество" data-export-card-desc="Нетворкинг с коллегами со всей России, участие в прямых эфирах как спикер, доступ к методическим материалам от практикующих экспертов. Самореализация через релевантный контент.">
+      <div class="ben-card" data-export-card data-export-card-title="Исследования и данные по регионам" data-export-card-desc="Доступ к Барометру карьерных ожиданий для построения программ. Публикация аналитики, соавторство в отраслевых исследованиях.">
         <div class="ben-num">02</div>
-        <h3 class="ben-title">Профессиональное сообщество</h3>
-        <p class="ben-desc">Нетворкинг с коллегами со всей России, участие в прямых эфирах как спикер, доступ к методическим материалам от практикующих экспертов. Самореализация через релевантный контент.</p>
+        <h3 class="ben-title">Исследования и данные по регионам</h3>
+        <p class="ben-desc">Доступ к Барометру карьерных ожиданий для построения программ. Публикация аналитики, соавторство в отраслевых исследованиях.</p>
       </div>
-      <div class="ben-card" data-export-card data-export-card-title="Площадка для социального влияния" data-export-card-desc="Для институтов развития и представителей власти: площадка для публичных выступлений, участие в исследованиях, формирование приоритетов образовательной политики. Бесплатное участие.">
+      <div class="ben-card" data-export-card data-export-card-title="Площадка для социального влияния" data-export-card-desc="Публичные выступления, участие в формировании приоритетов, партнерства с индустрией и образованием через экосистему резидентов.">
         <div class="ben-num">03</div>
         <h3 class="ben-title">Площадка для социального влияния</h3>
-        <p class="ben-desc">Для институтов развития и представителей власти: площадка для публичных выступлений, участие в исследованиях, формирование приоритетов образовательной политики. Бесплатное участие.</p>
+        <p class="ben-desc">Публичные выступления, участие в формировании приоритетов, партнерства с индустрией и образованием через экосистему резидентов.</p>
       </div>
+    </div>
+
+    <!-- Таб 4: Профориентологи -->
+    <div class="tab-panel ben-grid" id="tp-consultants" data-export-group data-export-group-title="Профориентологам" data-export-group-color="1B2D5E">
+      <div class="ben-card" data-export-card data-export-card-title="Экспертный статус и верификация" data-export-card-desc="Методическая верификация, размещение в каталоге экспертов. Ваш профиль виден родителям, которые уже выбрали инженерное будущее для ребенка.">
+        <div class="ben-num">01</div>
+        <h3 class="ben-title">Экспертный статус и верификация</h3>
+        <p class="ben-desc">Методическая верификация, размещение в каталоге экспертов. Ваш профиль виден родителям, которые уже выбрали инженерное будущее для ребенка.</p>
+      </div>
+      <div class="ben-card" data-export-card data-export-card-title="Авторский контент и эфиры" data-export-card-desc="Публикации в библиотеке, выступления в прямых эфирах. Контент работает на репутацию и расширяет клиентскую базу.">
+        <div class="ben-num">02</div>
+        <h3 class="ben-title">Авторский контент и эфиры</h3>
+        <p class="ben-desc">Публикации в библиотеке, выступления в прямых эфирах. Контент работает на репутацию и расширяет клиентскую базу.</p>
+      </div>
+      <div class="ben-card" data-export-card data-export-card-title="Сообщество и исследования" data-export-card-desc="Доступ к данным Барометра, участие в Атласе практик, обмен опытом. Карта становится инструментом работы с аудиторией.">
+        <div class="ben-num">03</div>
+        <h3 class="ben-title">Сообщество и исследования</h3>
+        <p class="ben-desc">Доступ к данным Барометра, участие в Атласе практик, обмен опытом. Карта становится инструментом работы с аудиторией.</p>
+      </div>
+    </div>
+
+    <div style="text-align:center;margin-top:48px;" data-export-skip>
+      <a href="#register" class="btn btn-garnet btn-xl">Подать заявку на резидентство</a>
     </div>
 
   </div>
 </section>
 
 
-<!-- ══ 5.2 RESIDENT PATH — Как вы становитесь резидентом ═══════════════════ -->
-<section class="resident-path" id="ecosystem-path" data-export-section="ecosystem-path" data-export-title="Как вы становитесь резидентом">
+<!-- ══ 5.2 RESIDENT PATH — Как стать резидентом ═══════════════════ -->
+<section class="resident-path" id="how-resident" data-export-section="how-resident" data-export-title="Как стать резидентом">
   <div class="container">
     <div class="rp-head">
       <span class="sec-label">Онбординг резидента</span>
-      <h2 class="sec-title">Как вы становитесь <span style="color:var(--garnet)">резидентом</span></h2>
-      <p class="sec-sub">Четыре шага от заявки до работы с мотивированной аудиторией. Для организаций, брендов, педагогов и профориентологов.</p>
+      <h2 class="sec-title">Как стать <span style="color:var(--garnet)">резидентом</span></h2>
+      <p class="sec-sub">Четыре шага от заявки до работы с аудиторией семей, которые уже в движении.</p>
     </div>
 
     <div class="rp-grid">
 
-      <div class="rp-card" data-export-card data-export-card-title="Заявка и верификация">
+      <div class="rp-card" data-export-card data-export-card-title="Заявка">
         <div class="rp-num">01</div>
-        <div class="rp-title">Заявка и верификация</div>
-        <p class="rp-desc">Оставляете заявку. Команда платформы проверяет программу, бренд или квалификацию. На этапе пилота — бесплатно.</p>
+        <div class="rp-title">Заявка</div>
+        <p class="rp-desc">Оставляете заявку. Команда платформы изучает программу, бренд или квалификацию. Мы не набираем всех подряд, отбор ручной.</p>
+      </div>
+
+      <div class="rp-card" data-export-card data-export-card-title="Верификация">
+        <div class="rp-num">02</div>
+        <div class="rp-title">Верификация</div>
+        <p class="rp-desc">Проверка методики и продукта методическим советом. Согласование формата присутствия. Подписание соглашения резидента.</p>
       </div>
 
       <div class="rp-card" data-export-card data-export-card-title="Интеграция в Карту">
-        <div class="rp-num">02</div>
+        <div class="rp-num">03</div>
         <div class="rp-title">Интеграция в Карту</div>
-        <p class="rp-desc">Ваши продукты и курсы становятся привилегиями, на которые семьи меняют баллы. Педагоги и профориентологи получают личную Карту и инструменты для работы с учениками.</p>
+        <p class="rp-desc">Ваши продукты и курсы становятся привилегиями, на которые родители меняют баллы. Получаете кабинет резидента и слот спикера в эфирах.</p>
       </div>
 
       <div class="rp-card" data-export-card data-export-card-title="Работа с аудиторией">
-        <div class="rp-num">03</div>
-        <div class="rp-title">Работа с аудиторией</div>
-        <p class="rp-desc">К резидентам приходят семьи экосистемы — с интересом к технологиям, без холодного трафика. В кабинете видно прогресс учеников и конверсию в записи.</p>
-      </div>
-
-      <div class="rp-card" data-export-card data-export-card-title="Сообщество и данные">
         <div class="rp-num">04</div>
-        <div class="rp-title">Сообщество и данные</div>
-        <p class="rp-desc">Аналитика аудитории, Барометр карьерных ожиданий, эфиры, исследования. Карта связывает вас с другими резидентами и коллегами.</p>
+        <div class="rp-title">Работа с аудиторией</div>
+        <p class="rp-desc">К вам приходят родители экосистемы. В кабинете видны прогресс, конверсия в записи, аналитика и Барометр по вашему региону.</p>
       </div>
 
+    </div>
+
+    <div style="text-align:center;margin-top:40px;" data-export-skip>
+      <a href="#register" class="btn btn-garnet btn-xl">Подать заявку на резидентство</a>
     </div>
   </div>
 </section>
@@ -1620,12 +1606,12 @@ footer {
         </div>
       </div>
 
-      <div class="team-card" data-export-card data-export-card-icon="МС" data-export-card-title="Методологический совет" data-export-card-role="Директор по методологии" data-export-card-desc="Кандидаты пед. наук
+      <div class="team-card" data-export-card data-export-card-icon="МС" data-export-card-title="Методический совет" data-export-card-role="Директор по методике" data-export-card-desc="Кандидаты пед. наук
 40+ программ в портфеле
 Экспертиза в профориентации">
         <div class="team-ava is-active" style="background:linear-gradient(135deg,#162450,#0E1A33)">МС</div>
-        <div class="team-name">Методологический совет</div>
-        <div class="team-role">Директор по методологии</div>
+        <div class="team-name">Методический совет</div>
+        <div class="team-role">Директор по методике</div>
         <div class="team-status s-active">● Активен</div>
         <div class="team-creds">
           <div class="cred-row"><span class="cred-dot">▪</span><span>Кандидаты педагогических наук</span></div>
@@ -1667,48 +1653,25 @@ Work-force development">
 </section>
 
 
-<!-- ══ 6. PARTNERS — Кого ищем в резиденты ═══════════════════ -->
-<section class="partners" id="partners" data-export-section="partners" data-export-title="Кого ищем в резиденты">
-  <div class="container">
-    <div class="partners-head">
-      <span class="sec-label">Кого ищем</span>
-      <h2 class="sec-title">5 типов резидентов Кулибинской карты</h2>
-      <p class="sec-sub">Пилот запускается с ограниченным кругом. Без холодного трафика — только релевантная аудитория.</p>
-    </div>
-    <div class="partners-quote" data-export-quote>
-      «Кулибинская карта собирает семьи, школу, индустрию и государство в одну экосистему. Резидент получает не рекламу — он становится частью пути ребенка.»
-      <span>— Основатель Платформы Технолидерства</span>
-    </div>
-    <div class="logos-grid">
-      <div class="p-logo" data-export-card data-export-card-title="Кружки и школы"><div class="p-logo-inner"><div class="p-dot" style="background:rgba(255,255,255,0.25)"></div>Кружки и частные школы</div></div>
-      <div class="p-logo" data-export-card data-export-card-title="Онлайн-школы и EdTech"><div class="p-logo-inner"><div class="p-dot" style="background:rgba(255,255,255,0.25)"></div>Онлайн-школы и EdTech</div></div>
-      <div class="p-logo" data-export-card data-export-card-title="Университеты"><div class="p-logo-inner"><div class="p-dot" style="background:rgba(255,255,255,0.25)"></div>Университеты</div></div>
-      <div class="p-logo" data-export-card data-export-card-title="Работодатели и бренды"><div class="p-logo-inner"><div class="p-dot" style="background:rgba(255,255,255,0.25)"></div>Работодатели и бренды</div></div>
-      <div class="p-logo" data-export-card data-export-card-title="Профориентологи"><div class="p-logo-inner"><div class="p-dot" style="background:rgba(255,255,255,0.25)"></div>Профориентологи</div></div>
-    </div>
-  </div>
-</section>
-
-
 <!-- ══ 7. REGISTRATION ════════════════════════════════════════ -->
 <section class="register" id="register" data-export-section="cta" data-export-title="Станьте участником Платформы Технолидерства">
   <div class="container">
     <div class="register-inner">
 
       <div class="register-left">
-        <span class="sec-label">Пилотный набор · бесплатно</span>
+        <span class="sec-label">Заявка на участие</span>
         <h2 class="sec-title">Станьте резидентом <span>Кулибинской карты</span></h2>
-        <p>Запускаем ограниченный круг. На период пилота — без платы. Взамен — ваша программа становится привилегией в Карте.</p>
+        <p>Запускаем ограниченный круг. Ручной отбор, без массового набора. Ваша программа встраивается в единый образовательный контур и становится привилегией в Карте.</p>
         <div class="register-perks" data-export-perks>
-          <div class="perk-row" data-export-perk="Резидентство Карты — ваша программа становится привилегией"><div class="perk-check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div><span>Резидентство Карты — ваша программа становится привилегией</span></div>
-          <div class="perk-row" data-export-perk="Канал к семьям, уже выбравшим инженерное будущее"><div class="perk-check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div><span>Канал к семьям, уже выбравшим инженерное будущее</span></div>
-          <div class="perk-row" data-export-perk="Данные Барометра по вашему региону и направлению"><div class="perk-check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div><span>Данные Барометра по региону и направлению</span></div>
-          <div class="perk-row" data-export-perk="Прямые эфиры — слот спикера под вашу экспертизу"><div class="perk-check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div><span>Прямые эфиры — слот спикера под вашу экспертизу</span></div>
-          <div class="perk-row" data-export-perk="Сообщество резидентов и ранний доступ к исследованиям"><div class="perk-check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div><span>Сообщество резидентов и ранний доступ к исследованиям</span></div>
+          <div class="perk-row" data-export-perk="Раннее бронирование резидентства"><div class="perk-check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div><span>Раннее бронирование резидентства</span></div>
+          <div class="perk-row" data-export-perk="Преимущества первых резидентов"><div class="perk-check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div><span>Преимущества первых резидентов и закрепление ниши</span></div>
+          <div class="perk-row" data-export-perk="Канал к родителям, выбравшим инженерное будущее для ребенка"><div class="perk-check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div><span>Канал к родителям, выбравшим инженерное будущее для ребенка</span></div>
+          <div class="perk-row" data-export-perk="Данные Барометра по региону и направлению"><div class="perk-check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div><span>Данные Барометра по региону и направлению</span></div>
+          <div class="perk-row" data-export-perk="Прямые эфиры, слот спикера под вашу экспертизу"><div class="perk-check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div><span>Прямые эфиры, слот спикера под вашу экспертизу</span></div>
         </div>
         <div style="margin-top:24px;padding:18px 20px;background:var(--surface);border-left:3px solid var(--garnet);border-radius:4px;font-size:14px;line-height:1.6;color:var(--text-secondary);box-shadow:0 2px 8px rgba(27,45,94,0.06);">
           <strong style="color:var(--text-primary);font-weight:800;display:block;margin-bottom:6px;font-size:14px;">Что от вас нужно</strong>
-          Одна программа или привилегия, открытая участникам Карты. Верификация экспертизы. Согласие участвовать в 1–2 эфирах в квартал. Все.
+          Одна программа или привилегия, открытая участникам Карты. Верификация экспертизы методическим советом. Согласие участвовать в 1 или 2 эфирах в квартал.
         </div>
       </div>
 
@@ -1734,19 +1697,29 @@ Work-force development">
         </div>
         <div class="quiz-body">
 
-          <!-- Step 1: BRANCH — Организация или Профориентолог -->
+          <!-- Step 1: 4 точки входа — Корпорация / Образование / НКО / Профориентолог -->
           <div class="q-step on" id="qs1">
             <div class="q-title">Выберите направление участия</div>
-            <div class="q-branch">
+            <div class="q-branch q-branch-4">
               <button class="q-branch-btn" onclick="pickBranch(this,'org')">
                 <div class="qb-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8l-7 5V8l-7 5V4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"/><path d="M17 18h1"/><path d="M12 18h1"/><path d="M7 18h1"/></svg></div>
-                <div class="qb-title">Организация / Компания</div>
-                <div class="qb-sub">Образовательное учреждение, онлайн-школа, корпорация, кружок, консалтинговое агентство, госструктура</div>
+                <div class="qb-title">Корпорация</div>
+                <div class="qb-sub">Работодатель, индустриальный партнер, технологическая компания</div>
+              </button>
+              <button class="q-branch-btn" onclick="pickBranch(this,'org')">
+                <div class="qb-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="3" x2="21" y1="22" y2="22"/><line x1="6" x2="6" y1="18" y2="11"/><line x1="10" x2="10" y1="18" y2="11"/><line x1="14" x2="14" y1="18" y2="11"/><line x1="18" x2="18" y1="18" y2="11"/><polygon points="12 2 20 7 4 7"/></svg></div>
+                <div class="qb-title">Образовательная организация</div>
+                <div class="qb-sub">Школа, онлайн-школа, кружок, вуз, кванториум</div>
+              </button>
+              <button class="q-branch-btn" onclick="pickBranch(this,'org')">
+                <div class="qb-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
+                <div class="qb-title">НКО</div>
+                <div class="qb-sub">Некоммерческая организация, фонд, социальная инициатива</div>
               </button>
               <button class="q-branch-btn" onclick="pickBranch(this,'expert')">
                 <div class="qb-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76" fill="currentColor" opacity="0.15"/></svg></div>
-                <div class="qb-title">Профориентолог / Эксперт</div>
-                <div class="qb-sub">Карьерный консультант, практикующий профориентолог, автор методик, независимый эксперт</div>
+                <div class="qb-title">Профориентолог</div>
+                <div class="qb-sub">Карьерный консультант, автор методик, эксперт</div>
               </button>
             </div>
             <div class="q-nav">
@@ -1823,13 +1796,13 @@ Work-force development">
           <div class="q-step" id="qs5">
             <div class="q-title" id="q5title">Какой формат участия вас интересует?</div>
             <div class="q-opts" id="q5opts-org">
-              <button class="q-opt" onclick="pick(this)"><span class="q-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"/></svg> Бесплатное участие на этапе запуска</button>
+              <button class="q-opt" onclick="pick(this)"><span class="q-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"/></svg> Раннее бронирование резидентства</button>
               <button class="q-opt" onclick="pick(this)"><span class="q-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0" opacity="0.7"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> Резидентство Кулибинской карты</button>
               <button class="q-opt" onclick="pick(this)"><span class="q-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><path d="M3 3v16a2 2 0 0 0 2 2h16"/><path d="M7 11l4-4 4 4 4-4"/></svg> Корпоративная подписка с расширенной аналитикой</button>
             </div>
             <div class="q-opts" id="q5opts-expert" style="display:none">
-              <button class="q-opt" onclick="pick(this)"><span class="q-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"/></svg> Начать с бесплатного размещения</button>
-              <button class="q-opt" onclick="pick(this)"><span class="q-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg> Пройти верификацию Методологическим советом</button>
+              <button class="q-opt" onclick="pick(this)"><span class="q-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"/></svg> Начать с базового размещения</button>
+              <button class="q-opt" onclick="pick(this)"><span class="q-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg> Пройти верификацию методическим советом</button>
               <button class="q-opt" onclick="pick(this)"><span class="q-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><rect width="20" height="14" x="2" y="3" rx="2"/><circle cx="12" cy="10" r="3"/><path d="m12 13-1.5 5"/><path d="m12 13 1.5 5"/></svg> Стать спикером ближайшего эфира</button>
             </div>
             <div class="q-nav">
@@ -1892,9 +1865,9 @@ Work-force development">
       <div>
         <div class="footer-nav-title">Платформа</div>
         <div class="footer-nav">
-          <a href="#mission">Зачем</a>
-          <a href="#how-it-works">Как работает</a>
-          <a href="#ecosystem-path">Резидентство</a>
+          <a href="#ecosystem">Зачем</a>
+          <a href="#growth">Как работает</a>
+          <a href="#how-resident">Резидентство</a>
           <a href="#team">Команда</a>
         </div>
       </div>

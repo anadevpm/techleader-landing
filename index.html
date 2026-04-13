@@ -4,13 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#1B2D5E">
-<title>Платформа Технолидерства · канал к родителям с инженерным выбором</title>
+<title>Платформа Технолидерства · высокоселективная экосистема для резидентов</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700;800;900&family=Nunito+Sans:ital,opsz,wght@0,6..12,400;0,6..12,500;0,6..12,600;0,6..12,700;0,6..12,800;1,6..12,400&display=swap" rel="stylesheet">
 
 <style>
-/* ══ DESIGN TOKENS — Живая полночь ══════════════════════════════ */
+/* ══ DESIGN TOKENS ══════════════════════════════════════════════ */
 :root {
   --garnet: #1B2D5E;
   --garnet-light: #2D4A8A;
@@ -33,8 +33,6 @@
   --teal-light: #E4F5F2;
   --violet-50: #F2F3FF;
   --violet-100: #E5E7FF;
-  --blue: #1B2D5E;
-  --blue-light: #E8EEF9;
   --dark: #0E1A33;
   --shadow-sm: 0 1px 3px rgba(14,26,51,0.06);
   --shadow-md: 0 4px 16px rgba(14,26,51,0.09);
@@ -71,10 +69,7 @@ img { max-width: 100%; display: block; }
   text-transform: uppercase;
 }
 .badge-garnet  { background: var(--garnet); color: #fff; }
-.badge-teal    { background: var(--neutral-200); color: var(--text-secondary); }
-.badge-amber   { background: var(--neutral-200); color: var(--text-secondary); }
-.badge-neutral { background: var(--neutral-200); color: var(--text-primary); }
-.badge-blue    { background: var(--neutral-200); color: var(--text-secondary); }
+.badge-violet  { background: var(--violet-50); color: var(--violet); }
 
 .btn {
   display: inline-flex; align-items: center; justify-content: center; gap: 7px;
@@ -84,33 +79,18 @@ img { max-width: 100%; display: block; }
 }
 .btn-garnet {
   background: linear-gradient(135deg, #7B68EE 0%, #4FABF5 100%);
-  color: #ffffff; border: none;
+  color: #ffffff;
   box-shadow: 0 2px 12px rgba(123,104,238,0.30);
   font-weight: 700; letter-spacing: 0.2px;
 }
 .btn-garnet:hover {
-  background: linear-gradient(135deg, #7B68EE 0%, #4FABF5 100%);
   transform: translateY(-2px); filter: brightness(1.05);
   box-shadow: 0 6px 20px rgba(123,104,238,0.4);
 }
-.btn-gold {
-  background: linear-gradient(135deg, #7B68EE 0%, #4FABF5 100%);
-  color: #ffffff; border: none;
-  box-shadow: 0 2px 12px rgba(123,104,238,0.30);
-  font-weight: 700; letter-spacing: 0.2px;
-}
-.btn-gold:hover {
-  background: linear-gradient(135deg, #7B68EE 0%, #4FABF5 100%);
-  transform: translateY(-2px); filter: brightness(1.05);
-  box-shadow: 0 6px 20px rgba(123,104,238,0.4);
-}
-.btn-outline { background: transparent; color: var(--violet, var(--garnet)); border: 1.5px solid #C5CAFF; }
-.btn-outline:hover { background: #E5E7FF; border-color: var(--violet, var(--garnet)); }
-.btn-outline.btn-lg { font-weight: 600; }
-.btn-white { background: #fff; color: var(--violet, var(--garnet)); }
-.btn-white:hover { background: var(--violet-50, var(--garnet-50)); transform: translateY(-1px); }
-.btn-dark { background: var(--dark); color: #fff; }
-.btn-dark:hover { background: #1A2B47; }
+.btn-outline { background: transparent; color: var(--violet); border: 1.5px solid #C5CAFF; }
+.btn-outline:hover { background: #E5E7FF; border-color: var(--violet); }
+.btn-white { background: #fff; color: var(--violet); }
+.btn-white:hover { background: var(--violet-50); transform: translateY(-1px); }
 .btn-sm  { padding: 7px 16px; font-size: 12px; }
 .btn-lg  { padding: 16px 36px; font-size: 16px; }
 .btn-xl  { padding: 18px 48px; font-size: 17px; border-radius: var(--radius-md); }
@@ -122,12 +102,17 @@ img { max-width: 100%; display: block; }
 .sec-title { font-size: 32px; font-weight: 900; margin-bottom: 12px; letter-spacing: -0.5px; }
 .sec-sub { font-size: 16px; color: var(--text-secondary); line-height: 1.6; max-width: 580px; }
 
-@keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.5;transform:scale(1.35)} }
+/* Section CTA variants */
+.sec-cta {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 14px; font-weight: 700; color: var(--violet);
+  margin-top: 28px; transition: gap 0.2s;
+}
+.sec-cta:hover { gap: 10px; }
+.sec-cta svg { transition: transform 0.2s; }
+.sec-cta:hover svg { transform: translateX(2px); }
+
 @keyframes fadeUp { from{opacity:0;transform:translateY(28px)} to{opacity:1;transform:translateY(0)} }
-@keyframes slideIn { from{opacity:0;transform:translateX(-16px)} to{opacity:1;transform:translateX(0)} }
-@keyframes countUp { from{opacity:0;transform:translateY(10px)} to{opacity:1;transform:translateY(0)} }
-@keyframes shimmer { 0%{background-position:-200% 0} 100%{background-position:200% 0} }
-@keyframes orbit  { from{transform:rotate(0deg) translateX(44px) rotate(0deg)} to{transform:rotate(360deg) translateX(44px) rotate(-360deg)} }
 
 /* ── HEADER ─────────────────────────────── */
 header {
@@ -140,13 +125,9 @@ header {
 }
 .logo {
   font-family: 'Onest', sans-serif; font-weight: 900; font-size: 21px;
-  color: var(--garnet); display: flex; align-items: center; gap: 9px; letter-spacing: -0.3px;
+  color: var(--garnet); display: flex; align-items: center; gap: 9px;
 }
-.logo-img {
-  height: 36px; width: auto; border-radius: var(--radius-sm);
-  flex-shrink: 0; display: block;
-}
-.logo-text { color: var(--garnet); }
+.logo-img { height: 36px; width: auto; border-radius: var(--radius-sm); }
 .nav { display: flex; align-items: center; gap: 2px; }
 .nav a {
   color: var(--text-secondary); font-size: 14px; font-weight: 600;
@@ -154,7 +135,6 @@ header {
 }
 .nav a:hover { background: var(--neutral-100); color: var(--text-primary); }
 @media(max-width:900px){ .nav { display: none; } }
-.header-cta { display: flex; gap: 10px; align-items: center; }
 
 /* ── HERO ────────────────────────────────── */
 .hero {
@@ -192,64 +172,118 @@ header {
   font-size: 56px; font-weight: 900; letter-spacing: -1.8px;
   margin-bottom: 22px; line-height: 1.02;
 }
-.hero h1 .accent { color: var(--garnet); position: relative; display: inline-block; }
-.hero h1 .accent::after {
-  content: '';
-  position: absolute; bottom: -4px; left: 0; right: 0; height: 3px;
-  background: var(--garnet-200); border-radius: 2px;
-}
+.hero h1 .accent { color: var(--garnet); }
 .hero h1 .h1-sub {
   display: block; margin-top: 14px;
-  font-size: 26px; font-weight: 800; letter-spacing: -0.4px;
-  line-height: 1.2; color: var(--navy);
+  font-size: 24px; font-weight: 600; letter-spacing: -0.3px;
+  line-height: 1.3; color: var(--text-secondary);
+}
+.hero h1 .h1-sub strong { color: var(--text-primary); font-weight: 800; }
+.hero h1 .h1-sub .accent-platform {
+  color: var(--violet); display: inline;
 }
 @media(max-width:768px){
   .hero h1 { font-size: 38px; letter-spacing: -1px; }
-  .hero h1 .h1-sub { font-size: 20px; margin-top: 10px; }
+  .hero h1 .h1-sub { font-size: 18px; margin-top: 10px; }
 }
 @media(max-width:640px){
   .hero h1 { font-size: 32px; letter-spacing: -0.5px; }
-  .hero h1 .h1-sub { font-size: 18px; }
+  .hero h1 .h1-sub { font-size: 16px; }
 }
 .hero-desc {
   font-size: 18px; color: var(--text-secondary); max-width: 520px;
   line-height: 1.65; margin-bottom: 36px;
 }
-.hero-actions { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 24px; }
-.hero-value-list {
-  list-style: none; display: grid; grid-template-columns: 1fr; gap: 10px;
-  margin: 4px 0 0; padding: 0;
+/* hero v10: B2B qualifier, value prop, urgency, trust */
+.hero-qualifier {
+  display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 28px;
 }
-.hero-value-list li {
-  position: relative; padding-left: 28px; font-size: 14px;
-  color: var(--text-secondary); line-height: 1.5; font-weight: 600;
+.hero-qualifier-pill {
+  font-size: 12px; font-weight: 700; padding: 7px 16px;
+  background: var(--surface); border: 1.5px solid var(--neutral-200);
+  border-radius: var(--radius-full); color: var(--text-primary);
+  transition: all 0.15s; cursor: pointer;
 }
-.hero-value-list li::before {
-  content: ''; position: absolute; left: 2px; top: 8px;
-  width: 14px; height: 8px;
-  border-left: 2px solid var(--garnet);
-  border-bottom: 2px solid var(--garnet);
-  transform: rotate(-45deg);
+.hero-qualifier-pill:hover { border-color: var(--violet); background: var(--violet-50); color: var(--violet); }
+.hero-value-prop {
+  font-size: 17px; color: var(--text-secondary); max-width: 520px;
+  line-height: 1.65; margin-bottom: 24px;
 }
-.hero-proof { display: flex; flex-wrap: wrap; gap: 0; }
-.hero-proof-item {
-  display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--text-muted);
-  padding: 0 20px; border-right: 1px solid var(--neutral-200);
+.hero-value-prop strong { color: var(--text-primary); font-weight: 800; }
+
+/* problem / solution paired blocks — border-left style */
+.hero-ps-group {
+  display: flex; flex-direction: column; gap: 16px;
+  margin-bottom: 24px;
 }
-.hero-proof-item:first-child { padding-left: 0; }
-.hero-proof-item:last-child  { border-right: none; }
-.hero-proof-icon {
-  width: 22px; height: 22px; border-radius: 50%;
-  background: var(--garnet-50); color: var(--garnet);
+.hero-ps-block {
+  padding: 0 0 0 16px;
+  border-radius: 0;
+  background: none;
+}
+.hero-ps-block--problem {
+  border-left: 2px solid var(--neutral-300);
+}
+.hero-ps-block--solution {
+  border-left: 2px solid var(--violet);
+}
+.hero-ps-label {
+  display: block;
+  font-size: 11px; font-weight: 700;
+  letter-spacing: 1px; text-transform: uppercase;
+  margin-bottom: 4px;
+}
+.hero-ps-block--problem .hero-ps-label { color: var(--text-muted); }
+.hero-ps-block--solution .hero-ps-label { color: var(--violet); }
+.hero-ps-text {
+  font-size: 14px; color: var(--text-secondary);
+  line-height: 1.6; margin: 0;
+}
+.hero-ps-text strong { color: var(--text-primary); font-weight: 700; }
+.hero-actions { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 28px; }
+
+/* v11: fact badges — compact list (no border-left, icons suffice) */
+.hero-facts {
+  display: flex; flex-direction: column; gap: 6px;
+  margin-top: 28px;
+  padding: 0;
+  background: none;
+  border: none;
+  border-radius: 0;
+  max-width: 420px;
+}
+.hero-fact {
+  display: flex; align-items: center; gap: 10px;
+  padding: 0;
+}
+.hero-fact-icon {
+  width: 20px; height: 20px; flex-shrink: 0;
   display: flex; align-items: center; justify-content: center;
-  font-size: 11px; flex-shrink: 0;
+  color: var(--violet);
+}
+.hero-fact-icon svg { width: 16px; height: 16px; }
+.hero-fact-text {
+  font-size: 13px; font-weight: 600; color: var(--text-secondary);
+  line-height: 1.5;
 }
 
-/* Hero right — composed visual stack */
+/* v11: early booking — pill style (no border-left) */
+.hero-early-booking {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 13px; font-weight: 700; color: var(--garnet);
+  letter-spacing: 0.3px;
+  padding: 10px 18px;
+  background: var(--garnet-50);
+  border: 1.5px solid var(--garnet-100);
+  border-radius: var(--radius-full);
+  margin-top: 16px;
+  line-height: 1.4;
+}
+.hero-early-booking svg { flex-shrink: 0; color: var(--garnet); }
+
 .hero-visual {
   animation: fadeUp 0.65s 0.15s ease both;
-  display: flex; flex-direction: column; gap: 12px;
-  align-self: start;
+  display: flex; flex-direction: column; gap: 16px; align-self: start;
 }
 @media(min-width:1000px){
   .hero-visual { position: sticky; top: 96px; margin-top: 8px; }
@@ -260,489 +294,93 @@ header {
   box-shadow: var(--shadow-xl);
   background: var(--surface);
   border: 1px solid var(--neutral-200);
+  margin-bottom: 12px;
 }
 
-.hero-card-main {
-  background: var(--surface); border-radius: var(--radius-xl);
-  box-shadow: var(--shadow-xl); overflow: hidden;
-  border: 1px solid var(--neutral-200);
+/* ── BLOCK: КУЛИБИНСКАЯ КАРТА ────────────── */
+.kulibin-card { padding: 88px 0; background: var(--surface); border-bottom: 1px solid var(--neutral-200); }
+.kulibin-inner { max-width: 800px; }
+.kulibin-inner p {
+  font-size: 17px; color: var(--text-secondary); line-height: 1.72; margin-bottom: 16px;
 }
-.hero-card-head {
-  background: linear-gradient(135deg, var(--garnet-dark) 0%, var(--garnet) 50%, var(--garnet-light) 100%);
-  padding: 20px 22px; color: white;
+.kulibin-inner p:last-of-type { margin-bottom: 0; }
+.kulibin-accent {
+  margin-top: 28px; padding: 24px 28px;
+  background: linear-gradient(135deg, var(--violet-50) 0%, var(--garnet-50) 100%);
+  border-left: 4px solid var(--violet);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
 }
-.hch-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 5px; }
-.hch-title { font-size: 14px; font-weight: 700; }
-.hch-live {
-  display: inline-flex; align-items: center; gap: 5px;
-  background: rgba(255,255,255,0.18); padding: 3px 10px;
-  border-radius: var(--radius-full); font-size: 11px; font-weight: 700;
-}
-.pulse { width: 7px; height: 7px; border-radius: 50%; background: var(--garnet-200); animation: pulse 1.5s ease-in-out infinite; display: inline-block; }
-.hch-sub { font-size: 12px; opacity: 0.7; }
-.hero-card-body { padding: 18px 22px; }
-.baro-q { font-size: 13px; font-weight: 700; margin-bottom: 12px; }
-.baro-opts { display: flex; flex-direction: column; gap: 7px; margin-bottom: 14px; }
-.baro-row {
-  position: relative; padding: 9px 12px; border: 1.5px solid var(--neutral-200);
-  border-radius: var(--radius-sm); cursor: pointer; transition: border-color 0.2s;
-  overflow: hidden; background: var(--off-white);
-}
-.baro-row.top-pick { border-color: var(--garnet); }
-.baro-fill {
-  position: absolute; left: 0; top: 0; height: 100%;
-  background: var(--garnet-50); z-index: 0; transition: width 0.9s ease;
-}
-.baro-row-inner {
-  position: relative; z-index: 1;
-  display: flex; align-items: center; justify-content: space-between;
-  font-size: 12px;
-}
-.baro-row-inner .pct { font-weight: 700; color: var(--garnet); font-size: 12px; }
-.baro-foot {
-  display: flex; justify-content: space-between; align-items: center;
-  font-size: 11px; color: var(--text-muted); flex-wrap: wrap; gap: 8px;
+.kulibin-accent p {
+  font-size: 16px; font-weight: 700; color: var(--text-primary); margin: 0; line-height: 1.65;
 }
 
-.hero-card-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-.hero-mini {
-  background: var(--surface); border: 1px solid var(--neutral-200);
-  border-radius: var(--radius-md); padding: 14px 16px;
-  display: flex; align-items: flex-start; gap: 11px; transition: all 0.2s;
+/* ── BLOCK: СЕЛЕКТИВНОСТЬ + КУРАТОР ─────── */
+.selectivity { padding: 88px 0; background: var(--off-white); border-bottom: 1px solid var(--neutral-200); }
+.selectivity-inner { max-width: 800px; }
+.selectivity-inner > p {
+  font-size: 16px; color: var(--text-secondary); line-height: 1.72; margin-bottom: 16px;
 }
-.hero-mini:hover { box-shadow: var(--shadow-sm); border-color: var(--neutral-300); }
-.hm-icon {
-  width: 38px; height: 38px; border-radius: var(--radius-sm);
-  display: flex; align-items: center; justify-content: center;
-  font-size: 19px; flex-shrink: 0;
+.selectivity-highlight {
+  margin: 28px 0; padding: 24px 28px;
+  background: var(--garnet); color: white;
+  border-radius: var(--radius-lg);
+  font-size: 16px; font-weight: 600; line-height: 1.65;
 }
-.hm-title { font-size: 12px; font-weight: 700; font-family: 'Onest',sans-serif; margin-bottom: 2px; }
-.hm-sub   { font-size: 11px; color: var(--text-muted); line-height: 1.4; }
+.criteria-tags {
+  display: flex; gap: 10px; flex-wrap: wrap; margin-top: 24px;
+}
+.criteria-tag {
+  font-size: 12px; font-weight: 700; padding: 8px 16px;
+  background: var(--surface); border: 1.5px solid var(--neutral-200);
+  border-radius: var(--radius-full); color: var(--text-primary);
+}
 
-/* ── LOYALTY CARD SVG icon ──── */
-.icon-loyalty-card {
-  display: inline-flex; align-items: center; justify-content: center;
+/* ── BLOCK: ПРИВЛЕЧЕНИЕ АУДИТОРИИ ────────── */
+.attract { padding: 88px 0; background: var(--surface); border-bottom: 1px solid var(--neutral-200); }
+.attract-inner { max-width: 800px; }
+.attract-inner > p {
+  font-size: 16px; color: var(--text-secondary); line-height: 1.72; margin-bottom: 16px;
 }
-.icon-loyalty-card svg { display: block; }
+.attract-result {
+  margin-top: 28px; padding: 24px 28px;
+  background: linear-gradient(135deg, var(--violet-50) 0%, var(--garnet-50) 100%);
+  border-left: 4px solid var(--violet);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+}
+.attract-result p {
+  font-size: 16px; font-weight: 700; color: var(--text-primary); margin: 0; line-height: 1.65;
+}
 
-/* ── STATS BAR — нарратив рынка ──────────── */
-.stats-bar {
-  background: var(--dark); padding: 56px 0 48px; color: white;
+/* ── BLOCK: ВЫГОДА РЕЗИДЕНТА ─────────────── */
+.benefit { padding: 88px 0; background: var(--off-white); border-bottom: 1px solid var(--neutral-200); }
+.benefit-head { margin-bottom: 48px; }
+.benefit-facts {
+  display: flex; flex-direction: column; gap: 6px;
+  margin-top: 24px;
+  padding: 14px 0 14px 16px;
+  border-left: 2px solid var(--violet-200, #c4b5fd);
+  max-width: 480px;
 }
-.stats-kicker {
-  text-align: center; font-size: 11px; letter-spacing: 2px;
-  text-transform: uppercase; color: rgba(255,255,255,0.45);
-  margin-bottom: 28px; font-weight: 600;
-}
-.stats-inner {
-  display: grid; grid-template-columns: repeat(4, 1fr);
-  gap: 0; align-items: stretch; position: relative;
-}
-.stat-item {
-  text-align: left; padding: 0 24px; position: relative;
-  display: flex; flex-direction: column; gap: 8px;
-}
-.stat-item + .stat-item::before {
-  content: ''; position: absolute; left: 0; top: 12px; bottom: 12px;
-  width: 1px; background: linear-gradient(180deg,
-    transparent 0%, rgba(255,255,255,0.18) 30%,
-    rgba(255,255,255,0.18) 70%, transparent 100%);
-}
-.stat-step {
+.benefit-fact {
   display: flex; align-items: center; gap: 10px;
-  font-family: 'Onest',sans-serif; font-size: 11px;
-  color: rgba(255,255,255,0.5); font-weight: 600;
-  letter-spacing: 1.2px; text-transform: uppercase;
 }
-.stat-step-num {
-  font-size: 10px; padding: 3px 7px; border-radius: 4px;
-  background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.7);
-  letter-spacing: 0.5px;
-}
-.stat-num {
-  font-family: 'Onest',sans-serif; font-size: 32px; font-weight: 900;
-  line-height: 1.05; margin-top: 4px;
-  background: linear-gradient(135deg, #fff 0%, rgba(255,255,255,0.72) 100%);
-  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-}
-.stat-label {
-  font-size: 12px; opacity: 0.58; line-height: 1.5;
-  letter-spacing: 0.2px; margin-top: 2px;
-}
-.stat-source {
-  display: inline-block; font-size: 10px; letter-spacing: 0.6px;
-  text-transform: uppercase; opacity: 0.7; font-weight: 600;
-}
-.stats-conclusion {
-  margin-top: 36px; padding-top: 28px;
-  border-top: 1px solid rgba(255,255,255,0.1);
-  text-align: center; font-family: 'Onest',sans-serif;
-  font-size: 17px; line-height: 1.5; font-weight: 500;
-  color: rgba(255,255,255,0.92); max-width: 760px;
-  margin-left: auto; margin-right: auto;
-}
-.stats-conclusion strong {
-  font-weight: 800; background: linear-gradient(135deg, #fff 0%, #e0d4ff 100%);
-  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-}
-.stats-footnote {
-  text-align: center; font-size: 11px; color: rgba(255,255,255,0.3);
-  margin-top: 18px; letter-spacing: 0.2px;
-}
-@media(max-width:900px){
-  .stats-inner { grid-template-columns: repeat(2, 1fr); gap: 28px 0; }
-  .stat-item:nth-child(3)::before { display: none; }
-}
-@media(max-width:540px){
-  .stats-bar { padding: 40px 0 32px; }
-  .stats-inner { grid-template-columns: 1fr; gap: 24px; }
-  .stat-item { padding: 0 8px; }
-  .stat-item::before { display: none !important; }
-  .stat-item + .stat-item { padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.1); }
-  .stat-num { font-size: 28px; }
-  .stats-conclusion { font-size: 15px; }
-}
-
-/* ── MISSION ─────────────────────────────── */
-.mission {
-  padding: 80px 0 72px; background: var(--surface);
-  border-bottom: 1px solid var(--neutral-200);
-}
-.mission-inner {
-  display: block;
-}
-.mission-text .sec-title span { color: var(--garnet); }
-.mission-text p { font-size: 16px; color: var(--text-secondary); line-height: 1.72; margin-bottom: 16px; }
-.mission-text p:last-of-type { margin-bottom: 0; }
-.mission-cta { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 32px; }
-
-.audience-list { display: flex; flex-direction: column; gap: 14px; }
-.aud-card {
-  display: flex; gap: 18px; align-items: flex-start;
-  padding: 22px 20px; background: var(--off-white);
-  border: 1px solid var(--neutral-200); border-radius: var(--radius-lg);
-  transition: all 0.22s;
-}
-.aud-card:hover { border-color: var(--neutral-300); box-shadow: var(--shadow-sm); transform: translateX(6px); }
-.aud-icon {
-  width: 48px; height: 48px; border-radius: var(--radius-md);
-  background: var(--neutral-100); display: flex; align-items: center; justify-content: center;
-  font-size: 24px; flex-shrink: 0;
-}
-.aud-title { font-size: 15px; font-weight: 700; font-family: 'Onest',sans-serif; margin-bottom: 5px; }
-.aud-role  { font-size: 11px; color: var(--text-muted); font-weight: 700; margin-bottom: 4px; letter-spacing: 0.3px; text-transform: uppercase; }
-.aud-desc  { font-size: 13px; color: var(--text-muted); line-height: 1.55; margin: 0; }
-
-/* ── TEAM ────────────────────────────────── */
-.team { padding: 88px 0; background: var(--garnet-50); }
-.team-head { margin-bottom: 48px; }
-.team-grid {
-  display: grid; grid-template-columns: 1fr;
-  gap: 24px;
-}
-@media(min-width:640px)  { .team-grid { grid-template-columns: 1fr 1fr; } }
-@media(min-width:1024px) { .team-grid { grid-template-columns: repeat(4, 1fr); } }
-
-.team-card {
-  background: var(--surface); border: 1px solid var(--neutral-200);
-  border-radius: var(--radius-xl); padding: 28px 22px;
-  text-align: center; transition: all 0.28s; display: flex; flex-direction: column; align-items: center;
-  position: relative; overflow: hidden;
-}
-.team-card::before {
-  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
-  background: linear-gradient(90deg, var(--garnet), var(--garnet-light));
-  transform: scaleX(0); transform-origin: left; transition: transform 0.3s;
-}
-.team-card:hover::before { transform: scaleX(1); }
-.team-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); border-color: transparent; }
-
-/* CEO highlighted card */
-.team-card.ceo-card {
-  border-color: var(--garnet-100);
-  background: linear-gradient(180deg, #fff 0%, var(--garnet-50) 100%);
-}
-.team-card.ceo-card::before { transform: scaleX(1); }
-
-.team-ava {
-  width: 88px; height: 88px; border-radius: 50%;
+.benefit-fact-icon {
+  width: 20px; height: 20px; flex-shrink: 0;
   display: flex; align-items: center; justify-content: center;
-  font-size: 28px; font-weight: 900; color: white;
-  margin-bottom: 16px; position: relative; flex-shrink: 0;
+  color: var(--violet);
 }
-.team-ava::after {
-  content: ''; position: absolute; inset: -4px; border-radius: 50%;
-  border: 2px solid var(--neutral-200);
+.benefit-fact-icon svg { width: 16px; height: 16px; }
+.benefit-fact-text {
+  font-size: 13px; font-weight: 600; color: var(--text-secondary);
+  line-height: 1.5;
 }
-.team-ava.is-active::after { border-color: var(--garnet-200); }
-.team-name   { font-family:'Onest',sans-serif; font-weight:800; font-size:17px; margin-bottom:5px; }
-.team-role   { font-size:13px; color:var(--text-secondary); font-weight:700; margin-bottom:8px; }
-.team-status {
-  display:inline-flex; align-items:center; gap:5px;
-  font-size:11px; font-weight:700; padding:3px 12px;
-  border-radius:var(--radius-full); margin-bottom:16px;
-}
-.s-active  { background:var(--neutral-100); color:var(--text-muted); }
-.s-founder { background:var(--garnet-50); color:var(--garnet); }
-.team-creds {
-  width:100%; background:var(--off-white); border-radius:var(--radius-md);
-  padding:14px 14px; text-align:left; margin-top:auto;
-}
-.cred-row { display:flex; gap:7px; font-size:12px; color:var(--text-muted); margin-bottom:5px; line-height:1.45; }
-.cred-row:last-child { margin-bottom:0; }
-.cred-dot { color:var(--neutral-300); flex-shrink:0; margin-top:3px; }
-
-/* ── DIRECTIONS ─────────────────────────── */
-.directions {
-  padding: 88px 0;
-  background: var(--surface); border-top: 1px solid var(--neutral-200);
-}
-.directions-head { margin-bottom: 48px; }
-
-/* Livestream ribbon */
-.ls-ribbon {
-  background: linear-gradient(130deg, var(--garnet-dark) 0%, var(--garnet) 60%, var(--garnet-light) 100%);
-  border-radius: var(--radius-lg); padding: 24px 28px;
-  display: flex; align-items: center; gap: 20px; flex-wrap: wrap;
-  margin-bottom: 24px; color: white; position: relative; overflow: hidden;
-}
-.ls-ribbon-deco {
-  position: absolute; right: 24px; top: 50%; transform: translateY(-50%);
-  opacity: 0.12; pointer-events: none; width: 56px; height: 56px;
-  display: flex; align-items: center; justify-content: center;
-}
-@media(max-width:640px){ .ls-ribbon-deco { display: none; } }
-.ls-icon { font-size: 32px; flex-shrink:0; }
-.ls-title { font-size:17px; font-weight:800; margin-bottom:4px; font-family:'Onest',sans-serif; }
-.ls-sub   { font-size:13px; opacity:.75; margin:0; max-width:480px; }
-.ls-ribbon .btn { margin-left:auto; flex-shrink:0; }
-@media(max-width:640px){ .ls-ribbon .btn { margin-left:0; } }
-
-/* Directions grid */
-.dir-grid {
-  display: grid; gap: 18px;
-  grid-template-columns: 1fr;
-}
-@media(min-width:640px) { .dir-grid { grid-template-columns: 1fr 1fr; } }
-@media(min-width:1024px){ .dir-grid { grid-template-columns: 1fr 1fr 1fr; } }
-
-.dir-card {
-  background: var(--off-white); border: 1px solid var(--neutral-200);
-  border-radius: var(--radius-lg); padding: 26px 22px;
-  transition: all 0.28s; display: flex; flex-direction: column;
-  position: relative; overflow: hidden;
-}
-.dir-card::after {
-  content:''; position:absolute; bottom:0; left:0; right:0; height:3px;
-  background: var(--garnet); transform:scaleX(0); transform-origin:left; transition:transform 0.35s;
-}
-.dir-card:hover::after  { transform:scaleX(1); }
-.dir-card:hover { transform:translateY(-5px); box-shadow:var(--shadow-lg); background:var(--surface); border-color:transparent; }
-
-.dir-icon {
-  width:52px; height:52px; border-radius:var(--radius-md);
-  display:flex; align-items:center; justify-content:center;
-  font-size:26px; flex-shrink:0; margin-bottom:16px;
-}
-.di-garnet { background:var(--garnet-50); }
-.di-teal   { background:var(--neutral-100); }
-.di-amber  { background:var(--violet-50, var(--neutral-100)); }
-.di-blue   { background:var(--neutral-100); }
-.di-dark   { background:var(--neutral-100); }
-
-.dir-badge  { margin-bottom:8px; }
-/* Задача 3: фиксированная min-height для dir-title выравнивает описания */
-.dir-title  {
-  font-family:'Onest',sans-serif; font-size:17px; font-weight:800;
-  margin-bottom:8px;
-  min-height: 2.6em; /* две строки × line-height 1.12 ≈ выравнивание */
-  display: flex; align-items: flex-start;
-}
-.dir-desc   { font-size:13px; color:var(--text-secondary); line-height:1.6; flex:1; margin-bottom:0; }
-
-/* Featured card — subtle left border accent instead of dark bg */
-.dir-card.featured {
-  border-left: 3px solid var(--garnet);
-}
-.dir-card.featured .dir-icon  { background: var(--garnet-50); }
-
-/* Loyalty card — same subtle accent */
-.dir-card.loyalty {
-  border-left: 3px solid var(--text-muted);
-}
-.loyalty-points {
-  display:flex; align-items:center; gap:10px; margin-bottom:12px;
-  background:var(--neutral-100); border-radius:var(--radius-md); padding:10px 14px;
-}
-.lp-circle {
-  width:36px; height:36px; border-radius:50%;
-  background:var(--garnet-50); color:var(--garnet);
-  display:flex; align-items:center; justify-content:center;
-  font-size:16px; flex-shrink:0;
-}
-.lp-text strong { display:block; font-size:13px; font-weight:700; color:var(--text-primary); }
-.lp-text span   { font-size:11px; color:var(--text-muted); }
-
-.dirs-cta { text-align:center; margin-top:40px; }
-
-/* ── Barometer role use cases ───────────────────────── */
-.barometer-roles {
-  margin-top: 56px;
-  padding: 44px 36px;
-  background: var(--garnet-50);
-  border: 1px solid var(--garnet-100);
-  border-radius: var(--radius-lg);
-  position: relative;
-  overflow: hidden;
-}
-.barometer-roles::before {
-  content: '';
-  position: absolute; top: 0; left: 0; right: 0; height: 3px;
-  background: linear-gradient(90deg, var(--garnet) 0%, var(--garnet-light) 100%);
-}
-.br-head { max-width: 760px; margin-bottom: 36px; }
-.br-eyebrow {
-  display:flex; align-items:center; gap:10px;
-  margin-bottom:22px; flex-wrap:wrap;
-}
-.br-eyebrow-divider { width:1px; height:16px; background:var(--neutral-300); }
-.br-eyebrow-label { font-size:13px; color:var(--text-muted); font-weight:600; }
-.br-title {
-  font-family:'Onest',sans-serif;
-  font-size:44px; font-weight:900; letter-spacing:-1px;
-  color:var(--text-primary); line-height:1.05;
-  margin-bottom:22px;
-}
-.br-title .accent { color:var(--garnet); position:relative; display:inline-block; }
-.br-title .accent::after {
-  content:''; position:absolute; bottom:-4px; left:0; right:0; height:3px;
-  background:var(--garnet-200); border-radius:2px;
-}
-.br-sub {
-  font-size:18px; color:var(--text-secondary);
-  line-height:1.65; max-width:560px;
-}
-@media(max-width:768px){ .br-title { font-size:32px; letter-spacing:-0.5px; } }
-@media(max-width:640px){ .br-title { font-size:28px; } .br-sub { font-size:16px; } }
-
-.br-grid {
-  display:grid; gap:18px; grid-template-columns:1fr;
-}
-@media(min-width:768px) { .br-grid { grid-template-columns:1fr 1fr; } }
-@media(min-width:1024px){ .br-grid { grid-template-columns:1fr 1fr 1fr; } }
-
-.br-card {
-  background: var(--surface);
-  border: 1px solid var(--neutral-200);
-  border-radius: var(--radius-md);
-  padding: 22px 20px;
-  display:flex; flex-direction:column;
-  transition: all 0.25s;
-}
-.br-card:hover {
-  transform: translateY(-3px);
-  box-shadow: var(--shadow-lg);
-  border-color: transparent;
-}
-.br-icon {
-  width:42px; height:42px; border-radius: var(--radius-md);
-  background: var(--garnet-50); color:var(--garnet);
-  display:flex; align-items:center; justify-content:center;
-  margin-bottom:14px;
-}
-.br-role {
-  font-size:11px; font-weight:800; color:var(--garnet);
-  text-transform:uppercase; letter-spacing:0.06em;
-  margin-bottom:8px;
-}
-.br-cardtitle {
-  font-family:'Onest',sans-serif; font-size:16px; font-weight:800;
-  color:var(--text-primary); line-height:1.28; margin-bottom:10px;
-}
-.br-desc {
-  font-size:13px; color:var(--text-secondary); line-height:1.6;
-  margin-bottom:16px; flex:1;
-}
-.br-example {
-  background: var(--neutral-100);
-  border-radius: var(--radius-md);
-  padding: 12px 14px;
-  border-left: 2px solid var(--garnet);
-}
-.br-ex-label {
-  display:block; font-size:10px; font-weight:800;
-  color:var(--text-muted); text-transform:uppercase;
-  letter-spacing:0.08em; margin-bottom:5px;
-}
-.br-example p {
-  font-size:12px; color:var(--text-primary); line-height:1.55;
-  margin:0;
-}
-@media(max-width:640px) {
-  .barometer-roles { padding: 28px 18px; margin-top: 40px; }
-  .br-title { font-size: 22px; }
-}
-
-/* ── RESIDENT PATH ───────────────────────── */
-.resident-path {
-  padding: 88px 0;
-  background: var(--off-white);
-  border-top: 1px solid var(--neutral-200);
-}
-.rp-head { margin-bottom: 48px; }
-.rp-grid {
-  display: grid; gap: 18px;
-  grid-template-columns: 1fr;
-}
-@media(min-width:640px) { .rp-grid { grid-template-columns: 1fr 1fr; } }
-
-.rp-card {
-  background: var(--surface);
-  border: 1px solid var(--neutral-200);
-  border-radius: var(--radius-lg);
-  padding: 28px 26px;
-  transition: all 0.28s;
-  position: relative; overflow: hidden;
-  display: flex; flex-direction: column;
-}
-.rp-card::after {
-  content:''; position:absolute; bottom:0; left:0; right:0; height:3px;
-  background: var(--garnet); transform:scaleX(0); transform-origin:left; transition:transform 0.35s;
-}
-.rp-card:hover::after { transform:scaleX(1); }
-.rp-card:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-lg);
-  border-color: transparent;
-}
-.rp-num {
-  font-family:'Onest',sans-serif;
-  font-size: 52px; font-weight: 900;
-  color: var(--neutral-200);
-  line-height: 1; letter-spacing: -2px;
-  margin-bottom: 14px;
-}
-.rp-title {
-  font-family:'Onest',sans-serif;
-  font-size: 18px; font-weight: 800;
-  margin-bottom: 10px;
-  color: var(--text-primary);
-}
-.rp-desc {
-  font-size: 14px; line-height: 1.6;
-  color: var(--text-secondary);
-  margin: 0;
-}
-
-/* ── BENEFITS ────────────────────────────── */
-.benefits { padding: 88px 0; }
-.benefits-head { margin-bottom: 48px; }
 
 .tabs-wrap { display:flex; gap:10px; flex-wrap:wrap; margin-bottom:40px; }
 .tab-btn {
   padding:10px 24px; border-radius:var(--radius-full); font-size:14px; font-weight:700;
   border:2px solid var(--neutral-200); background:var(--surface); color:var(--text-secondary);
   cursor:pointer; transition:all 0.2s; font-family:inherit;
+  display:inline-flex; align-items:center; gap:7px;
 }
 .tab-btn.on  { background:var(--garnet); color:#fff; border-color:var(--garnet); }
 .tab-btn:hover:not(.on) { border-color:var(--garnet); color:var(--garnet); background:var(--garnet-50); }
@@ -769,159 +407,196 @@ header {
 .ben-title { font-size:16px; font-weight:800; margin-bottom:10px; }
 .ben-desc  { font-size:14px; color:var(--text-secondary); line-height:1.6; }
 
-/* ── PARTNERS ────────────────────────────── */
-.partners {
-  padding:80px 0; background: var(--dark);
-  border-top: none;
-  border-bottom: none;
+/* ── EXPERT COUNCIL ───────────────────── */
+.council { padding: 88px 0; background: var(--garnet-50); border-bottom: 1px solid var(--neutral-200); }
+.council-grid {
+  display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px;
+  margin-top: 36px;
 }
-.partners-head { text-align:center; margin-bottom:32px; }
-.partners-head .sec-label { color: #7B68EE; }
-.partners-head .sec-title { color: white; }
-.partners-head .sec-sub   { color: rgba(255,255,255,0.5); margin:0 auto; }
-.partners-invite {
-  text-align: center; font-size: 13px; font-weight: 700;
-  color: rgba(255,255,255,0.4); letter-spacing: 0.8px; text-transform: uppercase;
-  margin-bottom: 28px;
+@media(min-width:768px) { .council-grid { grid-template-columns: repeat(3, 1fr); } }
+@media(min-width:1024px) { .council-grid { grid-template-columns: repeat(4, 1fr); } }
+
+.council-card {
+  background: var(--surface); border: 1px solid var(--neutral-200);
+  border-radius: var(--radius-lg); padding: 22px 16px;
+  text-align: center; transition: all 0.25s;
 }
-.partners-quote {
-  text-align: center; font-size: 16px; font-style: italic;
-  color: rgba(255,255,255,0.6); max-width: 600px;
-  margin: 0 auto 40px; line-height: 1.65;
+.council-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); border-color: transparent; }
+.council-ava {
+  width: 64px; height: 64px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--garnet) 0%, var(--garnet-light) 100%);
+  color: white; font-family: 'Onest',sans-serif; font-size: 18px; font-weight: 900;
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 12px;
 }
-.partners-quote span {
-  display: block; font-size: 12px; font-style: normal;
-  font-weight: 700; color: rgba(255,255,255,0.35);
-  margin-top: 10px; letter-spacing: 0.5px;
-}
-.logos-grid {
-  display:flex; flex-wrap:wrap; justify-content:center; gap:14px;
-}
-.p-logo {
-  height:72px; min-width:128px; padding:0 24px;
-  background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08);
-  border-radius:var(--radius-md); display:flex; align-items:center; justify-content:center;
-  transition:all 0.22s; cursor:default;
-}
-.p-logo:hover {
-  background: rgba(255,255,255,0.1);
-  border-color: rgba(255,255,255,0.16);
-}
-.p-logo-inner {
-  font-family:'Onest',sans-serif; font-weight:800; font-size:15px;
-  color: rgba(255,255,255,0.55); display:flex; align-items:center; gap:7px; letter-spacing:-0.2px;
-}
-.p-dot {
-  width:11px; height:11px; border-radius:50%; flex-shrink:0;
+.council-name { font-family: 'Onest',sans-serif; font-size: 14px; font-weight: 800; margin-bottom: 4px; line-height: 1.25; }
+.council-role { font-size: 11px; color: var(--text-secondary); line-height: 1.45; }
+.council-degree {
+  display: inline-block; font-size: 10px; font-weight: 700;
+  padding: 2px 8px; border-radius: var(--radius-full);
+  background: var(--violet-50); color: var(--violet);
+  margin-top: 8px; letter-spacing: 0.3px;
 }
 
-/* ── QUIZ / REGISTRATION ─────────────────── */
+/* ── TEAM ────────────────────────────────── */
+.team { padding: 72px 0; background: var(--off-white); border-bottom: 1px solid var(--neutral-200); }
+.team-grid {
+  display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin-top: 36px;
+}
+@media(min-width:1024px) { .team-grid { grid-template-columns: repeat(4, 1fr); } }
+
+.team-card {
+  background: var(--surface); border: 1px solid var(--neutral-200);
+  border-radius: var(--radius-xl); padding: 24px 18px;
+  text-align: center; transition: all 0.25s;
+}
+.team-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+.team-ava {
+  width: 72px; height: 72px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 22px; font-weight: 900; color: white;
+  margin: 0 auto 14px;
+}
+.team-name { font-family: 'Onest',sans-serif; font-weight: 800; font-size: 16px; margin-bottom: 4px; }
+.team-role { font-size: 12px; color: var(--text-secondary); font-weight: 600; margin-bottom: 10px; }
+.team-creds {
+  background: var(--off-white); border-radius: var(--radius-md);
+  padding: 12px; text-align: left;
+}
+.cred-row { display: flex; gap: 6px; font-size: 12px; color: var(--text-muted); margin-bottom: 4px; line-height: 1.4; }
+.cred-row:last-child { margin-bottom: 0; }
+
+/* ── REGISTER (split layout) ──────────── */
 .register {
-  padding:96px 0;
-  background:linear-gradient(160deg, var(--off-white) 0%, var(--garnet-50) 100%);
-  position:relative; overflow:hidden;
+  padding: 96px 0;
+  background: linear-gradient(160deg, var(--off-white) 0%, var(--garnet-50) 100%);
+  position: relative; overflow: hidden;
 }
 .register::before {
-  content:'';
-  position:absolute; inset:0;
+  content: '';
+  position: absolute; inset: 0;
   background:
     radial-gradient(ellipse at 80% 20%, rgba(27,45,94,0.08) 0%, transparent 60%),
     radial-gradient(ellipse at 20% 80%, rgba(27,45,94,0.04) 0%, transparent 60%);
-  pointer-events:none;
+  pointer-events: none;
 }
 .register-inner {
-  position:relative;
-  display:grid; grid-template-columns:1fr; gap:56px; align-items:start;
+  position: relative;
+  display: grid; grid-template-columns: 1fr; gap: 40px; align-items: start;
 }
-@media(min-width:900px){ .register-inner { grid-template-columns:1fr 1fr; } }
+@media(min-width:900px) { .register-inner { grid-template-columns: 46% 54%; gap: 40px; } }
 
-.register-left .sec-title { font-size:38px; }
-.register-left .sec-title span { color:var(--garnet); }
-.register-left p { font-size:16px; color:var(--text-secondary); line-height:1.7; margin-bottom:20px; }
-.register-perks { display:flex; flex-direction:column; gap:12px; margin-top:28px; }
-.perk-row {
-  display:flex; align-items:center; gap:12px; font-size:14px; color:var(--text-secondary);
+@media(min-width:900px) { .register-left { position: sticky; top: 100px; align-self: start; } }
+
+.register-left .sec-title { font-size: 30px; }
+.register-left .sec-title span { color: var(--violet); }
+
+/* Steps on left */
+.steps-list { margin-top: 32px; display: flex; flex-direction: column; gap: 0; }
+.step-item {
+  display: flex; gap: 16px; align-items: flex-start;
+  position: relative; padding-bottom: 28px;
 }
-.perk-check {
-  width:24px; height:24px; border-radius:50%;
-  background:var(--garnet-50); color:var(--garnet);
-  display:flex; align-items:center; justify-content:center;
-  font-size:12px; flex-shrink:0; font-weight:800;
+.step-item:last-child { padding-bottom: 0; }
+.step-item:not(:last-child)::after {
+  content: ''; position: absolute; left: 19px; top: 44px; bottom: 0;
+  width: 2px; background: var(--neutral-200);
 }
+.step-num {
+  width: 40px; height: 40px; border-radius: 50%; flex-shrink: 0;
+  background: linear-gradient(135deg, var(--violet) 0%, var(--sky) 100%);
+  color: white; font-family: 'Onest',sans-serif; font-size: 16px; font-weight: 900;
+  display: flex; align-items: center; justify-content: center;
+}
+.step-content { padding-top: 6px; }
+.step-title {
+  font-family: 'Onest',sans-serif; font-size: 15px; font-weight: 800;
+  margin-bottom: 4px; color: var(--text-primary);
+}
+.step-desc { font-size: 13px; color: var(--text-secondary); line-height: 1.55; }
 
 /* Quiz card */
 .quiz-card {
-  background:var(--surface); border-radius:var(--radius-xl);
-  box-shadow:var(--shadow-xl); overflow:hidden;
-  border:1px solid var(--neutral-200);
+  background: var(--surface); border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-xl); overflow: hidden;
+  border: 1px solid var(--neutral-200);
 }
-.quiz-prog-bar {
-  height:6px; background:var(--neutral-200); position:relative;
-}
+.quiz-prog-bar { height: 6px; background: var(--neutral-200); position: relative; }
 .quiz-prog-fill {
-  height:100%; background:linear-gradient(90deg,var(--garnet),var(--garnet-light));
-  transition:width 0.45s cubic-bezier(.4,0,.2,1);
-  position:absolute; left:0; top:0; border-radius:0 2px 2px 0;
+  height: 100%; background: linear-gradient(90deg, var(--garnet), var(--garnet-light));
+  transition: width 0.45s cubic-bezier(.4,0,.2,1);
+  position: absolute; left: 0; top: 0; border-radius: 0 2px 2px 0;
 }
 .quiz-top {
-  background:linear-gradient(135deg,var(--garnet-dark),var(--garnet));
-  padding:26px 30px; color:white;
+  background: linear-gradient(135deg, var(--garnet-dark), var(--garnet));
+  padding: 20px 24px; color: white;
 }
-.quiz-top h3 { font-size:20px; font-weight:800; margin-bottom:6px; }
-.quiz-top p  { font-size:13px; opacity:.8; margin-bottom:16px; }
-.step-dots-wrap {
-  display:flex; align-items:center; justify-content:space-between;
-}
-.step-dots { display:flex; gap:6px; }
-.sdot {
-  height:6px; border-radius:3px; background:rgba(255,255,255,0.25);
-  transition:all 0.3s;
-}
-.sdot.s-done   { background:rgba(255,255,255,0.55); width:20px; }
-.sdot.s-active { background:white; width:28px; }
-.sdot.s-idle   { width:14px; }
-.step-counter {
-  font-size:12px; opacity:.65; font-weight:700;
-}
+.quiz-top h3 { font-size: 18px; font-weight: 800; margin-bottom: 4px; }
+.quiz-top p  { font-size: 12px; opacity: .8; margin-bottom: 12px; }
+.step-dots-wrap { display: flex; align-items: center; justify-content: space-between; }
+.step-dots { display: flex; gap: 6px; }
+.sdot { height: 6px; border-radius: 3px; background: rgba(255,255,255,0.25); transition: all 0.3s; }
+.sdot.s-done   { background: rgba(255,255,255,0.55); width: 20px; }
+.sdot.s-active { background: white; width: 28px; }
+.sdot.s-idle   { width: 14px; }
+.step-counter { font-size: 12px; opacity: .65; font-weight: 700; }
 
-.quiz-body { padding:28px 30px; }
-.q-step { display:none; animation:fadeUp 0.3s ease both; }
-.q-step.on { display:block; }
-.q-title { font-size:18px; font-weight:800; margin-bottom:20px; font-family:'Onest',sans-serif; letter-spacing:-0.3px; }
-.q-opts  { display:flex; flex-direction:column; gap:10px; margin-bottom:26px; }
+.quiz-body { padding: 22px 24px; }
+.q-step { display: none; animation: fadeUp 0.3s ease both; }
+.q-step.on { display: block; }
+.q-title { font-size: 16px; font-weight: 800; margin-bottom: 16px; font-family: 'Onest',sans-serif; letter-spacing: -0.3px; }
+
+.q-branch { display: flex; gap: 10px; margin-bottom: 20px; flex-wrap: wrap; }
+.q-branch-4 { display: grid; gap: 8px; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.q-branch-4 .q-branch-btn { min-width: 0; padding: 12px 12px; }
+.q-branch-4 .qb-title { font-size: 13px; }
+.q-branch-4 .qb-sub { font-size: 11px; }
+.q-branch-btn {
+  flex: 1; min-width: 200px; padding: 16px 14px;
+  border: 2px solid var(--neutral-200); border-radius: var(--radius-lg);
+  background: var(--off-white); cursor: pointer; text-align: left;
+  transition: all 0.2s; font-family: inherit;
+}
+.q-branch-btn:hover { border-color: var(--garnet); background: var(--garnet-50); }
+.q-branch-btn.picked { border-color: var(--garnet); background: var(--garnet-50); }
+.qb-icon { font-size: 20px; margin-bottom: 6px; }
+.qb-title { font-size: 14px; font-weight: 800; font-family: 'Onest',sans-serif; margin-bottom: 2px; }
+.qb-sub { font-size: 11px; color: var(--text-muted); line-height: 1.4; }
+
+.q-opts { display: flex; flex-direction: column; gap: 8px; margin-bottom: 20px; }
 .q-opt {
-  display:flex; align-items:center; gap:12px;
-  padding:14px 18px; border:2px solid var(--neutral-200);
-  border-radius:var(--radius-md); cursor:pointer; font-size:14px; font-weight:600;
-  transition:all 0.18s; background:var(--off-white); font-family:inherit; text-align:left;
+  display: flex; align-items: center; gap: 10px;
+  padding: 11px 14px; border: 2px solid var(--neutral-200);
+  border-radius: var(--radius-md); cursor: pointer; font-size: 13px; font-weight: 600;
+  transition: all 0.18s; background: var(--off-white); font-family: inherit; text-align: left;
 }
-.q-opt:hover     { border-color:var(--garnet); background:var(--garnet-50); }
-.q-opt.picked    { border-color:var(--garnet); background:var(--garnet-50); color:var(--garnet); }
+.q-opt:hover { border-color: var(--garnet); background: var(--garnet-50); }
+.q-opt.picked { border-color: var(--garnet); background: var(--garnet-50); color: var(--garnet); }
 .q-check {
-  width:20px; height:20px; border-radius:50%; border:2px solid var(--neutral-300);
-  flex-shrink:0; display:flex; align-items:center; justify-content:center;
-  font-size:10px; transition:all 0.18s;
+  width: 20px; height: 20px; border-radius: 50%; border: 2px solid var(--neutral-300);
+  flex-shrink: 0; display: flex; align-items: center; justify-content: center;
+  font-size: 10px; transition: all 0.18s;
 }
-.q-opt.picked .q-check { background:var(--garnet); border-color:var(--garnet); color:white; }
+.q-opt.picked .q-check { background: var(--garnet); border-color: var(--garnet); color: white; }
 
-.q-form { display:flex; flex-direction:column; gap:14px; margin-bottom:24px; }
-.q-row  { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
-@media(max-width:480px){ .q-row { grid-template-columns:1fr; } }
-.q-group { display:flex; flex-direction:column; gap:5px; }
-.q-label { font-size:11px; font-weight:800; color:var(--text-muted); text-transform:uppercase; letter-spacing:0.6px; }
+.q-form { display: flex; flex-direction: column; gap: 12px; margin-bottom: 20px; }
+.q-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+@media(max-width:480px){ .q-row { grid-template-columns: 1fr; } }
+.q-group { display: flex; flex-direction: column; gap: 4px; }
+.q-label { font-size: 10px; font-weight: 800; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.6px; }
 .q-input {
-  padding:13px 16px; border:2px solid var(--neutral-200);
-  border-radius:var(--radius-sm); font-size:15px; font-family:inherit;
-  background:var(--off-white); transition:border-color 0.15s;
+  padding: 10px 14px; border: 2px solid var(--neutral-200);
+  border-radius: var(--radius-sm); font-size: 14px; font-family: inherit;
+  background: var(--off-white); transition: border-color 0.15s;
 }
-.q-input:focus { outline:none; border-color:var(--garnet); background:white; }
+.q-input:focus { outline: none; border-color: var(--garnet); background: white; }
 
-.q-nav { display:flex; justify-content:space-between; align-items:center; }
+.q-nav { display: flex; justify-content: space-between; align-items: center; }
 .q-back {
-  font-size:13px; font-weight:700; color:var(--text-muted);
-  background:none; border:none; cursor:pointer; font-family:inherit; padding:6px 0;
+  font-size: 13px; font-weight: 700; color: var(--text-muted);
+  background: none; border: none; cursor: pointer; font-family: inherit; padding: 6px 0;
 }
-.q-back:hover { color:var(--text-primary); }
+.q-back:hover { color: var(--text-primary); }
 
 .q-consent-check {
   display: flex; align-items: flex-start; gap: 8px;
@@ -930,349 +605,155 @@ header {
 }
 .q-consent-check a { color: var(--garnet); }
 .q-consent-check input[type="checkbox"] {
-  accent-color: var(--garnet); flex-shrink: 0; margin-top: 2px;
-  width: 15px; height: 15px; cursor: pointer;
+  accent-color: var(--garnet); flex-shrink: 0; margin-top: 2px; width: 15px; height: 15px;
+  cursor: pointer;
 }
 
-.quiz-ok { text-align:center; padding:20px 0; display:none; }
-.quiz-ok-emoji { font-size:52px; margin-bottom:16px; }
-.quiz-ok h3 { font-size:22px; font-weight:900; margin-bottom:10px; }
-.quiz-ok p  { font-size:15px; color:var(--text-secondary); margin-bottom:24px; line-height:1.6; }
+.quiz-ok { text-align: center; padding: 20px 0; display: none; }
+.quiz-ok h3 { font-size: 22px; font-weight: 900; margin-bottom: 10px; }
+.quiz-ok p { font-size: 15px; color: var(--text-secondary); margin-bottom: 24px; line-height: 1.6; }
 
-/* ── FOOTER ──────────────────────────────── */
-footer {
-  background:var(--dark); color:rgba(255,255,255,0.45); padding:48px 0;
-}
-.footer-inner {
-  display:flex; justify-content:space-between; align-items:flex-start;
-  flex-wrap:wrap; gap:28px;
-}
-.footer-brand { max-width:240px; }
-.footer-logo {
-  font-family:'Onest',sans-serif; font-weight:900; font-size:18px;
-  color:rgba(255,255,255,0.75); display:flex; align-items:center; gap:8px; margin-bottom:10px;
-}
-.footer-logo-img {
-  height: 28px; width: auto; border-radius: var(--radius-sm);
-  flex-shrink: 0; display: block;
-}
-.footer-tagline { font-size:12px; line-height:1.6; }
-.footer-social { display:flex; gap:10px; margin-top:14px; }
-.footer-social a {
-  font-size:12px; font-weight:700; color:rgba(255,255,255,.4);
-  padding:5px 12px; border:1px solid rgba(255,255,255,.1);
-  border-radius:var(--radius-full); transition:all .15s;
-}
-.footer-social a:hover { color:white; border-color:rgba(255,255,255,.3); }
-.footer-nav { display:flex; flex-direction:column; gap:8px; }
-.footer-nav a { font-size:13px; color:rgba(255,255,255,0.45); transition:color 0.15s; }
-.footer-nav a:hover { color:white; }
-.footer-nav-title { font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:1px; color:rgba(255,255,255,0.3); margin-bottom:4px; }
-.footer-bottom {
-  border-top:1px solid rgba(255,255,255,0.07);
-  margin-top:32px; padding-top:24px;
-  display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px;
-  font-size:12px;
-}
-
-/* ── QUIZ PADDING MOBILE ─────────────────── */
-@media(max-width:480px){
+@media(max-width:640px) {
   .quiz-body { padding: 20px 20px; }
   .quiz-top  { padding: 20px 20px; }
 }
 
-/* ── MARKET TRENDS ──────────────────────── */
-.trends { padding: 88px 0; background: var(--surface); border-bottom: 1px solid var(--neutral-200); }
-.trends-head { margin-bottom: 48px; }
-.trends-grid {
-  display: grid; grid-template-columns: 1fr; gap: 20px;
+/* ── FOOTER ──────────────────────────────── */
+footer { background: var(--dark); color: rgba(255,255,255,0.45); padding: 48px 0; }
+.footer-inner {
+  display: flex; justify-content: space-between; align-items: flex-start;
+  flex-wrap: wrap; gap: 28px;
 }
-@media(min-width:640px) { .trends-grid { grid-template-columns: 1fr 1fr; } }
-@media(min-width:1024px) { .trends-grid { grid-template-columns: 1fr 1fr 1fr; } }
-.trend-card {
-  background: var(--off-white); border: 1px solid var(--neutral-200);
-  border-radius: var(--radius-lg); padding: 28px 24px; transition: all 0.2s;
+.footer-brand { max-width: 240px; }
+.footer-logo {
+  font-family: 'Onest',sans-serif; font-weight: 900; font-size: 18px;
+  color: rgba(255,255,255,0.75); display: flex; align-items: center; gap: 8px; margin-bottom: 10px;
 }
-.trend-card:hover { box-shadow: var(--shadow-sm); }
-.trend-icon { font-size: 28px; margin-bottom: 14px; }
-.trend-title { font-size: 15px; font-weight: 800; font-family: 'Onest',sans-serif; margin-bottom: 8px; }
-.trend-desc { font-size: 13px; color: var(--text-secondary); line-height: 1.6; }
-.trend-source { font-size: 11px; color: var(--text-muted); margin-top: 10px; font-style: italic; }
-
-.kulibin-block {
-  margin-top: 48px; background: linear-gradient(135deg, var(--garnet-50) 0%, var(--off-white) 100%);
-  border: 1px solid var(--garnet-100); border-radius: var(--radius-xl); padding: 36px 32px;
+.footer-logo-img { height: 28px; width: auto; border-radius: var(--radius-sm); }
+.footer-social { display: flex; gap: 10px; margin-top: 14px; }
+.footer-social a {
+  font-size: 12px; font-weight: 700; color: rgba(255,255,255,.4);
+  padding: 5px 12px; border: 1px solid rgba(255,255,255,.1);
+  border-radius: var(--radius-full); transition: all .15s;
 }
-.kulibin-block h3 { font-size: 22px; font-weight: 900; margin-bottom: 8px; }
-.kulibin-block h3 span { color: var(--garnet); }
-.kulibin-block > p { font-size: 15px; color: var(--text-secondary); line-height: 1.65; margin-bottom: 24px; }
-.kulibin-perks {
-  display: grid; grid-template-columns: 1fr; gap: 18px;
-}
-@media(min-width:800px) { .kulibin-perks { grid-template-columns: 1fr 1fr 1fr; gap: 24px; } }
-.kp-item {
-  display: flex; flex-direction: column; align-items: flex-start; gap: 14px;
-  padding: 22px 22px 24px; background: var(--surface);
-  border: 1px solid var(--garnet-100); border-radius: var(--radius-lg);
-  font-size: 14.5px; color: var(--text-secondary); line-height: 1.55;
-}
-.kp-icon {
-  width: 36px; height: 36px; border-radius: 50%; flex-shrink: 0;
-  background: var(--garnet); color: white;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 15px; font-weight: 900; font-family: 'Onest', sans-serif;
+.footer-social a:hover { color: white; border-color: rgba(255,255,255,.3); }
+.footer-nav { display: flex; flex-direction: column; gap: 8px; }
+.footer-nav a { font-size: 13px; color: rgba(255,255,255,0.45); transition: color 0.15s; }
+.footer-nav a:hover { color: white; }
+.footer-nav-title { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: rgba(255,255,255,0.3); margin-bottom: 4px; }
+.footer-bottom {
+  border-top: 1px solid rgba(255,255,255,0.07);
+  margin-top: 32px; padding-top: 24px;
+  display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; font-size: 12px;
 }
 
-/* ── AWARDS / RECOGNITION ───────────────── */
-.awards { padding: 80px 0; background: var(--off-white); }
-.awards-head { text-align: center; margin-bottom: 40px; }
-.awards-grid {
-  display: flex; flex-wrap: wrap; justify-content: center; gap: 24px; margin-bottom: 32px;
-}
-.award-slot {
-  width: 140px; height: 140px; border: 2px dashed var(--neutral-300);
-  border-radius: var(--radius-lg); display: flex; flex-direction: column;
-  align-items: center; justify-content: center; gap: 8px;
-  text-align: center; transition: all 0.2s;
-}
-.award-slot.filled { border-style: solid; border-color: var(--garnet-100); background: var(--surface); }
-.award-slot:hover { border-color: var(--garnet-200); }
-.award-icon { font-size: 32px; }
-.award-label { font-size: 11px; color: var(--text-muted); font-weight: 600; line-height: 1.3; padding: 0 8px; }
-
-.support-block { text-align: center; margin-top: 40px; }
-.support-label {
-  font-size: 11px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase;
-  color: var(--text-muted); margin-bottom: 20px;
-}
-.support-logos {
-  display: flex; flex-wrap: wrap; justify-content: center; gap: 16px;
-}
-.support-logo {
-  height: 56px; min-width: 120px; padding: 0 20px;
-  background: var(--surface); border: 1px solid var(--neutral-200);
-  border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center;
-  transition: all 0.2s;
-}
-.support-logo:hover { border-color: var(--neutral-300); box-shadow: var(--shadow-sm); }
-.support-logo-text {
-  font-family: 'Onest',sans-serif; font-weight: 700; font-size: 13px;
-  color: var(--text-muted); display: flex; align-items: center; gap: 6px;
-}
-
-/* ── QUIZ BRANCH SELECTOR ───────────────── */
-.q-branch { display: flex; gap: 12px; margin-bottom: 24px; flex-wrap: wrap; }
-.q-branch-4 {
-  display: grid; gap: 10px;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-}
-.q-branch-4 .q-branch-btn {
-  min-width: 0; padding: 16px 14px;
-}
-.q-branch-4 .qb-title { font-size: 14px; }
-.q-branch-4 .qb-sub { font-size: 11px; }
-.q-branch-btn {
-  flex: 1; min-width: 200px; padding: 20px 18px;
-  border: 2px solid var(--neutral-200); border-radius: var(--radius-lg);
-  background: var(--off-white); cursor: pointer; text-align: left;
-  transition: all 0.2s; font-family: inherit;
-}
-.q-branch-btn:hover { border-color: var(--garnet); background: var(--garnet-50); }
-.q-branch-btn.picked { border-color: var(--garnet); background: var(--garnet-50); }
-.qb-icon { font-size: 24px; margin-bottom: 8px; }
-.qb-title { font-size: 15px; font-weight: 800; font-family: 'Onest',sans-serif; margin-bottom: 4px; }
-.qb-sub { font-size: 12px; color: var(--text-muted); line-height: 1.4; }
-
-/* ── REDUCED MOTION ──────────────────────── */
 @media (prefers-reduced-motion: reduce) {
-  .hero-content, .hero-visual, .tab-panel.on, .q-step.on { animation: none; }
-  .pulse { animation: none; opacity: 0.7; }
+  .hero-content, .hero-visual { animation: none; }
 }
-
 </style>
 </head>
 <body>
 
-<!-- ══ HEADER ═════════════════════════════════════════════════ -->
+<!-- ══ HEADER ═══════════════════════════════════════════════════ -->
 <header>
   <a href="/" class="logo">
     <img src="logo (1).png" alt="Платформа Технолидерства" class="logo-img">
   </a>
   <nav class="nav">
-    <a href="#ecosystem">Зачем</a>
-    <a href="#growth">Как работает</a>
-    <a href="#how-resident">Резидентство</a>
-    <a href="#team">Команда</a>
-    <a href="#register">Подать заявку</a>
+    <a href="#kulibin">Кулибинская карта</a>
+    <a href="#selectivity">Селективность</a>
+    <a href="#attract">Как работает</a>
+    <a href="#benefit">Выгоды</a>
+    <a href="#council">Экспертный совет</a>
+    <a href="#register">Стать резидентом</a>
   </nav>
-  <div class="header-cta">
-    <a href="#register" class="btn btn-garnet">Присоединиться →</a>
+  <div>
+    <a href="#register" class="btn btn-garnet">Подать заявку</a>
   </div>
 </header>
 
 
-<!-- ══ 1. HERO ════════════════════════════════════════════════ -->
-<section class="hero" id="hero" data-export-section="hero">
+<!-- ══ 1. HERO (v11 — раннее бронирование + 4 факта) ══════════ -->
+<section class="hero" id="hero">
   <div class="hero-bg-orb hero-bg-orb-1"></div>
   <div class="hero-bg-orb hero-bg-orb-2"></div>
   <div class="container">
     <div class="hero-inner">
 
       <div class="hero-content">
-        <div class="hero-eyebrow" data-export-skip>
+        <!-- [1] KICKER -->
+        <div class="hero-eyebrow">
           <span class="badge badge-garnet">Станьте партнером</span>
           <span class="hero-eyebrow-divider"></span>
-          <span class="hero-eyebrow-label">участником или резидентом</span>
+          <span class="hero-eyebrow-label">участником или резидентом проекта</span>
         </div>
-        <h1 data-export-title="Кулибинская карта · экосистема поощрений для будущих инженеров">
+
+        <!-- [2] H1 -->
+        <h1>
           <span class="accent">Кулибинская карта</span>
-          <span class="h1-sub">экосистема поощрений для будущих инженеров</span>
+          <span class="h1-sub"><strong>в экосистеме поощрений для будущих инженеров</strong> <span class="accent-platform">Платформы Технолидерства</span></span>
         </h1>
-        <p class="hero-desc" data-export-desc>
-          Родитель ведет ребенка к инженерной профессии 14 лет. Кружки, курсы, вузы, десятки несвязанных сервисов, месяцы поисков и неочевидный результат.
-        </p>
-        <p class="hero-desc" data-export-desc>
-          Кулибинская карта собирает экспертов, кружки, учреждения и индустрию в единый контур. Родитель видит маршрут, ребенок копит баллы за реальные шаги, резидент получает прямой канал к мотивированной аудитории, которая уже выбрала инженерное будущее.
-        </p>
-        <div class="hero-actions" data-export-skip>
-          <a href="#register" class="btn btn-garnet btn-xl">Получить максимум выгоды</a>
-          <a href="#ecosystem" class="btn btn-outline btn-lg">Подробнее о Платформе</a>
+
+        <!-- [3] PROBLEM / SOLUTION -->
+        <div class="hero-ps-group">
+          <div class="hero-ps-block hero-ps-block--problem">
+            <span class="hero-ps-label">Проблема</span>
+            <p class="hero-ps-text">
+              Родитель ведет ребенка к инженерной профессии 14 лет. Кружки, курсы, вузы, десятки несвязанных сервисов, месяцы поисков и&nbsp;неочевидный результат.
+            </p>
+          </div>
+          <div class="hero-ps-block hero-ps-block--solution">
+            <span class="hero-ps-label">Решение Платформы</span>
+            <p class="hero-ps-text">
+              Высокоселективная цифровая экосистема, соединяющая родителей, заинтересованных в&nbsp;качественном инженерно-технологическом образовании детей, и&nbsp;<strong>надежных поставщиков образовательных и&nbsp;профориентационных продуктов&nbsp;&mdash; резидентов</strong>
+            </p>
+          </div>
         </div>
-        <ul class="hero-value-list" data-export-perks>
-          <li data-export-perk="Проект национального масштаба в русле курса на технологическое лидерство">Национальный масштаб и курс государства на технологическое лидерство</li>
-          <li data-export-perk="100% отвечает запросам общества и государства">100% запрос общества и государства</li>
-          <li data-export-perk="Собирает выдающихся экспертов и лидеров отрасли">Выдающиеся эксперты и лидеры отрасли в одном контуре</li>
-          <li data-export-perk="Ваш вклад возвращается с прибылью в короткие сроки">Ваш вклад возвращается с прибылью в короткие сроки</li>
-        </ul>
+
+        <!-- [4] QUALIFIER — 4 типа резидентов → якоря на табы выгод -->
+        <div class="hero-qualifier">
+          <a href="#benefit" class="hero-qualifier-pill" onclick="switchTabByName('employers')">Корпорациям</a>
+          <a href="#benefit" class="hero-qualifier-pill" onclick="switchTabByName('education')">Образовательным организациям</a>
+          <a href="#benefit" class="hero-qualifier-pill" onclick="switchTabByName('ngo')">НКО</a>
+          <a href="#benefit" class="hero-qualifier-pill" onclick="switchTabByName('consultants')">Профориентологам и педагогам</a>
+        </div>
+
+        <!-- [5] CTA -->
+        <div class="hero-actions">
+          <a href="#benefit" class="btn btn-garnet btn-xl">О выгодах вашего участия</a>
+        </div>
+
       </div>
 
-      <div class="hero-visual" data-export-skip>
+      <div class="hero-visual">
         <img src="карта.png" alt="Кулибинская карта" class="hero-map-img">
-      </div>
 
-    </div>
-  </div>
-</section>
-
-
-<!-- ══ STATS BAR — нарратив рынка ════════════════════════════ -->
-<div class="stats-bar" data-export-section="stats" data-export-title="Рынок готов. Связки нет." data-export-footnote="Источники: Минцифры, АСИ, hh.ru (февраль 2026), ВЦИОМ (2023) · 2025-2026">
-  <div class="container">
-    <div class="stats-kicker">Рынок готов. Связки нет.</div>
-    <div class="stats-inner">
-
-      <div class="stat-item" data-export-card data-export-card-value="500-700 тыс." data-export-card-label="Спрос · дефицит IT-кадров в России · Минцифры">
-        <div class="stat-step"><span class="stat-step-num">01</span>Спрос</div>
-        <div class="stat-num">500-700 тыс.</div>
-        <div class="stat-label">дефицит IT-кадров в России<br><span class="stat-source">Минцифры</span></div>
-      </div>
-
-      <div class="stat-item" data-export-card data-export-card-value="+66%" data-export-card-label="Рост · инженерные вакансии за год · hh.ru, 2026">
-        <div class="stat-step"><span class="stat-step-num">02</span>Рост</div>
-        <div class="stat-num">+66%</div>
-        <div class="stat-label">инженерных вакансий за год<br><span class="stat-source">hh.ru</span></div>
-      </div>
-
-      <div class="stat-item" data-export-card data-export-card-value="8,5 млн" data-export-card-label="Господдержка · школьников в «Билете в будущее» · АСИ, 2025">
-        <div class="stat-step"><span class="stat-step-num">03</span>Господдержка</div>
-        <div class="stat-num">8,5 млн</div>
-        <div class="stat-label">школьников в «Билете в будущее»<br><span class="stat-source">АСИ, 2025</span></div>
-      </div>
-
-      <div class="stat-item" data-export-card data-export-card-value="каждый 6-й" data-export-card-label="Разрыв · школьник хочет в технику, но не знает куда · ВЦИОМ">
-        <div class="stat-step"><span class="stat-step-num">04</span>Разрыв</div>
-        <div class="stat-num">каждый 6-й</div>
-        <div class="stat-label">школьник хочет в технику —<br>не знает куда <span class="stat-source">ВЦИОМ</span></div>
-      </div>
-
-    </div>
-
-    <div class="stats-conclusion" data-export-card data-export-card-value="Точка сборки" data-export-card-label="Кулибинская карта собирает спрос, господдержку и запрос родителей в одну экосистему">
-      Спрос, господдержка и запрос родителей есть, но живут в разных вселенных.<br>
-      <strong>Кулибинская карта</strong> собирает их в одну экосистему. Резидент получает канал к мотивированной аудитории, которая уже выбрала инженерное будущее.
-    </div>
-
-    <div class="stats-footnote">Источники: Минцифры, АСИ, hh.ru (февраль 2026), ВЦИОМ (2023) · 2025-2026</div>
-  </div>
-</div>
-
-
-<!-- ══ 2. ECOSYSTEM — Платформа и резиденты ═══════════════════ -->
-<section class="mission" id="ecosystem" data-export-section="ecosystem" data-export-title="Платформа и резиденты">
-  <div class="container">
-    <div class="mission-inner">
-
-      <div class="mission-text" style="max-width:880px;margin:0 auto;">
-        <span class="sec-label">Экосистема</span>
-        <h2 class="sec-title">Платформа и <span>резиденты</span></h2>
-        <div class="mission-text-body" data-export-desc>
-        <p>
-          Платформа Технолидерства это цифровой контур, где встречаются родители с инженерным выбором и те, кто ведет их дальше. Внутри работает <strong>Кулибинская карта</strong>, через нее родители копят баллы и обменивают на программы резидентов.
-        </p>
-        <p>
-          Резидент экосистемы это проверенное образовательное учреждение, онлайн-школа, кружок, корпорация, университет или НКО, чьи продукты встроены в единый трек ребенка. Мы не ведем на платформу всех подряд. Мы уже сделали работу за родителей и отобрали лучших.
-        </p>
-        <p>
-          Аудиторию набирает платформа через открытые инструменты, эфиры, Барометр и контент экспертов. Резидент получает готовую связку с родителем, который уже в движении.
-        </p>
+        <!-- [6] Факты — аннотации к визуалу -->
+        <div class="hero-facts">
+          <div class="hero-fact">
+            <div class="hero-fact-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg>
+            </div>
+            <div class="hero-fact-text">Проект национального масштаба в русле движения к технологическому лидерству</div>
+          </div>
+          <div class="hero-fact">
+            <div class="hero-fact-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+            </div>
+            <div class="hero-fact-text">100% отвечает запросам общества и&nbsp;государства</div>
+          </div>
+          <div class="hero-fact">
+            <div class="hero-fact-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </div>
+            <div class="hero-fact-text">Собирает выдающихся экспертов и&nbsp;лидеров отрасли</div>
+          </div>
         </div>
-        <div class="mission-cta" data-export-skip>
-          <a href="#register" class="btn btn-garnet btn-lg">Подать заявку</a>
-          <a href="#how-resident" class="btn btn-outline btn-lg">Как стать резидентом</a>
-        </div>
-      </div>
 
-      <!-- ═══ LTV relay visualization removed — hero SVG already covers the concept ═══ -->
-
-      <!-- ═══ Old audience-list block — REMOVED (merged into Benefits tabs below) ═══ -->
-      <div style="display:none" data-export-skip>
-        <div class="audience-list">
-
-          <div class="aud-card" data-export-card data-export-card-icon="compass" data-export-card-title="Профориентологи и карьерные консультанты" data-export-card-role="Эксперты платформы" data-export-card-desc="Практикующие специалисты с авторскими методиками, кандидаты наук, действующие педагоги технических направлений. Научно-методологическая верификация, экспертный статус, авторский контент, участие в эфирах и исследованиях.">
-            <div class="aud-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" color="var(--garnet)"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76" fill="currentColor" opacity="0.15"/></svg></div>
-            <div>
-              <div class="aud-title">Профориентологи и карьерные консультанты</div>
-              <div class="aud-role">Эксперты платформы</div>
-              <p class="aud-desc">Практикующие специалисты с авторскими методиками, кандидаты наук, действующие педагоги технических направлений. Научно-методологическая верификация, экспертный статус, авторский контент, участие в эфирах и исследованиях.</p>
-            </div>
-          </div>
-
-          <div class="aud-card" data-export-card data-export-card-icon="landmark" data-export-card-title="Образовательные учреждения и онлайн-школы" data-export-card-role="Резиденты Кулибинской карты" data-export-card-desc="Частные школы, технические кружки, онлайн-школы, кванториумы. Размещение программ на платформе, участие в партнерской экосистеме.">
-            <div class="aud-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" color="var(--garnet)"><line x1="3" x2="21" y1="22" y2="22"/><line x1="6" x2="6" y1="18" y2="11"/><line x1="10" x2="10" y1="18" y2="11"/><line x1="14" x2="14" y1="18" y2="11"/><line x1="18" x2="18" y1="18" y2="11"/><polygon points="12 2 20 7 4 7"/></svg></div>
-            <div>
-              <div class="aud-title">Образовательные учреждения и онлайн-школы</div>
-              <div class="aud-role">Резиденты Кулибинской карты</div>
-              <p class="aud-desc">Частные школы, технические кружки, онлайн-школы, кванториумы. Размещение программ на платформе, участие в партнерской экосистеме.</p>
-            </div>
-          </div>
-
-          <div class="aud-card" data-export-card data-export-card-icon="factory" data-export-card-title="Индустриальные компании и работодатели" data-export-card-role="Корпоративная подписка · следующая фаза" data-export-card-desc="Высокотехнологичные компании, заинтересованные в подготовке кадров. Статус Официального Партнера, корпоративная подписка, участие в исследованиях. Запуск этого формата — на следующей фазе развития платформы.">
-            <div class="aud-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" color="var(--garnet)"><path d="M2 20a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8l-7 5V8l-7 5V4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"/><path d="M17 18h1"/><path d="M12 18h1"/><path d="M7 18h1"/></svg></div>
-            <div>
-              <div class="aud-title">Индустриальные компании и работодатели</div>
-              <div class="aud-role">Корпоративная подписка · следующая фаза</div>
-              <p class="aud-desc">Высокотехнологичные компании, заинтересованные в подготовке кадров. Статус Официального Партнера, корпоративная подписка, участие в исследованиях. Запуск этого формата — на следующей фазе развития платформы.</p>
-            </div>
-          </div>
-
-          <div class="aud-card" data-export-card data-export-card-icon="users" data-export-card-title="Педагоги и методисты" data-export-card-role="Авторы контента" data-export-card-desc="Учителя, методисты, руководители школ. Бесплатное участие, публикация методик в Атласе передовых практик, профессиональное сообщество.">
-            <div class="aud-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" color="var(--garnet)"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
-            <div>
-              <div class="aud-title">Педагоги и методисты</div>
-              <div class="aud-role">Авторы контента</div>
-              <p class="aud-desc">Учителя, методисты, руководители школ. Бесплатное участие, публикация методик в Атласе передовых практик, профессиональное сообщество.</p>
-            </div>
-          </div>
-
-          <div class="aud-card" data-export-card data-export-card-icon="landmark" data-export-card-title="Институты развития и госструктуры" data-export-card-role="Стратегические участники" data-export-card-desc="Представители власти всех уровней, институты развития. Площадка для публичных выступлений, социальные исследования, формирование приоритетов.">
-            <div class="aud-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" color="var(--garnet)"><line x1="3" x2="21" y1="22" y2="22"/><line x1="6" x2="6" y1="18" y2="11"/><line x1="10" x2="10" y1="18" y2="11"/><line x1="14" x2="14" y1="18" y2="11"/><line x1="18" x2="18" y1="18" y2="11"/><polygon points="12 2 20 7 4 7"/></svg></div>
-            <div>
-              <div class="aud-title">Институты развития и госструктуры</div>
-              <div class="aud-role">Стратегические участники</div>
-              <p class="aud-desc">Представители власти всех уровней, институты развития. Площадка для публичных выступлений, социальные исследования, формирование приоритетов.</p>
-            </div>
-          </div>
-
+        <!-- Раннее бронирование -->
+        <div class="hero-early-booking">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+          Раннее бронирование до&nbsp;31&nbsp;мая — максимальная выгода и&nbsp;признание для первых резидентов
         </div>
       </div>
 
@@ -1281,537 +762,460 @@ footer {
 </section>
 
 
-<!-- ══ 3. GROWTH — Карта как точка роста, сборки, притяжения ═══ -->
-<section class="trends" id="growth" data-export-section="growth" data-export-title="Карта как точка роста">
+<!-- ══ 2. КУЛИБИНСКАЯ КАРТА — механизм (docx стр. 5–6) ═════════ -->
+<section class="kulibin-card" id="kulibin">
   <div class="container">
-    <div class="trends-head">
-      <span class="sec-label">Карта как драйвер</span>
-      <h2 class="sec-title">Точка роста, сборки <span style="color:var(--garnet)">и притяжения</span></h2>
-      <p class="sec-sub">Родитель и ребенок проходят путь, резидент получает аудиторию, платформа видит всю картину. Каждый шаг в экосистеме работает на всех сразу.</p>
-    </div>
-
-    <div class="trends-grid">
-      <div class="trend-card" data-export-card data-export-card-title="Точка роста" data-export-card-desc="Аудитория растет вместе с ребенком. Платформа накапливает историю, резидент получает мотивированный трафик по мере взросления ребенка.">
-        <div class="trend-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--garnet)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg></div>
-        <div class="trend-title">Точка роста</div>
-        <p class="trend-desc">Аудитория растет вместе с ребенком. Платформа накапливает историю шагов, резидент получает мотивированный трафик по мере взросления ребенка.</p>
+    <div class="kulibin-inner">
+      <span class="sec-label">Механизм экосистемы</span>
+      <h2 class="sec-title">Кулибинская карта — <span style="color:var(--violet)">инструмент лояльности и карьерной навигации</span></h2>
+      <p>
+        Основной механизм взаимодействия внутри платформы — это Кулибинская карта. Родители и дети, нацеленные на инженерную карьеру, через Кулибинскую карту аккумулируют баллы за активности на платформе и обменивают их на образовательные программы, курсы, продукты, платные подписки и мероприятия, предоставляемые резидентами.
+      </p>
+      <div class="kulibin-accent">
+        <p>Это создает прямую экономическую связь и мотивирует последовательное движение по выстроенному треку развития ребенка.</p>
       </div>
-      <div class="trend-card" data-export-card data-export-card-title="Точка сборки" data-export-card-desc="Кружки, школы, вузы, корпорации и НКО встречаются в одном контуре. Родитель перестает тонуть в разрозненных сервисах.">
-        <div class="trend-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--garnet)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v4"/><path d="M12 18v4"/><path d="M4.93 4.93l2.83 2.83"/><path d="M16.24 16.24l2.83 2.83"/><path d="M2 12h4"/><path d="M18 12h4"/><path d="M4.93 19.07l2.83-2.83"/><path d="M16.24 7.76l2.83-2.83"/></svg></div>
-        <div class="trend-title">Точка сборки</div>
-        <p class="trend-desc">Кружки, школы, вузы, корпорации и НКО встречаются в одном контуре. Родитель перестает тонуть в разрозненных сервисах.</p>
-      </div>
-      <div class="trend-card" data-export-card data-export-card-title="Точка притяжения" data-export-card-desc="Родители и ученики приходят к резиденту, чтобы потратить накопленные баллы на его курсы, продукты и бренд. Прямой канал к мотивированной аудитории без аукционов и рекламных бюджетов.">
-        <div class="trend-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--garnet)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg></div>
-        <div class="trend-title">Точка притяжения</div>
-        <p class="trend-desc">Родители и ученики приходят к резиденту, чтобы потратить накопленные баллы на его курсы, продукты и бренд. Прямой канал к мотивированной аудитории без аукционов и рекламных бюджетов.</p>
-      </div>
-    </div>
-
-    <div style="text-align:center;margin-top:40px;" data-export-skip>
-      <a href="#register" class="btn btn-garnet btn-xl">Подать заявку на резидентство</a>
+      <a href="#register" class="sec-cta">Стать частью экосистемы <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
     </div>
   </div>
 </section>
 
 
-<!-- ══ 4. DIRECTIONS ══════════════════════════════════════════ -->
-<section class="directions" id="directions" data-export-section="directions" data-export-title="Инструменты Платформы Технолидерства">
+<!-- ══ 3. СЕЛЕКТИВНОСТЬ + КУРАТОР (docx стр. 7–13) ═══════════ -->
+<section class="selectivity" id="selectivity">
   <div class="container">
-    <div class="directions-head">
-      <span class="sec-label">Направления работы</span>
-      <h2 class="sec-title">Инструменты Платформы Технолидерства</h2>
-      <p class="sec-sub">Открытые инструменты для экспертов, учреждений и индустрии — исследования, контент и сообщество</p>
-    </div>
+    <div class="selectivity-inner">
+      <span class="sec-label">Селективность</span>
+      <h2 class="sec-title">Статус резидента присваивается <span style="color:var(--violet)">не всем желающим</span></h2>
 
+      <p>
+        Платформа берет на себя функцию экспертного куратора, избавляя родителя от необходимости самостоятельно анализировать переполненный рынок образовательных услуг и противоречивый рынок профориентационного консалтинга.
+      </p>
 
-    <div class="dir-grid">
-
-      <!-- Barometer (short mention) -->
-      <div class="dir-card" data-export-card data-export-card-icon="bar-chart-3" data-export-card-badge="Исследование" data-export-card-title="Барометр карьерных ожиданий" data-export-card-desc="Еженедельный срез отраслей, компаний и профессий, которые выбирают старшеклассники. Данные по регионам доступны резидентам.">
-        <div class="dir-icon di-garnet"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--garnet)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v16a2 2 0 0 0 2 2h16"/><path d="M7 16h.01"/><path d="M11 12h.01"/><path d="M15 16h.01"/><path d="M7 11l4-4 4 4 4-4"/></svg></div>
-        <div class="dir-badge"><span class="badge badge-amber">Исследование</span></div>
-        <div class="dir-title">Барометр карьерных ожиданий</div>
-        <p class="dir-desc">Еженедельный срез отраслей, компаний и профессий, которые выбирают старшеклассники. Данные по регионам доступны резидентам.</p>
+      <div class="selectivity-highlight">
+        Платформа через Экспертный совет приглашает только достойных и востребованных участников рынка — в свете Государственной повестки и Стратегии технологического лидерства.
       </div>
 
-      <!-- Library -->
-      <div class="dir-card" data-export-card data-export-card-icon="book-open" data-export-card-badge="Открытый доступ" data-export-card-title="Витрина авторского контента" data-export-card-desc="Единая лента карточек: статьи, видео, подкасты, записи эфиров и анонсы ближайших. Весь контент — от верифицированных инженеров, ученых и практиков. Навигация по 13 направлениям технолидерства и возрасту школьника.">
-        <div class="dir-icon di-blue"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--garnet)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 7v14"/><path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></svg></div>
-        <div class="dir-badge"><span class="badge badge-garnet">Открытый доступ</span></div>
-        <div class="dir-title">Витрина авторского контента</div>
-        <p class="dir-desc">Единая лента карточек: статьи, видео, подкасты, записи эфиров и анонсы ближайших. Весь контент — от верифицированных инженеров, ученых и практиков. Навигация по 13 направлениям технолидерства и возрасту школьника.</p>
+      <p>
+        Платформа проводит строгий отбор среди образовательных учреждений, онлайн-школ, корпоративных академий, профориентационных агентств, технических кружков, частных колледжей и некоммерческих организаций. Критериями являются качество контента, соответствие ценностям технологического лидерства и способность интегрировать свои продукты в единую, логичную траекторию учащегося.
+      </p>
+
+      <div class="criteria-tags">
+        <span class="criteria-tag">Качество контента</span>
+        <span class="criteria-tag">Ценности технолидерства</span>
+        <span class="criteria-tag">Интеграция в траекторию</span>
+        <span class="criteria-tag">Верификация Экспертным советом</span>
       </div>
-
-      <!-- Atlas -->
-      <div class="dir-card" data-export-card data-export-card-icon="graduation-cap" data-export-card-badge="В разработке" data-export-card-title="Атлас передовых практик" data-export-card-desc="Реестр лучших практик в образовании со всей России. Педагоги публикуют методики, учреждения — методологии. Авторы получают кураторство и дополнительный доход.">
-        <div class="dir-icon di-amber"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--garnet)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z"/><path d="M22 10v6"/><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"/></svg></div>
-        <div class="dir-badge"><span class="badge badge-amber">В разработке</span></div>
-        <div class="dir-title">Атлас передовых практик</div>
-        <p class="dir-desc">Реестр лучших методик в образовании со всей России. Учреждения и практики публикуют авторские программы. Авторы получают кураторство и дополнительный доход.</p>
-      </div>
-
-    </div>
-
-    <!-- Barometer role-specific use cases (removed, kept short mention above) -->
-    <div class="barometer-roles" data-export-group data-export-group-title="Барометр в работе" data-export-group-color="1B2D5E" style="display:none">
-      <div class="br-head">
-        <div class="br-eyebrow" data-export-skip>
-          <span class="badge badge-garnet">Исследование</span>
-          <div class="br-eyebrow-divider"></div>
-          <span class="br-eyebrow-label">Данные Барометра в действии</span>
-        </div>
-        <h3 class="br-title" data-export-title="Как партнеры применяют данные Барометра">
-          <span class="accent">Как партнеры применяют</span><br>
-          данные Барометра
-        </h3>
-        <p class="br-sub" data-export-desc>Школы корректируют программы. Вузы планируют приемную кампанию. Эксперты говорят с родителями на языке их вопросов. Данные одни и те же.</p>
-      </div>
-
-      <div class="br-grid">
-
-        <!-- Корпоративная / онлайн-школа / кванториум -->
-        <div class="br-card" data-export-card data-export-card-icon="building-2" data-export-card-role="Корп-школа · онлайн-школа · кванториум" data-export-card-title="Видят спрос 10-классников до старта набора" data-export-card-desc="Сравнивают интерес по регионам и направлениям. Корректируют программы. Занимают ниши раньше конкурентов." data-export-card-meta="Биоинженерия в Казани → модуль к сентябрю">
-          <div class="br-icon">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--garnet)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"/>
-              <path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"/>
-              <path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/>
-              <path d="M10 6h4"/><path d="M10 10h4"/><path d="M10 14h4"/><path d="M10 18h4"/>
-            </svg>
-          </div>
-          <div class="br-role">Корп-школа · онлайн-школа · кванториум</div>
-          <h4 class="br-cardtitle">Видят спрос 10-классников до старта набора</h4>
-          <p class="br-desc">Сравнивают интерес по регионам и направлениям. Корректируют программы. Занимают ниши раньше конкурентов.</p>
-          <div class="br-example">
-            <span class="br-ex-label">Пример</span>
-            <p>Всплеск интереса к биоинженерии в Казани → запускаем модуль к сентябрьскому набору.</p>
-          </div>
-        </div>
-
-        <!-- Вуз / приемная комиссия -->
-        <div class="br-card" data-export-card data-export-card-icon="graduation-cap" data-export-card-role="Вуз · факультет · приемная комиссия" data-export-card-title="Прогнозируют конкурс за 8 месяцев" data-export-card-desc="Следят за динамикой по специальностям и регионам. Планируют КЦП и профориентацию без перекосов по факультетам." data-export-card-meta="Атомная энергетика в УрФО +34% → выездные ДОД">
-          <div class="br-icon">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--garnet)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z"/>
-              <path d="M22 10v6"/>
-              <path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"/>
-            </svg>
-          </div>
-          <div class="br-role">Вуз · факультет · приемная комиссия</div>
-          <h4 class="br-cardtitle">Прогнозируют конкурс за 8 месяцев</h4>
-          <p class="br-desc">Следят за динамикой по специальностям и регионам. Планируют КЦП и профориентацию без перекосов по факультетам.</p>
-          <div class="br-example">
-            <span class="br-ex-label">Пример</span>
-            <p>Атомная энергетика в УрФО +34% → выездные ДОД в четырех школах Екатеринбурга.</p>
-          </div>
-        </div>
-
-        <!-- Эксперт / профориентолог -->
-        <div class="br-card" data-export-card data-export-card-icon="user-check" data-export-card-role="Эксперт · профориентолог · автор эфиров" data-export-card-title="Говорят с родителями на языке их вопросов" data-export-card-desc="Видят страхи и ожидания родителей в своем регионе. Подбирают темы эфиров и консультаций под живой запрос." data-export-card-meta="62% боятся математики → эфиры про не-математические пути">
-          <div class="br-icon">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--garnet)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
-              <circle cx="9" cy="7" r="4"/>
-              <polyline points="16 11 18 13 22 9"/>
-            </svg>
-          </div>
-          <div class="br-role">Эксперт · профориентолог · автор эфиров</div>
-          <h4 class="br-cardtitle">Говорят с родителями на языке их вопросов</h4>
-          <p class="br-desc">Видят страхи и ожидания родителей в своем регионе. Подбирают темы эфиров и консультаций под живой запрос.</p>
-          <div class="br-example">
-            <span class="br-ex-label">Пример</span>
-            <p>62% 10-классников боятся математики → серия эфиров про «не-математические» пути в инженерию.</p>
-          </div>
-        </div>
-
-      </div>
-    </div>
-
-    <div class="dirs-cta" data-export-skip>
-      <a href="#register" class="btn btn-garnet btn-xl">Подать заявку на резидентство</a>
+      <a href="#register" class="sec-cta">Пройти отбор <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
     </div>
   </div>
 </section>
 
 
-<!-- MECHANIC section moved up — now lives right after Mission -->
-
-
-<!-- ══ 5. BENEFITS ════════════════════════════════════════════ -->
-<section class="benefits" id="benefits" data-export-section="benefits" data-export-title="Что дает участие в работе Платформы">
+<!-- ══ 4. ПРИВЛЕЧЕНИЕ АУДИТОРИИ (docx стр. 13) ═══════════════ -->
+<section class="attract" id="attract">
   <div class="container">
-    <div class="benefits-head">
-      <span class="sec-label">Направления выгоды</span>
-      <h2 class="sec-title">Что получает резидент</h2>
-      <p class="sec-sub">Мы выбираем резидентов вручную. Те, кто готов встроиться в единый контур и работать на качество результата.</p>
+    <div class="attract-inner">
+      <span class="sec-label">Как работает платформа</span>
+      <h2 class="sec-title">Привлечение <span style="color:var(--violet)">целевой аудитории</span></h2>
+
+      <p>
+        Привлечение целевой аудитории (родителей) осуществляется платформой централизованно через ряд инструментов: открытые образовательные мероприятия, экспертные эфиры, проверенные диагностические методики для оценки склонностей ребенка и карьерные навигаторы, а также публикации авторитетных специалистов.
+      </p>
+
+      <div class="attract-result">
+        <p>Это формирует сообщество мотивированных и вовлеченных пользователей, широкого круга обладателей престижной Кулибинской карты.</p>
+      </div>
+      <a href="#register" class="sec-cta">Получить доступ к аудитории <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══ 5. ВЫГОДА РЕЗИДЕНТА (docx стр. 14) ═════════════════════ -->
+<section class="benefit" id="benefit">
+  <div class="container">
+    <div class="benefit-head">
+      <span class="sec-label">Ключевая выгода</span>
+      <h2 class="sec-title">Что получает <span style="color:var(--violet)">резидент</span></h2>
+      <p class="sec-sub">Ключевая выгода для резидента заключается в доступе к подготовленной, теплой аудитории.</p>
+      <div class="benefit-facts">
+        <div class="benefit-fact">
+          <div class="benefit-fact-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+          </div>
+          <div class="benefit-fact-text">Целенаправленная связка с родителем</div>
+        </div>
+        <div class="benefit-fact">
+          <div class="benefit-fact-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+          </div>
+          <div class="benefit-fact-text">Понимание ценности инженерного образования</div>
+        </div>
+        <div class="benefit-fact">
+          <div class="benefit-fact-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+          </div>
+          <div class="benefit-fact-text">Доверие к&nbsp;Платформе</div>
+        </div>
+        <div class="benefit-fact">
+          <div class="benefit-fact-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="5" rx="2"/><path d="M2 10h20"/><path d="M12 15h4"/></svg>
+          </div>
+          <div class="benefit-fact-text">Готовность к&nbsp;активности через Кулибинскую карту</div>
+        </div>
+      </div>
     </div>
 
-    <div class="tabs-wrap" data-export-skip>
-      <button class="tab-btn on" onclick="switchTab(this,'employers')" style="display:inline-flex;align-items:center;gap:7px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8l-7 5V8l-7 5V4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"/><path d="M17 18h1"/><path d="M12 18h1"/><path d="M7 18h1"/></svg> Корпорации</button>
-      <button class="tab-btn" onclick="switchTab(this,'education')" style="display:inline-flex;align-items:center;gap:7px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="3" x2="21" y1="22" y2="22"/><line x1="6" x2="6" y1="18" y2="11"/><line x1="10" x2="10" y1="18" y2="11"/><line x1="14" x2="14" y1="18" y2="11"/><line x1="18" x2="18" y1="18" y2="11"/><polygon points="12 2 20 7 4 7"/></svg> Образовательные организации</button>
-      <button class="tab-btn" onclick="switchTab(this,'ngo')" style="display:inline-flex;align-items:center;gap:7px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg> НКО</button>
-      <button class="tab-btn" onclick="switchTab(this,'consultants')" style="display:inline-flex;align-items:center;gap:7px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76" fill="currentColor" opacity="0.2"/></svg> Профориентологи</button>
+    <div class="tabs-wrap">
+      <button class="tab-btn on" onclick="switchTab(this,'employers')"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8l-7 5V8l-7 5V4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"/><path d="M17 18h1"/><path d="M12 18h1"/><path d="M7 18h1"/></svg> Корпорации</button>
+      <button class="tab-btn" onclick="switchTab(this,'education')"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="3" x2="21" y1="22" y2="22"/><line x1="6" x2="6" y1="18" y2="11"/><line x1="10" x2="10" y1="18" y2="11"/><line x1="14" x2="14" y1="18" y2="11"/><line x1="18" x2="18" y1="18" y2="11"/><polygon points="12 2 20 7 4 7"/></svg> Образовательные организации</button>
+      <button class="tab-btn" onclick="switchTab(this,'ngo')"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg> НКО</button>
+      <button class="tab-btn" onclick="switchTab(this,'consultants')"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76" fill="currentColor" opacity="0.2"/></svg> Профориентологи</button>
     </div>
 
-    <!-- Таб 1: Образовательные организации -->
-    <div class="tab-panel ben-grid" id="tp-education" data-export-group data-export-group-title="Образовательным организациям" data-export-group-color="162450">
-      <div class="ben-card" data-export-card data-export-card-title="Резидентство Кулибинской карты" data-export-card-desc="Ваши программы и мастер-классы встроены в экосистему привилегий. Участники обменивают баллы на ваши услуги. Приходит уже вовлеченная аудитория.">
+    <!-- Корпорации -->
+    <div class="tab-panel on ben-grid" id="tp-employers">
+      <div class="ben-card">
         <div class="ben-num">01</div>
-        <h3 class="ben-title">Резидентство Кулибинской карты</h3>
-        <p class="ben-desc">Ваши программы и мастер-классы встроены в экосистему привилегий. Участники обменивают баллы на ваши услуги. Приходит уже вовлеченная аудитория.</p>
+        <h3 class="ben-title">Целенаправленный доступ к аудитории</h3>
+        <p class="ben-desc">Вы получаете не просто поток «лидов», а связку с родителями, которые уже понимают ценность инженерного образования. Кулибинская карта обеспечивает прямую экономическую связь с мотивированной аудиторией.</p>
       </div>
-      <div class="ben-card" data-export-card data-export-card-title="Эфиры и контент" data-export-card-desc="Представляйте программы в тематических эфирах. Размещайте материалы в библиотеке. Работайте с родителями через авторские форматы.">
-        <div class="ben-num">02</div>
-        <h3 class="ben-title">Эфиры и контент</h3>
-        <p class="ben-desc">Представляйте программы в тематических эфирах. Размещайте материалы в библиотеке. Работайте с родителями через авторские форматы.</p>
-      </div>
-      <div class="ben-card" data-export-card data-export-card-title="Интеграция в контур" data-export-card-desc="Размещение в каталоге, участие в исследованиях, доступ к данным Барометра. Помогает строить программы под реальный спрос региона.">
-        <div class="ben-num">03</div>
-        <h3 class="ben-title">Интеграция в контур</h3>
-        <p class="ben-desc">Размещение в каталоге, участие в исследованиях, доступ к данным Барометра. Помогает строить программы под реальный спрос региона.</p>
-      </div>
-    </div>
-
-    <!-- Таб 2: Корпорации -->
-    <div class="tab-panel on ben-grid" id="tp-employers" data-export-group data-export-group-title="Корпорациям" data-export-group-color="0E1A33">
-      <div class="ben-card" data-export-card data-export-card-title="Данные о будущих кадрах" data-export-card-desc="Расширенный доступ к Индикатору карьерных ожиданий. Еженедельный срез привлекательности вашего HR-бренда среди старшеклассников по регионам.">
-        <div class="ben-num">01</div>
-        <h3 class="ben-title">Данные о будущих кадрах</h3>
-        <p class="ben-desc">Расширенный доступ к Индикатору карьерных ожиданий. Еженедельный срез привлекательности вашего HR-бренда среди старшеклассников по регионам.</p>
-      </div>
-      <div class="ben-card" data-export-card data-export-card-title="Статус официального партнера" data-export-card-desc="Стратегическое присутствие на платформе. Ваши эксперты в эфирах, компания как резидент с брендированными привилегиями Карты.">
+      <div class="ben-card">
         <div class="ben-num">02</div>
         <h3 class="ben-title">Статус официального партнера</h3>
-        <p class="ben-desc">Стратегическое присутствие на платформе. Ваши эксперты в эфирах, компания как резидент с брендированными привилегиями Карты.</p>
+        <p class="ben-desc">Стратегическое присутствие на платформе. Ваши эксперты в эфирах, компания как резидент с брендированными привилегиями Кулибинской карты. Строгий отбор через Экспертный совет подтверждает статус.</p>
       </div>
-      <div class="ben-card" data-export-card data-export-card-title="Работа с поколением" data-export-card-desc="Стажировочные треки, брендированные тесты навыков, прямые эфиры с вашими инженерами. Формируйте интерес к профессиям отрасли.">
+      <div class="ben-card">
         <div class="ben-num">03</div>
         <h3 class="ben-title">Работа с поколением</h3>
-        <p class="ben-desc">Стажировочные треки, брендированные тесты навыков, прямые эфиры с вашими инженерами. Формируйте интерес к профессиям отрасли.</p>
+        <p class="ben-desc">Стажировочные треки, брендированные тесты навыков, прямые эфиры с вашими инженерами. Платформа централизованно привлекает вовлеченных пользователей — обладателей Кулибинской карты.</p>
       </div>
     </div>
 
-    <!-- Таб 3: НКО -->
-    <div class="tab-panel ben-grid" id="tp-ngo" data-export-group data-export-group-title="НКО" data-export-group-color="2D4A8A">
-      <div class="ben-card" data-export-card data-export-card-title="Социальная миссия на витрине" data-export-card-desc="Ваши программы и стипендиальные треки становятся привилегиями Карты. Аудитория платформы получает доступ к вашим инициативам напрямую.">
+    <!-- Образовательные организации -->
+    <div class="tab-panel ben-grid" id="tp-education">
+      <div class="ben-card">
+        <div class="ben-num">01</div>
+        <h3 class="ben-title">Теплая аудитория через Кулибинскую карту</h3>
+        <p class="ben-desc">Родители обменивают кулибинские баллы на ваши программы и курсы. К вам приходит не случайный трафик, а семьи, которые уже прошли путь на платформе и готовы к дальнейшим действиям.</p>
+      </div>
+      <div class="ben-card">
+        <div class="ben-num">02</div>
+        <h3 class="ben-title">Эфиры и контент</h3>
+        <p class="ben-desc">Представляйте программы в тематических эфирах. Размещайте материалы в библиотеке. Работайте с родителями через авторские форматы. Платформа привлекает аудиторию централизованно.</p>
+      </div>
+      <div class="ben-card">
+        <div class="ben-num">03</div>
+        <h3 class="ben-title">Снижение затрат на маркетинг</h3>
+        <p class="ben-desc">Платформа формирует сообщество мотивированных пользователей — широкий круг обладателей Кулибинской карты. Существенно повышает эффективность конверсии и снижает затраты на самостоятельный маркетинг.</p>
+      </div>
+    </div>
+
+    <!-- НКО -->
+    <div class="tab-panel ben-grid" id="tp-ngo">
+      <div class="ben-card">
         <div class="ben-num">01</div>
         <h3 class="ben-title">Социальная миссия на витрине</h3>
-        <p class="ben-desc">Ваши программы и стипендиальные треки становятся привилегиями Карты. Аудитория платформы получает доступ к вашим инициативам напрямую.</p>
+        <p class="ben-desc">Ваши программы и стипендиальные треки становятся привилегиями Кулибинской карты. Подготовленная аудитория получает доступ к вашим инициативам напрямую.</p>
       </div>
-      <div class="ben-card" data-export-card data-export-card-title="Исследования и данные по регионам" data-export-card-desc="Доступ к Барометру карьерных ожиданий для построения программ. Публикация аналитики, соавторство в отраслевых исследованиях.">
+      <div class="ben-card">
         <div class="ben-num">02</div>
         <h3 class="ben-title">Исследования и данные по регионам</h3>
         <p class="ben-desc">Доступ к Барометру карьерных ожиданий для построения программ. Публикация аналитики, соавторство в отраслевых исследованиях.</p>
       </div>
-      <div class="ben-card" data-export-card data-export-card-title="Площадка для социального влияния" data-export-card-desc="Публичные выступления, участие в формировании приоритетов, партнерства с индустрией и образованием через экосистему резидентов.">
+      <div class="ben-card">
         <div class="ben-num">03</div>
         <h3 class="ben-title">Площадка для социального влияния</h3>
         <p class="ben-desc">Публичные выступления, участие в формировании приоритетов, партнерства с индустрией и образованием через экосистему резидентов.</p>
       </div>
     </div>
 
-    <!-- Таб 4: Профориентологи -->
-    <div class="tab-panel ben-grid" id="tp-consultants" data-export-group data-export-group-title="Профориентологам" data-export-group-color="1B2D5E">
-      <div class="ben-card" data-export-card data-export-card-title="Экспертный статус и верификация" data-export-card-desc="Методическая верификация, размещение в каталоге экспертов. Ваш профиль виден родителям, которые уже выбрали инженерное будущее для ребенка.">
+    <!-- Профориентологи -->
+    <div class="tab-panel ben-grid" id="tp-consultants">
+      <div class="ben-card">
         <div class="ben-num">01</div>
         <h3 class="ben-title">Экспертный статус и верификация</h3>
         <p class="ben-desc">Методическая верификация, размещение в каталоге экспертов. Ваш профиль виден родителям, которые уже выбрали инженерное будущее для ребенка.</p>
       </div>
-      <div class="ben-card" data-export-card data-export-card-title="Авторский контент и эфиры" data-export-card-desc="Публикации в библиотеке, выступления в прямых эфирах. Контент работает на репутацию и расширяет клиентскую базу.">
+      <div class="ben-card">
         <div class="ben-num">02</div>
         <h3 class="ben-title">Авторский контент и эфиры</h3>
         <p class="ben-desc">Публикации в библиотеке, выступления в прямых эфирах. Контент работает на репутацию и расширяет клиентскую базу.</p>
       </div>
-      <div class="ben-card" data-export-card data-export-card-title="Сообщество и исследования" data-export-card-desc="Доступ к данным Барометра, участие в Атласе практик, обмен опытом. Карта становится инструментом работы с аудиторией.">
+      <div class="ben-card">
         <div class="ben-num">03</div>
         <h3 class="ben-title">Сообщество и исследования</h3>
-        <p class="ben-desc">Доступ к данным Барометра, участие в Атласе практик, обмен опытом. Карта становится инструментом работы с аудиторией.</p>
+        <p class="ben-desc">Доступ к данным Барометра, участие в Атласе практик, обмен опытом. Кулибинская карта становится инструментом работы с подготовленной аудиторией.</p>
       </div>
     </div>
 
-    <div style="text-align:center;margin-top:48px;" data-export-skip>
-      <a href="#register" class="btn btn-garnet btn-xl">Подать заявку на резидентство</a>
-    </div>
-
-  </div>
-</section>
-
-
-<!-- ══ 5.2 RESIDENT PATH — Как стать резидентом ═══════════════════ -->
-<section class="resident-path" id="how-resident" data-export-section="how-resident" data-export-title="Как стать резидентом">
-  <div class="container">
-    <div class="rp-head">
-      <span class="sec-label">Онбординг резидента</span>
-      <h2 class="sec-title">Как стать <span style="color:var(--garnet)">резидентом</span></h2>
-      <p class="sec-sub">Четыре шага от заявки до работы с аудиторией семей, которые уже в движении.</p>
-    </div>
-
-    <div class="rp-grid">
-
-      <div class="rp-card" data-export-card data-export-card-title="Заявка">
-        <div class="rp-num">01</div>
-        <div class="rp-title">Заявка</div>
-        <p class="rp-desc">Оставляете заявку. Команда платформы изучает программу, бренд или квалификацию. Мы не набираем всех подряд, отбор ручной.</p>
-      </div>
-
-      <div class="rp-card" data-export-card data-export-card-title="Верификация">
-        <div class="rp-num">02</div>
-        <div class="rp-title">Верификация</div>
-        <p class="rp-desc">Проверка методики и продукта методическим советом. Согласование формата присутствия. Подписание соглашения резидента.</p>
-      </div>
-
-      <div class="rp-card" data-export-card data-export-card-title="Интеграция в Карту">
-        <div class="rp-num">03</div>
-        <div class="rp-title">Интеграция в Карту</div>
-        <p class="rp-desc">Ваши продукты и курсы становятся привилегиями, на которые родители меняют баллы. Получаете кабинет резидента и слот спикера в эфирах.</p>
-      </div>
-
-      <div class="rp-card" data-export-card data-export-card-title="Работа с аудиторией">
-        <div class="rp-num">04</div>
-        <div class="rp-title">Работа с аудиторией</div>
-        <p class="rp-desc">К вам приходят родители экосистемы. В кабинете видны прогресс, конверсия в записи, аналитика и Барометр по вашему региону.</p>
-      </div>
-
-    </div>
-
-    <div style="text-align:center;margin-top:40px;" data-export-skip>
+    <div style="text-align:center; margin-top:48px;">
       <a href="#register" class="btn btn-garnet btn-xl">Подать заявку на резидентство</a>
     </div>
   </div>
 </section>
 
 
-<!-- ══ 5.5 TEAM — Кто делает платформу ═══════════════════════ -->
-<section class="team" id="team" data-export-section="team" data-export-title="Кто делает платформу">
+<!-- ══ 6. ЭКСПЕРТНЫЙ СОВЕТ (из v6) ═════════════════════════════ -->
+<section class="council" id="council">
   <div class="container">
-    <div class="team-head">
-      <span class="sec-label">Команда</span>
-      <h2 class="sec-title">Кто делает <span style="color:var(--garnet)">платформу</span></h2>
+    <span class="sec-label">Экспертный совет</span>
+    <h2 class="sec-title">Кто проводит <span style="color:var(--violet)">отбор резидентов</span></h2>
+    <p class="sec-sub">Экспертный совет по технологическому лидерству в образовании. Верификация методик, контроль качества, формирование стандартов.</p>
+
+    <div class="council-grid">
+      <div class="council-card">
+        <div class="council-ava">ДМ</div>
+        <div class="council-name">Махотин Дмитрий Александрович</div>
+        <div class="council-role">Исп. директор АНО &laquo;Национальный методический совет по технологическому образованию&raquo;, эксперт РАО</div>
+        <div class="council-degree">канд. пед. наук</div>
+      </div>
+      <div class="council-card">
+        <div class="council-ava">ТЗ</div>
+        <div class="council-name">Зарипова Татьяна Юрьевна</div>
+        <div class="council-role">Программный директор &laquo;EMBA: Технологическое лидерство&raquo; Университета Иннополис</div>
+        <div class="council-degree">канд. юрид. наук</div>
+      </div>
+      <div class="council-card">
+        <div class="council-ava">ИН</div>
+        <div class="council-name">Никитин Игорь Михайлович</div>
+        <div class="council-role">Руководитель Экспертной площадки Нацметодсовета по технологическому образованию</div>
+        <div class="council-degree">канд. техн. наук</div>
+      </div>
+      <div class="council-card">
+        <div class="council-ava">МС</div>
+        <div class="council-name">Сушков Максим Игоревич</div>
+        <div class="council-role">Эксперт в области образовательных решений, экс-СЕО R:ED Robotics Education</div>
+      </div>
+      <div class="council-card">
+        <div class="council-ava">НР</div>
+        <div class="council-name">Родичев Николай Федорович</div>
+        <div class="council-role">Вед. научный сотрудник НОЦ РО ВШГУ Президентской академии</div>
+        <div class="council-degree">канд. пед. наук</div>
+      </div>
+      <div class="council-card">
+        <div class="council-ava">ЮБ</div>
+        <div class="council-name">Белоусова Юлия Владимировна</div>
+        <div class="council-role">Директор АНО &laquo;Национальный центр профориентации&raquo;, ex. HR ОАО &laquo;РЖД&raquo;</div>
+      </div>
+      <div class="council-card">
+        <div class="council-ava">АФ</div>
+        <div class="council-name">Федосеев Алексей Игоревич</div>
+        <div class="council-role">Президент Ассоциации технологических кружков, лидер платформы &laquo;Берлога&raquo;</div>
+      </div>
+      <div class="council-card">
+        <div class="council-ava">ЮХ</div>
+        <div class="council-name">Хрипунов Юрий Вадимович</div>
+        <div class="council-role">Директор проектного офиса ОГУ, эксперт ОЦ &laquo;Сириус&raquo;, ВНТП &laquo;Большие вызовы&raquo;</div>
+        <div class="council-degree">канд. физ.-мат. наук</div>
+      </div>
+      <div class="council-card">
+        <div class="council-ava">АБ</div>
+        <div class="council-name">Богданов Андрей Дмитриевич</div>
+        <div class="council-role">Исп. директор Фонда развития Физтех-школ, руководитель Технопарка Физтех-лицея</div>
+      </div>
+      <div class="council-card">
+        <div class="council-ava">ДМ</div>
+        <div class="council-name">Муштанова Дина Владимировна</div>
+        <div class="council-role">Основатель IPE-ACADEMY, президент Международной ассоциации IPEA</div>
+      </div>
+      <div class="council-card">
+        <div class="council-ava">АН</div>
+        <div class="council-name">Носкова Алла Анатольевна</div>
+        <div class="council-role">Генеральный директор компании ПОСТУПИ ОНЛАЙН</div>
+      </div>
+      <div class="council-card">
+        <div class="council-ava">МЗ</div>
+        <div class="council-name">Зенкин Михаил Александрович</div>
+        <div class="council-role">Зам. директора ГБНОУ &laquo;Академия Талантов&raquo;, член Экспертного совета по профориентации при Минпросвещения</div>
+        <div class="council-degree">канд. филол. наук</div>
+      </div>
     </div>
+  </div>
+</section>
+
+
+<!-- ══ 7. КОМАНДА (из v6) ══════════════════════════════════════ -->
+<section class="team" id="team">
+  <div class="container">
+    <span class="sec-label">Команда</span>
+    <h2 class="sec-title">Кто делает <span style="color:var(--violet)">платформу</span></h2>
+
     <div class="team-grid">
-
-      <div class="team-card ceo-card" data-export-card data-export-card-icon="CEO" data-export-card-title="Основатель" data-export-card-role="Основатель &amp; CEO" data-export-card-desc="15 лет в EdTech и профориентации
-Запускал образовательные продукты
-Спикер EdTech-конференций">
-        <div class="team-ava is-active" style="background:linear-gradient(135deg,#1B2D5E,#162450)">CEO</div>
+      <div class="team-card">
+        <div class="team-ava" style="background:linear-gradient(135deg,#1B2D5E,#162450)">CEO</div>
         <div class="team-name">Основатель</div>
         <div class="team-role">Основатель &amp; CEO</div>
-        <div class="team-status s-founder" style="display:inline-flex;align-items:center;gap:5px;"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"/></svg> Founder</div>
         <div class="team-creds">
-          <div class="cred-row"><span class="cred-dot">▪</span><span>15 лет в EdTech и профориентации</span></div>
-          <div class="cred-row"><span class="cred-dot">▪</span><span>Запускал образовательные продукты</span></div>
-          <div class="cred-row"><span class="cred-dot">▪</span><span>Спикер EdTech-конференций</span></div>
+          <div class="cred-row"><span style="color:var(--neutral-300)">&#9642;</span><span>15 лет в EdTech и профориентации</span></div>
+          <div class="cred-row"><span style="color:var(--neutral-300)">&#9642;</span><span>Запускал образовательные продукты</span></div>
         </div>
       </div>
-
-      <div class="team-card" data-export-card data-export-card-icon="МС" data-export-card-title="Методический совет" data-export-card-role="Директор по методике" data-export-card-desc="Кандидаты пед. наук
-40+ программ в портфеле
-Экспертиза в профориентации">
-        <div class="team-ava is-active" style="background:linear-gradient(135deg,#162450,#0E1A33)">МС</div>
+      <div class="team-card">
+        <div class="team-ava" style="background:linear-gradient(135deg,#162450,#0E1A33)">МС</div>
         <div class="team-name">Методический совет</div>
         <div class="team-role">Директор по методике</div>
-        <div class="team-status s-active">● Активен</div>
         <div class="team-creds">
-          <div class="cred-row"><span class="cred-dot">▪</span><span>Кандидаты педагогических наук</span></div>
-          <div class="cred-row"><span class="cred-dot">▪</span><span>40+ программ в портфеле</span></div>
-          <div class="cred-row"><span class="cred-dot">▪</span><span>Экспертиза в профориентации</span></div>
+          <div class="cred-row"><span style="color:var(--neutral-300)">&#9642;</span><span>Кандидаты педагогических наук</span></div>
+          <div class="cred-row"><span style="color:var(--neutral-300)">&#9642;</span><span>40+ программ в портфеле</span></div>
         </div>
       </div>
-
-      <div class="team-card" data-export-card data-export-card-icon="IT" data-export-card-title="Технический лидер" data-export-card-role="CTO &amp; архитектор данных" data-export-card-desc="10+ лет в ML и data
-Образовательные платформы
-Архитектор Технического ДНК">
-        <div class="team-ava is-active" style="background:linear-gradient(135deg,#2D4A8A,#1B2D5E)">IT</div>
+      <div class="team-card">
+        <div class="team-ava" style="background:linear-gradient(135deg,#2D4A8A,#1B2D5E)">IT</div>
         <div class="team-name">Технический лидер</div>
         <div class="team-role">CTO &amp; архитектор данных</div>
-        <div class="team-status s-active">● Активен</div>
         <div class="team-creds">
-          <div class="cred-row"><span class="cred-dot">▪</span><span>10+ лет в ML и data</span></div>
-          <div class="cred-row"><span class="cred-dot">▪</span><span>Образовательные платформы</span></div>
-          <div class="cred-row"><span class="cred-dot">▪</span><span>Архитектор Технического ДНК</span></div>
+          <div class="cred-row"><span style="color:var(--neutral-300)">&#9642;</span><span>10+ лет в ML и data</span></div>
+          <div class="cred-row"><span style="color:var(--neutral-300)">&#9642;</span><span>Образовательные платформы</span></div>
         </div>
       </div>
-
-      <div class="team-card" data-export-card data-export-card-icon="BD" data-export-card-title="Развитие партнерств" data-export-card-role="Руководитель партнерств" data-export-card-desc="B2B в крупных компаниях
-Корпоративные партнерства
-Work-force development">
-        <div class="team-ava is-active" style="background:linear-gradient(135deg,#3A4F7A,#1B2D5E)">BD</div>
+      <div class="team-card">
+        <div class="team-ava" style="background:linear-gradient(135deg,#3A4F7A,#1B2D5E)">BD</div>
         <div class="team-name">Развитие партнерств</div>
         <div class="team-role">Руководитель партнерств</div>
-        <div class="team-status s-active">● Активен</div>
         <div class="team-creds">
-          <div class="cred-row"><span class="cred-dot">▪</span><span>B2B в крупных компаниях</span></div>
-          <div class="cred-row"><span class="cred-dot">▪</span><span>Корпоративные партнерства</span></div>
-          <div class="cred-row"><span class="cred-dot">▪</span><span>Work-force development</span></div>
+          <div class="cred-row"><span style="color:var(--neutral-300)">&#9642;</span><span>B2B в крупных компаниях</span></div>
+          <div class="cred-row"><span style="color:var(--neutral-300)">&#9642;</span><span>Корпоративные партнерства</span></div>
         </div>
       </div>
-
     </div>
   </div>
 </section>
 
 
-<!-- ══ 7. REGISTRATION ════════════════════════════════════════ -->
-<section class="register" id="register" data-export-section="cta" data-export-title="Станьте участником Платформы Технолидерства">
+<!-- ══ 8. РЕГИСТРАЦИЯ — 3 шага (слева) + quiz (справа) ════════ -->
+<section class="register" id="register">
   <div class="container">
     <div class="register-inner">
 
+      <!-- Left: 3 шага из docx (стр. 15–18) -->
       <div class="register-left">
-        <span class="sec-label">Заявка на участие</span>
-        <h2 class="sec-title">Станьте резидентом <span>Кулибинской карты</span></h2>
-        <p>Запускаем ограниченный круг. Ручной отбор, без массового набора. Ваша программа встраивается в единый образовательный контур и становится привилегией в Карте.</p>
-        <div class="register-perks" data-export-perks>
-          <div class="perk-row" data-export-perk="Раннее бронирование резидентства"><div class="perk-check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div><span>Раннее бронирование резидентства</span></div>
-          <div class="perk-row" data-export-perk="Преимущества первых резидентов"><div class="perk-check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div><span>Преимущества первых резидентов и закрепление ниши</span></div>
-          <div class="perk-row" data-export-perk="Канал к родителям, выбравшим инженерное будущее для ребенка"><div class="perk-check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div><span>Канал к родителям, выбравшим инженерное будущее для ребенка</span></div>
-          <div class="perk-row" data-export-perk="Данные Барометра по региону и направлению"><div class="perk-check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div><span>Данные Барометра по региону и направлению</span></div>
-          <div class="perk-row" data-export-perk="Прямые эфиры, слот спикера под вашу экспертизу"><div class="perk-check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div><span>Прямые эфиры, слот спикера под вашу экспертизу</span></div>
-        </div>
-        <div style="margin-top:24px;padding:18px 20px;background:var(--surface);border-left:3px solid var(--garnet);border-radius:4px;font-size:14px;line-height:1.6;color:var(--text-secondary);box-shadow:0 2px 8px rgba(27,45,94,0.06);">
-          <strong style="color:var(--text-primary);font-weight:800;display:block;margin-bottom:6px;font-size:14px;">Что от вас нужно</strong>
-          Одна программа или привилегия, открытая участникам Карты. Верификация экспертизы методическим советом. Согласие участвовать в 1 или 2 эфирах в квартал.
+        <span class="sec-label">Как стать резидентом</span>
+        <h2 class="sec-title" style="font-size:30px;">Три шага к <span style="color:var(--violet)">резидентству</span></h2>
+
+        <div class="steps-list">
+          <div class="step-item">
+            <div class="step-num">1</div>
+            <div class="step-content">
+              <div class="step-title">Определите свою роль в экосистеме</div>
+              <div class="step-desc">Согласно списку ролей: образовательное учреждение, онлайн-школа, корпоративная академия, профориентационное агентство, технический кружок, частный колледж или НКО.</div>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-num">2</div>
+            <div class="step-content">
+              <div class="step-title">Выберите целевую группу</div>
+              <div class="step-desc">Выберите целевую группу, с которой вы хотите взаимодействовать, согласно реестру целевых групп.</div>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-num">3</div>
+            <div class="step-content">
+              <div class="step-title">Подайте заявку</div>
+              <div class="step-desc">Заполните короткую форму. После рассмотрения заявки с вами свяжутся по указанным контактным данным для предоставления персонального предложения и подробной инструкции по началу сотрудничества.</div>
+            </div>
+          </div>
         </div>
       </div>
 
-      <!-- Quiz card -->
-      <div class="quiz-card" data-export-skip>
+      <!-- Right: Quiz form (из v6) -->
+      <div>
+      <div class="quiz-card">
         <div class="quiz-prog-bar">
-          <div class="quiz-prog-fill" id="qpf" style="width:16.6%"></div>
+          <div class="quiz-prog-fill" id="qpf" style="width:25%"></div>
         </div>
         <div class="quiz-top">
           <h3>Заявка на участие</h3>
-          <p>5 вопросов · 2 минуты · Персональный формат</p>
+          <p>3 вопроса · 1 минута · Персональный формат</p>
           <div class="step-dots-wrap">
             <div class="step-dots">
               <div class="sdot s-active" id="sd1"></div>
               <div class="sdot s-idle"   id="sd2"></div>
               <div class="sdot s-idle"   id="sd3"></div>
               <div class="sdot s-idle"   id="sd4"></div>
-              <div class="sdot s-idle"   id="sd5"></div>
-              <div class="sdot s-idle"   id="sd6"></div>
             </div>
-            <span class="step-counter" id="qsc">Шаг 1 из 6</span>
+            <span class="step-counter" id="qsc">Шаг 1 из 4</span>
           </div>
         </div>
         <div class="quiz-body">
 
-          <!-- Step 1: 4 точки входа — Корпорация / Образование / НКО / Профориентолог -->
+          <!-- Step 1 -->
           <div class="q-step on" id="qs1">
             <div class="q-title">Выберите направление участия</div>
             <div class="q-branch q-branch-4">
               <button class="q-branch-btn" onclick="pickBranch(this,'org')">
                 <div class="qb-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8l-7 5V8l-7 5V4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"/><path d="M17 18h1"/><path d="M12 18h1"/><path d="M7 18h1"/></svg></div>
                 <div class="qb-title">Корпорация</div>
-                <div class="qb-sub">Работодатель, индустриальный партнер, технологическая компания</div>
+                <div class="qb-sub">Работодатель, индустриальный партнер</div>
               </button>
               <button class="q-branch-btn" onclick="pickBranch(this,'org')">
                 <div class="qb-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="3" x2="21" y1="22" y2="22"/><line x1="6" x2="6" y1="18" y2="11"/><line x1="10" x2="10" y1="18" y2="11"/><line x1="14" x2="14" y1="18" y2="11"/><line x1="18" x2="18" y1="18" y2="11"/><polygon points="12 2 20 7 4 7"/></svg></div>
                 <div class="qb-title">Образовательная организация</div>
-                <div class="qb-sub">Школа, онлайн-школа, кружок, вуз, кванториум</div>
+                <div class="qb-sub">Школа, кружок, вуз, кванториум</div>
               </button>
               <button class="q-branch-btn" onclick="pickBranch(this,'org')">
                 <div class="qb-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
                 <div class="qb-title">НКО</div>
-                <div class="qb-sub">Некоммерческая организация, фонд, социальная инициатива</div>
+                <div class="qb-sub">Фонд, социальная инициатива</div>
               </button>
               <button class="q-branch-btn" onclick="pickBranch(this,'expert')">
                 <div class="qb-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76" fill="currentColor" opacity="0.15"/></svg></div>
                 <div class="qb-title">Профориентолог</div>
-                <div class="qb-sub">Карьерный консультант, автор методик, эксперт</div>
+                <div class="qb-sub">Консультант, автор методик</div>
               </button>
             </div>
             <div class="q-nav">
               <div></div>
-              <button class="btn btn-garnet btn-lg" onclick="goStep(2)">Далее →</button>
+              <button class="btn btn-garnet btn-lg" onclick="goStep(2)">Далее &rarr;</button>
             </div>
           </div>
 
-          <!-- Step 2A: Тип организации (для ветки "org") -->
+          <!-- Step 2 -->
           <div class="q-step" id="qs2">
             <div class="q-title" id="q2title">Уточните тип организации</div>
-            <!-- Варианты для организаций -->
             <div class="q-opts" id="q2opts-org">
-              <button class="q-opt" onclick="pick(this)"><span class="q-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><line x1="3" x2="21" y1="22" y2="22"/><line x1="6" x2="6" y1="18" y2="11"/><line x1="10" x2="10" y1="18" y2="11"/><line x1="14" x2="14" y1="18" y2="11"/><line x1="18" x2="18" y1="18" y2="11"/><polygon points="12 2 20 7 4 7"/></svg> Частная школа / колледж</button>
-              <button class="q-opt" onclick="pick(this)"><span class="q-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><rect width="20" height="14" x="2" y="3" rx="2"/><circle cx="12" cy="10" r="3"/><path d="m12 13-1.5 5"/><path d="m12 13 1.5 5"/></svg> Онлайн-школа / EdTech-платформа</button>
-              <button class="q-opt" onclick="pick(this)"><span class="q-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z"/><path d="M22 10v6"/><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"/></svg> Технический кружок / кванториум / секция</button>
-              <button class="q-opt" onclick="pick(this)"><span class="q-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><path d="M2 20a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8l-7 5V8l-7 5V4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"/><path d="M17 18h1"/><path d="M12 18h1"/><path d="M7 18h1"/></svg> Корпорация / работодатель</button>
-              <button class="q-opt" onclick="pick(this)"><span class="q-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><path d="M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/><rect width="20" height="14" x="2" y="6" rx="2"/></svg> Консалтинговое агентство</button>
-              <button class="q-opt" onclick="pick(this)"><span class="q-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><line x1="3" x2="21" y1="22" y2="22"/><line x1="6" x2="6" y1="18" y2="11"/><line x1="10" x2="10" y1="18" y2="11"/><line x1="14" x2="14" y1="18" y2="11"/><line x1="18" x2="18" y1="18" y2="11"/><polygon points="12 2 20 7 4 7"/></svg> Государственная структура / институт развития</button>
-              <button class="q-opt" onclick="pick(this)"><span class="q-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z"/><path d="M22 10v6"/><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"/></svg> Университет / вуз</button>
+              <button class="q-opt" onclick="pick(this)"><span class="q-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span> Частная школа / колледж</button>
+              <button class="q-opt" onclick="pick(this)"><span class="q-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span> Онлайн-школа / EdTech-платформа</button>
+              <button class="q-opt" onclick="pick(this)"><span class="q-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span> Технический кружок / кванториум</button>
+              <button class="q-opt" onclick="pick(this)"><span class="q-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span> Корпорация / работодатель</button>
+              <button class="q-opt" onclick="pick(this)"><span class="q-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span> Университет / вуз</button>
             </div>
-            <!-- Варианты для профориентологов (скрыты по умолчанию) -->
             <div class="q-opts" id="q2opts-expert" style="display:none">
-              <button class="q-opt" onclick="pick(this)"><span class="q-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76" fill="currentColor" opacity="0.15"/></svg> Профориентолог (независимый)</button>
-              <button class="q-opt" onclick="pick(this)"><span class="q-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><path d="M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/><rect width="20" height="14" x="2" y="6" rx="2"/></svg> Карьерный консультант / коуч</button>
-              <button class="q-opt" onclick="pick(this)"><span class="q-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><path d="M12 7v14"/><path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></svg> Автор методик и программ</button>
-              <button class="q-opt" onclick="pick(this)"><span class="q-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg> Педагог-профориентолог в школе</button>
-              <button class="q-opt" onclick="pick(this)"><span class="q-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z"/><path d="M22 10v6"/><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"/></svg> Методист / научный сотрудник</button>
+              <button class="q-opt" onclick="pick(this)"><span class="q-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span> Профориентолог (независимый)</button>
+              <button class="q-opt" onclick="pick(this)"><span class="q-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span> Карьерный консультант / коуч</button>
+              <button class="q-opt" onclick="pick(this)"><span class="q-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span> Автор методик и программ</button>
+              <button class="q-opt" onclick="pick(this)"><span class="q-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span> Педагог-профориентолог в школе</button>
             </div>
             <div class="q-nav">
-              <button class="q-back" onclick="goStep(1)">← Назад</button>
-              <button class="btn btn-garnet btn-lg" onclick="goStep(3)">Далее →</button>
+              <button class="q-back" onclick="goStep(1)">&larr; Назад</button>
+              <button class="btn btn-garnet btn-lg" onclick="goStep(3)">Далее &rarr;</button>
             </div>
           </div>
 
-          <!-- Step 3: Чего ожидаете -->
+          <!-- Step 3: Возможности и формат -->
           <div class="q-step" id="qs3">
-            <div class="q-title">Какие возможности платформы вас интересуют?</div>
+            <div class="q-title">Что вас интересует?</div>
             <div class="q-opts" id="q3opts-org">
-              <button class="q-opt" onclick="pick(this)"><span class="q-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0" opacity="0.7"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> Резидентство Кулибинской карты — интеграция в экосистему привилегий</button>
-              <button class="q-opt" onclick="pick(this)"><span class="q-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><path d="M3 3v16a2 2 0 0 0 2 2h16"/><path d="M7 11l4-4 4 4 4-4"/></svg> Данные Барометра и Индикатора карьерных ожиданий</button>
-              <button class="q-opt" onclick="pick(this)"><span class="q-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><rect width="20" height="14" x="2" y="3" rx="2"/><circle cx="12" cy="10" r="3"/><path d="m12 13-1.5 5"/><path d="m12 13 1.5 5"/></svg> Эфиры — выступления экспертов от вашей организации</button>
-              <button class="q-opt" onclick="pick(this)"><span class="q-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><path d="M12 7v14"/><path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></svg> Размещение контента и программ на платформе</button>
-              <button class="q-opt" onclick="pick(this)"><span class="q-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg> Статус Официального Партнера Платформы</button>
+              <button class="q-opt" onclick="pick(this)"><span class="q-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span> Резидентство Кулибинской карты</button>
+              <button class="q-opt" onclick="pick(this)"><span class="q-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span> Эфиры — выступления экспертов</button>
+              <button class="q-opt" onclick="pick(this)"><span class="q-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span> Размещение контента и программ</button>
+              <button class="q-opt" onclick="pick(this)"><span class="q-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span> Статус Официального Партнера</button>
+              <button class="q-opt" onclick="pick(this)"><span class="q-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span> Раннее бронирование резидентства</button>
             </div>
             <div class="q-opts" id="q3opts-expert" style="display:none">
-              <button class="q-opt" onclick="pick(this)"><span class="q-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg> Верификация и экспертный статус на платформе</button>
-              <button class="q-opt" onclick="pick(this)"><span class="q-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><path d="M12 7v14"/><path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></svg> Публикация авторского контента и методик</button>
-              <button class="q-opt" onclick="pick(this)"><span class="q-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><rect width="20" height="14" x="2" y="3" rx="2"/><circle cx="12" cy="10" r="3"/><path d="m12 13-1.5 5"/><path d="m12 13 1.5 5"/></svg> Участие в прямых эфирах как спикер</button>
-              <button class="q-opt" onclick="pick(this)"><span class="q-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><path d="M3 3v16a2 2 0 0 0 2 2h16"/><path d="M7 11l4-4 4 4 4-4"/></svg> Доступ к данным исследований</button>
-              <button class="q-opt" onclick="pick(this)"><span class="q-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg> Профессиональное сообщество и нетворкинг</button>
+              <button class="q-opt" onclick="pick(this)"><span class="q-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span> Верификация и экспертный статус</button>
+              <button class="q-opt" onclick="pick(this)"><span class="q-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span> Публикация авторского контента</button>
+              <button class="q-opt" onclick="pick(this)"><span class="q-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span> Участие в прямых эфирах</button>
+              <button class="q-opt" onclick="pick(this)"><span class="q-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span> Профессиональное сообщество</button>
             </div>
             <div class="q-nav">
-              <button class="q-back" onclick="goStep(2)">← Назад</button>
-              <button class="btn btn-garnet btn-lg" onclick="goStep(4)">Далее →</button>
+              <button class="q-back" onclick="goStep(2)">&larr; Назад</button>
+              <button class="btn btn-garnet btn-lg" onclick="goStep(4)">Далее &rarr;</button>
             </div>
           </div>
 
-          <!-- Step 4: Регион -->
+          <!-- Step 4 — form -->
           <div class="q-step" id="qs4">
-            <div class="q-title">Ваш регион?</div>
-            <div class="q-opts">
-              <button class="q-opt" onclick="pick(this)"><span class="q-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg> Москва и Московская область</button>
-              <button class="q-opt" onclick="pick(this)"><span class="q-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg> Санкт-Петербург и Ленинградская область</button>
-              <button class="q-opt" onclick="pick(this)"><span class="q-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg> Другой регион России</button>
-            </div>
-            <div class="q-nav">
-              <button class="q-back" onclick="goStep(3)">← Назад</button>
-              <button class="btn btn-garnet btn-lg" onclick="goStep(5)">Далее →</button>
-            </div>
-          </div>
-
-          <!-- Step 5: Масштаб -->
-          <div class="q-step" id="qs5">
-            <div class="q-title" id="q5title">Какой формат участия вас интересует?</div>
-            <div class="q-opts" id="q5opts-org">
-              <button class="q-opt" onclick="pick(this)"><span class="q-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"/></svg> Раннее бронирование резидентства</button>
-              <button class="q-opt" onclick="pick(this)"><span class="q-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0" opacity="0.7"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> Резидентство Кулибинской карты</button>
-              <button class="q-opt" onclick="pick(this)"><span class="q-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><path d="M3 3v16a2 2 0 0 0 2 2h16"/><path d="M7 11l4-4 4 4 4-4"/></svg> Корпоративная подписка с расширенной аналитикой</button>
-            </div>
-            <div class="q-opts" id="q5opts-expert" style="display:none">
-              <button class="q-opt" onclick="pick(this)"><span class="q-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"/></svg> Начать с базового размещения</button>
-              <button class="q-opt" onclick="pick(this)"><span class="q-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg> Пройти верификацию методическим советом</button>
-              <button class="q-opt" onclick="pick(this)"><span class="q-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><rect width="20" height="14" x="2" y="3" rx="2"/><circle cx="12" cy="10" r="3"/><path d="m12 13-1.5 5"/><path d="m12 13 1.5 5"/></svg> Стать спикером ближайшего эфира</button>
-            </div>
-            <div class="q-nav">
-              <button class="q-back" onclick="goStep(4)">← Назад</button>
-              <button class="btn btn-garnet btn-lg" onclick="goStep(6)">Далее →</button>
-            </div>
-          </div>
-
-          <!-- Step 6 — form -->
-          <div class="q-step" id="qs6">
             <div class="q-title">Отлично! Оставьте контакты</div>
             <div class="q-form">
               <div class="q-row">
@@ -1823,7 +1227,7 @@ Work-force development">
               <div class="q-group" id="qOrgField"><label class="q-label">Организация</label><input type="text" class="q-input" placeholder="Название организации"></div>
             </div>
             <div class="q-nav">
-              <button class="q-back" onclick="goStep(5)">← Назад</button>
+              <button class="q-back" onclick="goStep(3)">&larr; Назад</button>
               <button class="btn btn-garnet btn-lg" onclick="submitForm()">Отправить заявку <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></button>
             </div>
             <label class="q-consent-check">
@@ -1834,13 +1238,14 @@ Work-force development">
 
           <!-- Success -->
           <div class="quiz-ok" id="qok">
-            <div class="quiz-ok-emoji"><svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="var(--garnet)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg></div>
-            <h3>Добро пожаловать в Технолидерство!</h3>
-            <p>Ваша заявка принята. Мы свяжемся с вами в течение 24 часов для обсуждения формата участия. Проверьте почту — мы отправили подтверждение и материалы о Платформе.</p>
-            <a href="#directions" class="btn btn-garnet btn-lg">Посмотреть направления Платформы →</a>
+            <div style="font-size:52px;margin-bottom:16px;"><svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="var(--garnet)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg></div>
+            <h3>Заявка принята!</h3>
+            <p>Мы свяжемся с вами для персонального предложения и инструкции по началу сотрудничества.</p>
+            <a href="#kulibin" class="btn btn-garnet btn-lg">Подробнее о Платформе &rarr;</a>
           </div>
 
         </div>
+      </div>
       </div>
 
     </div>
@@ -1848,7 +1253,7 @@ Work-force development">
 </section>
 
 
-<!-- ══ FOOTER ═════════════════════════════════════════════════ -->
+<!-- ══ FOOTER ═══════════════════════════════════════════════════ -->
 <footer>
   <div class="container">
     <div class="footer-inner">
@@ -1864,10 +1269,10 @@ Work-force development">
       <div>
         <div class="footer-nav-title">Платформа</div>
         <div class="footer-nav">
-          <a href="#ecosystem">Зачем</a>
-          <a href="#growth">Как работает</a>
-          <a href="#how-resident">Резидентство</a>
-          <a href="#team">Команда</a>
+          <a href="#kulibin">Кулибинская карта</a>
+          <a href="#selectivity">Селективность</a>
+          <a href="#benefit">Выгоды</a>
+          <a href="#council">Экспертный совет</a>
         </div>
       </div>
       <div>
@@ -1886,22 +1291,14 @@ Work-force development">
       </div>
     </div>
     <div class="footer-bottom">
-      <span>© 2026 ООО «Технолидеры» · ИНН: [в процессе регистрации] · ОГРН: [в процессе регистрации] · 12+</span>
+      <span>&copy; 2026 ООО &laquo;Технолидеры&raquo; &middot; ИНН: [в процессе регистрации] &middot; ОГРН: [в процессе регистрации] &middot; 12+</span>
       <span>Данные хранятся на серверах в России (152-ФЗ)</span>
     </div>
   </div>
 </footer>
 
 
-
-
 <script>
-/* ── Barometer ── */
-function voteBaro(el){
-  document.querySelectorAll('.baro-row').forEach(r=>r.classList.remove('top-pick'));
-  el.classList.add('top-pick');
-}
-
 /* ── Benefits tabs ── */
 function switchTab(btn, id){
   document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('on'));
@@ -1909,87 +1306,85 @@ function switchTab(btn, id){
   btn.classList.add('on');
   document.getElementById('tp-'+id).classList.add('on');
 }
+function switchTabByName(id){
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('on'));
+  document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('on'));
+  var panel = document.getElementById('tp-'+id);
+  if(panel) panel.classList.add('on');
+  document.querySelectorAll('.tab-btn').forEach(function(b){
+    if(b.getAttribute('onclick') && b.getAttribute('onclick').indexOf(id) !== -1) b.classList.add('on');
+  });
+}
 
 /* ── Quiz ── */
 let cur = 1;
-const TOTAL_STEPS = 6;
-let quizBranch = 'org'; // 'org' or 'expert'
+const TOTAL_STEPS = 4;
+let quizBranch = 'org';
 
 function updateDots(step){
-  const fill = document.getElementById('qpf');
+  var fill = document.getElementById('qpf');
   fill.style.width = (step / TOTAL_STEPS * 100) + '%';
-  for(let i = 1; i <= TOTAL_STEPS; i++){
-    const d = document.getElementById('sd' + i);
+  for(var i = 1; i <= TOTAL_STEPS; i++){
+    var d = document.getElementById('sd' + i);
     if(d) d.className = 'sdot ' + (i < step ? 's-done' : i === step ? 's-active' : 's-idle');
   }
-  const counter = document.getElementById('qsc');
+  var counter = document.getElementById('qsc');
   if(counter) counter.textContent = 'Шаг ' + step + ' из ' + TOTAL_STEPS;
 }
 
 function pickBranch(btn, branch){
   quizBranch = branch;
-  document.querySelectorAll('.q-branch-btn').forEach(b => b.classList.remove('picked'));
+  document.querySelectorAll('.q-branch-btn').forEach(function(b){ b.classList.remove('picked'); });
   btn.classList.add('picked');
-  // Show/hide branch-specific options
   var orgOpts2 = document.getElementById('q2opts-org');
   var expOpts2 = document.getElementById('q2opts-expert');
   var orgOpts3 = document.getElementById('q3opts-org');
   var expOpts3 = document.getElementById('q3opts-expert');
-  var orgOpts5 = document.getElementById('q5opts-org');
-  var expOpts5 = document.getElementById('q5opts-expert');
-  if(branch === 'org'){
-    orgOpts2.style.display = ''; expOpts2.style.display = 'none';
-    orgOpts3.style.display = ''; expOpts3.style.display = 'none';
-    orgOpts5.style.display = ''; expOpts5.style.display = 'none';
-    document.getElementById('q2title').textContent = 'Уточните тип организации';
-    document.getElementById('q5title').textContent = 'Какой формат участия вас интересует?';
-    document.getElementById('qOrgField').style.display = '';
-  } else {
-    orgOpts2.style.display = 'none'; expOpts2.style.display = '';
-    orgOpts3.style.display = 'none'; expOpts3.style.display = '';
-    orgOpts5.style.display = 'none'; expOpts5.style.display = '';
+  var orgField = document.getElementById('qOrgField');
+  if(branch === 'expert'){
+    if(orgOpts2) orgOpts2.style.display = 'none';
+    if(expOpts2) expOpts2.style.display = 'flex';
+    if(orgOpts3) orgOpts3.style.display = 'none';
+    if(expOpts3) expOpts3.style.display = 'flex';
+    if(orgField) orgField.style.display = 'none';
     document.getElementById('q2title').textContent = 'Уточните вашу специализацию';
-    document.getElementById('q5title').textContent = 'Как хотите начать?';
-    document.getElementById('qOrgField').style.display = 'none';
+  } else {
+    if(orgOpts2) orgOpts2.style.display = 'flex';
+    if(expOpts2) expOpts2.style.display = 'none';
+    if(orgOpts3) orgOpts3.style.display = 'flex';
+    if(expOpts3) expOpts3.style.display = 'none';
+    if(orgField) orgField.style.display = 'flex';
+    document.getElementById('q2title').textContent = 'Уточните тип организации';
   }
 }
 
-function goStep(step){
-  const current = document.getElementById('qs' + cur);
-  current.style.cssText = 'opacity:0;transform:translateX(-20px);transition:opacity .2s ease,transform .2s ease';
-  setTimeout(function(){
-    current.classList.remove('on');
-    current.style.cssText = '';
-    const next = document.getElementById('qs' + step);
-    next.classList.add('on');
-    next.style.cssText = 'opacity:0;transform:translateX(20px)';
-    requestAnimationFrame(function(){
-      next.style.cssText = 'opacity:1;transform:translateX(0);transition:opacity .25s ease,transform .25s ease';
-    });
-    cur = step;
-    updateDots(step);
-  }, 200);
+function goStep(n){
+  document.querySelectorAll('.q-step').forEach(function(s){ s.classList.remove('on'); });
+  var target = document.getElementById('qs' + n);
+  if(target) target.classList.add('on');
+  cur = n;
+  updateDots(n);
 }
 
 function pick(btn){
-  btn.closest('.q-opts').querySelectorAll('.q-opt').forEach(o => o.classList.remove('picked'));
+  var siblings = btn.parentElement.querySelectorAll('.q-opt');
+  siblings.forEach(function(b){ b.classList.remove('picked'); });
   btn.classList.add('picked');
 }
 
 function submitForm(){
-  document.getElementById('qs6').classList.remove('on');
+  document.querySelectorAll('.q-step').forEach(function(s){ s.classList.remove('on'); });
   document.getElementById('qok').style.display = 'block';
-  document.getElementById('qpf').style.width = '100%';
-  for(let i = 1; i <= TOTAL_STEPS; i++){
-    const d = document.getElementById('sd' + i);
+  var fill = document.getElementById('qpf');
+  fill.style.width = '100%';
+  for(var i = 1; i <= TOTAL_STEPS; i++){
+    var d = document.getElementById('sd' + i);
     if(d) d.className = 'sdot s-done';
   }
+  var counter = document.getElementById('qsc');
+  if(counter) counter.textContent = 'Готово!';
 }
-
 </script>
-
-
-<!-- ══ EXPORT (PDF + PPTX) ═════════════════════════════════════ -->
 
 </body>
 </html>

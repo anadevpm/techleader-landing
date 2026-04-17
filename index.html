@@ -7,10 +7,10 @@
 <title>Платформа Технолидерства · высокоселективная экосистема для резидентов</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700;800;900&family=Nunito+Sans:ital,opsz,wght@0,6..12,400;0,6..12,500;0,6..12,600;0,6..12,700;0,6..12,800;1,6..12,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
 <style>
-/* ══ DESIGN TOKENS ══════════════════════════════════════════════ */
+/* == DESIGN TOKENS v15 (aligned with techleader-tokens.md v4.0) =========== */
 :root {
   --garnet: #1B2D5E;
   --garnet-light: #2D4A8A;
@@ -33,22 +33,25 @@
   --teal-light: #E4F5F2;
   --violet-50: #F2F3FF;
   --violet-100: #E5E7FF;
+  --violet-200: #C5CAFF;
   --dark: #0E1A33;
-  --shadow-sm: 0 1px 3px rgba(14,26,51,0.06);
-  --shadow-md: 0 4px 16px rgba(14,26,51,0.09);
-  --shadow-lg: 0 8px 40px rgba(14,26,51,0.11);
-  --shadow-xl: 0 20px 72px rgba(14,26,51,0.13);
-  --radius-sm: 10px;
-  --radius-md: 16px;
-  --radius-lg: 18px;
-  --radius-xl: 20px;
+  /* v12: violet-tinted shadows per tokens */
+  --shadow-sm: 0 1px 3px rgba(123,104,238,0.06);
+  --shadow-md: 0 4px 16px rgba(123,104,238,0.10), 0 2px 4px rgba(123,104,238,0.06);
+  --shadow-lg: 0 8px 32px rgba(123,104,238,0.12), 0 4px 8px rgba(123,104,238,0.07);
+  --shadow-xl: 0 16px 48px rgba(123,104,238,0.14), 0 6px 16px rgba(123,104,238,0.08);
+  /* v12: aligned radii */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
   --radius-full: 100px;
 }
 
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 body {
-  font-family: 'Nunito Sans', system-ui, sans-serif;
+  font-family: 'Onest', system-ui, sans-serif;
   background: var(--off-white);
   color: var(--text-primary);
   line-height: 1.6;
@@ -61,7 +64,7 @@ img { max-width: 100%; display: block; }
 .container { max-width: 1160px; margin: 0 auto; padding: 0 24px; }
 @media(min-width:768px){ .container { padding: 0 40px; } }
 
-/* ── ATOMS ─────────────────────────────── */
+/* -- ATOMS ----------------------------------------- */
 .badge {
   display: inline-flex; align-items: center; gap: 5px;
   font-size: 11px; font-weight: 700; letter-spacing: 0.6px;
@@ -87,9 +90,9 @@ img { max-width: 100%; display: block; }
   transform: translateY(-2px); filter: brightness(1.05);
   box-shadow: 0 6px 20px rgba(123,104,238,0.4);
 }
-.btn-outline { background: transparent; color: var(--violet); border: 1.5px solid #C5CAFF; }
-.btn-outline:hover { background: #E5E7FF; border-color: var(--violet); }
-.btn-white { background: #fff; color: var(--violet); }
+.btn-outline { background: transparent; color: var(--violet); border: 1.5px solid var(--violet-200); }
+.btn-outline:hover { background: var(--violet-100); border-color: var(--violet); }
+.btn-white { background: #fff; color: var(--violet); font-weight: 700; }
 .btn-white:hover { background: var(--violet-50); transform: translateY(-1px); }
 .btn-sm  { padding: 7px 16px; font-size: 12px; }
 .btn-lg  { padding: 16px 36px; font-size: 16px; }
@@ -101,8 +104,12 @@ img { max-width: 100%; display: block; }
 }
 .sec-title { font-size: 32px; font-weight: 900; margin-bottom: 12px; letter-spacing: -0.5px; }
 .sec-sub { font-size: 16px; color: var(--text-secondary); line-height: 1.6; max-width: 580px; }
+.sec-subtitle {
+  font-family: 'Onest', sans-serif;
+  font-size: 20px; font-weight: 500; color: var(--text-muted);
+  margin-top: -4px; margin-bottom: 20px; letter-spacing: -0.2px;
+}
 
-/* Section CTA variants */
 .sec-cta {
   display: inline-flex; align-items: center; gap: 6px;
   font-size: 14px; font-weight: 700; color: var(--violet);
@@ -114,14 +121,96 @@ img { max-width: 100%; display: block; }
 
 @keyframes fadeUp { from{opacity:0;transform:translateY(28px)} to{opacity:1;transform:translateY(0)} }
 
-/* ── HEADER ─────────────────────────────── */
+/* -- v13: STICKY TOP BAR (early booking) ----------- */
+.top-bar {
+  background: linear-gradient(135deg, #7B68EE 0%, #4FABF5 100%);
+  color: #fff;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 24px;
+  position: sticky;
+  top: 0;
+  z-index: 110;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+.top-bar.hidden {
+  transform: translateY(-100%);
+  opacity: 0;
+  pointer-events: none;
+}
+.top-bar-inner {
+  max-width: 1160px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+.top-bar-text {
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.4;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.top-bar-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+.top-bar-link {
+  color: rgba(255,255,255,0.95); font-size: 13px; font-weight: 700;
+  text-decoration: underline; text-underline-offset: 3px;
+  text-decoration-color: rgba(255,255,255,0.4);
+  transition: text-decoration-color 0.15s;
+  white-space: nowrap;
+}
+.top-bar-link:hover { text-decoration-color: rgba(255,255,255,0.9); }
+.top-bar .btn-white-unused {
+  padding: 6px 18px;
+  font-size: 12px;
+  border-radius: var(--radius-full);
+  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+}
+.top-bar-close {
+  background: none;
+  border: none;
+  color: rgba(255,255,255,0.7);
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: color 0.15s, background 0.15s;
+  flex-shrink: 0;
+}
+.top-bar-close:hover {
+  color: #fff;
+  background: rgba(255,255,255,0.15);
+}
+@media(max-width:640px){
+  .top-bar { height: auto; padding: 8px 16px; }
+  .top-bar-inner { flex-wrap: wrap; justify-content: center; gap: 8px; }
+  .top-bar-text { white-space: normal; text-align: center; font-size: 12px; }
+}
+
+/* -- HEADER ---------------------------------------- */
 header {
   background: rgba(255,255,255,0.96);
   backdrop-filter: blur(16px);
   border-bottom: 1px solid var(--neutral-200);
   height: 68px; padding: 0 40px;
   display: flex; align-items: center; justify-content: space-between;
-  position: sticky; top: 0; z-index: 100;
+  position: sticky; top: 44px; z-index: 100;
+  transition: top 0.3s ease;
+}
+header.top-bar-closed {
+  top: 0;
 }
 .logo {
   font-family: 'Onest', sans-serif; font-weight: 900; font-size: 21px;
@@ -136,22 +225,27 @@ header {
 .nav a:hover { background: var(--neutral-100); color: var(--text-primary); }
 @media(max-width:900px){ .nav { display: none; } }
 
-/* ── HERO ────────────────────────────────── */
+/* -- HERO v15 -------------------------------------- */
 .hero {
-  background: var(--off-white);
+  background: linear-gradient(170deg, #F5F7FC 0%, #EEF0FA 60%, var(--garnet-50) 100%);
   padding: 88px 0 72px;
   overflow: hidden; position: relative;
+  border-bottom: 1px solid var(--neutral-200);
 }
 .hero-bg-orb {
   position: absolute; border-radius: 50%; pointer-events: none; filter: blur(80px);
 }
 .hero-bg-orb-1 {
   width: 600px; height: 600px; top: -200px; right: -100px;
-  background: radial-gradient(circle, rgba(27,45,94,0.09) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(123,104,238,0.07) 0%, transparent 70%);
 }
 .hero-bg-orb-2 {
   width: 400px; height: 400px; bottom: -100px; left: 0;
   background: radial-gradient(circle, rgba(27,45,94,0.05) 0%, transparent 70%);
+}
+.hero-bg-orb-3 {
+  width: 300px; height: 300px; top: 40%; left: 30%;
+  background: radial-gradient(circle, rgba(79,171,245,0.04) 0%, transparent 70%);
 }
 .hero-inner {
   display: grid; grid-template-columns: 1fr;
@@ -160,150 +254,370 @@ header {
 @media(min-width:1000px){ .hero-inner { grid-template-columns: 55% 45%; gap: 48px; } }
 
 .hero-content { animation: fadeUp 0.65s ease both; }
+
+/* v15: kicker with status gradient line */
 .hero-eyebrow {
-  display: flex; align-items: center; gap: 12px; margin-bottom: 22px; flex-wrap: wrap;
+  display: flex; align-items: center; gap: 12px; margin-bottom: 24px; flex-wrap: wrap;
+  position: relative;
+}
+.hero-eyebrow::after {
+  content: '';
+  display: block;
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 72px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--violet), var(--sky));
+  border-radius: 1px;
 }
 .hero-eyebrow-divider { width: 1px; height: 16px; background: var(--neutral-300); }
 .hero-eyebrow-label {
   font-size: 11px; font-weight: 700; letter-spacing: 0.6px; text-transform: uppercase;
   color: var(--text-muted);
 }
+
+/* v15: H1 with clearer hierarchy */
 .hero h1 {
-  font-size: 56px; font-weight: 900; letter-spacing: -1.8px;
-  margin-bottom: 22px; line-height: 1.02;
+  font-size: 56px; font-weight: 900; letter-spacing: -1.5px;
+  margin-bottom: 24px; line-height: 1.02;
 }
 .hero h1 .accent { color: var(--garnet); }
 .hero h1 .h1-sub {
-  display: block; margin-top: 14px;
-  font-size: 24px; font-weight: 600; letter-spacing: -0.3px;
-  line-height: 1.3; color: var(--text-secondary);
+  display: block; margin-top: 16px;
+  font-size: 22px; font-weight: 600; letter-spacing: -0.3px;
+  line-height: 1.4; color: var(--text-secondary);
 }
 .hero h1 .h1-sub strong { color: var(--text-primary); font-weight: 800; }
 .hero h1 .h1-sub .accent-platform {
-  color: var(--violet); display: inline;
+  color: var(--violet); font-weight: 800;
+  display: block;
+  margin-top: 4px;
+  font-size: 20px;
+  letter-spacing: 0.3px;
 }
 @media(max-width:768px){
   .hero h1 { font-size: 38px; letter-spacing: -1px; }
   .hero h1 .h1-sub { font-size: 18px; margin-top: 10px; }
+  .hero h1 .h1-sub .accent-platform { font-size: 16px; }
 }
 @media(max-width:640px){
   .hero h1 { font-size: 32px; letter-spacing: -0.5px; }
   .hero h1 .h1-sub { font-size: 16px; }
+  .hero h1 .h1-sub .accent-platform { font-size: 14px; }
 }
-.hero-desc {
-  font-size: 18px; color: var(--text-secondary); max-width: 520px;
-  line-height: 1.65; margin-bottom: 36px;
+
+/* v15: Problem/Solution visual contrast */
+.hero-ps-group {
+  display: flex; flex-direction: column; gap: 16px;
+  margin-bottom: 28px;
 }
-/* hero v10: B2B qualifier, value prop, urgency, trust */
+.hero-ps-block {
+  padding: 14px 18px;
+  border-radius: var(--radius-md);
+}
+.hero-ps-block--problem {
+  border-left: 3px solid var(--neutral-300);
+  background: rgba(238,242,249,0.5);
+}
+.hero-ps-block--problem .hero-ps-label {
+  color: var(--text-muted);
+}
+.hero-ps-block--problem .hero-ps-text {
+  color: var(--text-muted);
+}
+.hero-ps-block--solution {
+  border-left: 3px solid var(--violet);
+  background: var(--violet-50);
+  box-shadow: var(--shadow-sm);
+}
+.hero-ps-block--solution .hero-ps-label {
+  color: var(--violet);
+}
+.hero-ps-block--solution .hero-ps-text {
+  color: var(--text-secondary);
+}
+.hero-ps-label {
+  display: block;
+  font-size: 10px; font-weight: 700;
+  letter-spacing: 1.2px; text-transform: uppercase;
+  margin-bottom: 6px;
+}
+.hero-ps-text {
+  font-size: 14px;
+  line-height: 1.6; margin: 0;
+}
+.hero-ps-text strong { color: var(--text-primary); font-weight: 700; }
+
+/* v15: Qualifier pills with icons */
 .hero-qualifier {
   display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 28px;
 }
 .hero-qualifier-pill {
-  font-size: 12px; font-weight: 700; padding: 7px 16px;
+  font-size: 12px; font-weight: 700; padding: 8px 16px;
   background: var(--surface); border: 1.5px solid var(--neutral-200);
   border-radius: var(--radius-full); color: var(--text-primary);
-  transition: all 0.15s; cursor: pointer;
+  transition: all 0.2s; cursor: pointer;
+  display: inline-flex; align-items: center; gap: 6px;
 }
-.hero-qualifier-pill:hover { border-color: var(--violet); background: var(--violet-50); color: var(--violet); }
-.hero-value-prop {
-  font-size: 17px; color: var(--text-secondary); max-width: 520px;
-  line-height: 1.65; margin-bottom: 24px;
+.hero-qualifier-pill svg {
+  width: 14px; height: 14px; flex-shrink: 0;
+  color: var(--violet); opacity: 0.7;
+  transition: opacity 0.15s;
 }
-.hero-value-prop strong { color: var(--text-primary); font-weight: 800; }
+.hero-qualifier-pill:hover {
+  border-color: var(--violet);
+  background: var(--violet-50);
+  color: var(--violet);
+  box-shadow: var(--shadow-sm);
+}
+.hero-qualifier-pill:hover svg {
+  opacity: 1;
+}
+@media(max-width:640px){
+  .hero-qualifier {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+  .hero-qualifier-pill {
+    justify-content: center;
+    text-align: center;
+    padding: 10px 12px;
+    font-size: 11px;
+  }
+}
 
-/* problem / solution paired blocks — border-left style */
-.hero-ps-group {
-  display: flex; flex-direction: column; gap: 16px;
-  margin-bottom: 24px;
-}
-.hero-ps-block {
-  padding: 0 0 0 16px;
-  border-radius: 0;
-  background: none;
-}
-.hero-ps-block--problem {
-  border-left: 2px solid var(--neutral-300);
-}
-.hero-ps-block--solution {
-  border-left: 2px solid var(--violet);
-}
-.hero-ps-label {
-  display: block;
-  font-size: 11px; font-weight: 700;
-  letter-spacing: 1px; text-transform: uppercase;
-  margin-bottom: 4px;
-}
-.hero-ps-block--problem .hero-ps-label { color: var(--text-muted); }
-.hero-ps-block--solution .hero-ps-label { color: var(--violet); }
-.hero-ps-text {
-  font-size: 14px; color: var(--text-secondary);
-  line-height: 1.6; margin: 0;
-}
-.hero-ps-text strong { color: var(--text-primary); font-weight: 700; }
 .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 28px; }
 
-/* v11: fact badges — compact list (no border-left, icons suffice) */
-.hero-facts {
-  display: flex; flex-direction: column; gap: 6px;
-  margin-top: 28px;
-  padding: 0;
-  background: none;
-  border: none;
-  border-radius: 0;
-  max-width: 420px;
-}
-.hero-fact {
-  display: flex; align-items: center; gap: 10px;
-  padding: 0;
-}
-.hero-fact-icon {
-  width: 20px; height: 20px; flex-shrink: 0;
-  display: flex; align-items: center; justify-content: center;
-  color: var(--violet);
-}
-.hero-fact-icon svg { width: 16px; height: 16px; }
-.hero-fact-text {
-  font-size: 13px; font-weight: 600; color: var(--text-secondary);
-  line-height: 1.5;
-}
-
-/* v11: early booking — pill style (no border-left) */
-.hero-early-booking {
-  display: inline-flex; align-items: center; gap: 8px;
-  font-size: 13px; font-weight: 700; color: var(--garnet);
-  letter-spacing: 0.3px;
-  padding: 10px 18px;
-  background: var(--garnet-50);
-  border: 1.5px solid var(--garnet-100);
-  border-radius: var(--radius-full);
-  margin-top: 16px;
-  line-height: 1.4;
-}
-.hero-early-booking svg { flex-shrink: 0; color: var(--garnet); }
-
+/* -- v15: Right column -- UNIFIED card (image + trust facts) -- */
 .hero-visual {
   animation: fadeUp 0.65s 0.15s ease both;
-  display: flex; flex-direction: column; gap: 16px; align-self: start;
+  display: flex; flex-direction: column; gap: 0; align-self: start;
 }
 @media(min-width:1000px){
-  .hero-visual { position: sticky; top: 96px; margin-top: 8px; }
-}
-.hero-map-img {
-  width: 100%; height: auto; display: block;
-  border-radius: var(--radius-xl);
-  box-shadow: var(--shadow-xl);
-  background: var(--surface);
-  border: 1px solid var(--neutral-200);
-  margin-bottom: 12px;
+  .hero-visual { position: sticky; top: 140px; margin-top: 8px; }
 }
 
-/* ── BLOCK: КУЛИБИНСКАЯ КАРТА ────────────── */
+/* v15: unified card wrapping image + trust facts */
+.hero-unified-card {
+  background: var(--surface);
+  border: 1px solid var(--neutral-200);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-lg);
+  overflow: hidden;
+}
+.hero-unified-card .hero-map-img {
+  width: 100%; height: auto; display: block;
+  border-radius: 0;
+  box-shadow: none;
+  border: none;
+  background: var(--surface);
+  margin-bottom: 0;
+}
+
+/* v15: trust facts as lightweight annotation rows */
+.hero-trust-facts {
+  display: flex; flex-direction: column; gap: 0;
+  padding: 0;
+  border-top: 1px solid var(--neutral-100);
+}
+.hero-trust-fact {
+  display: flex; align-items: center; gap: 14px;
+  padding: 14px 20px;
+  border-bottom: 1px solid var(--neutral-100);
+  transition: background 0.15s;
+}
+.hero-trust-fact:last-child { border-bottom: none; }
+.hero-trust-fact:hover { background: var(--violet-50); }
+.hero-trust-fact-icon {
+  width: 36px; height: 36px; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: var(--radius-sm);
+  background: var(--violet-50);
+  color: var(--violet);
+}
+.hero-trust-fact-icon svg { width: 18px; height: 18px; }
+.hero-trust-fact-content { flex: 1; }
+.hero-trust-fact-title {
+  font-size: 14px; font-weight: 700; color: var(--text-primary);
+  line-height: 1.35;
+}
+.hero-trust-fact-desc {
+  font-size: 12px; color: var(--text-muted); line-height: 1.4;
+  margin-top: 1px;
+}
+
+/* v15: trust bottom as subtle footnote */
+.hero-trust-footnote {
+  background: var(--off-white);
+  padding: 12px 20px;
+  display: flex; align-items: center; gap: 8px;
+  border-top: 1px solid var(--neutral-100);
+}
+.hero-trust-footnote-icon {
+  width: 24px; height: 24px; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--violet); opacity: 0.7;
+}
+.hero-trust-footnote-icon svg { width: 14px; height: 14px; }
+.hero-trust-footnote-text {
+  font-size: 11px; font-weight: 600; color: var(--text-muted);
+  line-height: 1.4;
+}
+
+
+/* -- BLOCK: KULIBIN CARD v12 (restructured) -------- */
 .kulibin-card { padding: 88px 0; background: var(--surface); border-bottom: 1px solid var(--neutral-200); }
 .kulibin-inner { max-width: 800px; }
-.kulibin-inner p {
-  font-size: 17px; color: var(--text-secondary); line-height: 1.72; margin-bottom: 16px;
+.kulibin-inner > p {
+  font-size: 17px; color: var(--text-secondary); line-height: 1.72; margin-bottom: 20px;
 }
-.kulibin-inner p:last-of-type { margin-bottom: 0; }
+
+/* v12: mechanism icon-list (timeline pattern) */
+.kulibin-mechanism {
+  display: flex; flex-direction: column; gap: 0;
+  margin: 28px 0;
+  position: relative;
+}
+.kulibin-mechanism::before {
+  content: '';
+  position: absolute;
+  left: 19px; top: 44px; bottom: 44px;
+  width: 2px;
+  background: repeating-linear-gradient(
+    to bottom,
+    var(--violet-200) 0, var(--violet-200) 6px,
+    transparent 6px, transparent 12px
+  );
+}
+.km-item {
+  display: flex; align-items: flex-start; gap: 16px;
+  padding: 12px 0;
+  position: relative;
+}
+.km-icon {
+  width: 40px; height: 40px; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 50%;
+  background: var(--violet-50);
+  color: var(--violet);
+  border: 2px solid var(--violet-200);
+  position: relative;
+  z-index: 1;
+}
+.km-icon svg { width: 18px; height: 18px; }
+.km-text {
+  padding-top: 8px;
+  font-size: 15px; color: var(--text-secondary); line-height: 1.6;
+}
+.km-text strong {
+  color: var(--text-primary); font-weight: 700;
+}
+
+/* v13: ecosystem diagram */
+.ecosystem-diagram {
+  margin: 36px 0 28px;
+  padding: 32px 24px;
+  background: var(--off-white);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--neutral-200);
+}
+.eco-label {
+  font-size: 10px; font-weight: 700; letter-spacing: 1.2px;
+  text-transform: uppercase; color: var(--text-muted);
+  text-align: center; margin-bottom: 24px;
+}
+.eco-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  position: relative;
+}
+.eco-node {
+  display: flex; flex-direction: column; align-items: center;
+  gap: 8px; flex-shrink: 0; position: relative; z-index: 2;
+}
+.eco-node-circle {
+  width: 72px; height: 72px;
+  border-radius: 50%;
+  background: var(--surface);
+  border: 2px solid var(--violet-200);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--violet);
+  box-shadow: var(--shadow-sm);
+}
+.eco-node-circle svg { width: 24px; height: 24px; }
+.eco-node-circle--platform {
+  width: 80px; height: 80px;
+  border-color: var(--violet);
+  background: var(--violet-50);
+}
+.eco-node-label {
+  font-size: 13px; font-weight: 700; color: var(--text-primary);
+  text-align: center;
+}
+.eco-connector {
+  flex: 1;
+  display: flex; flex-direction: column; align-items: center;
+  gap: 4px;
+  min-width: 80px;
+  max-width: 160px;
+  position: relative;
+  z-index: 1;
+}
+.eco-line {
+  width: 100%;
+  height: 2px;
+  background: var(--neutral-300);
+  position: relative;
+}
+.eco-line--dashed {
+  background: none;
+  border-top: 2px dashed var(--neutral-300);
+  height: 0;
+}
+.eco-connector-text {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-align: center;
+  line-height: 1.3;
+  padding: 0 4px;
+}
+
+/* v13: ecosystem diagram mobile (vertical) */
+@media(max-width:600px){
+  .eco-row {
+    flex-direction: column;
+    gap: 0;
+  }
+  .eco-connector {
+    min-width: unset;
+    max-width: unset;
+    width: 2px;
+    min-height: 48px;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+  }
+  .eco-line {
+    width: 2px;
+    height: 100%;
+    min-height: 48px;
+  }
+  .eco-line--dashed {
+    border-top: none;
+    border-left: 2px dashed var(--neutral-300);
+    height: 100%;
+    min-height: 48px;
+  }
+  .eco-connector-text {
+    white-space: nowrap;
+  }
+}
+
 .kulibin-accent {
   margin-top: 28px; padding: 24px 28px;
   background: linear-gradient(135deg, var(--violet-50) 0%, var(--garnet-50) 100%);
@@ -314,33 +628,140 @@ header {
   font-size: 16px; font-weight: 700; color: var(--text-primary); margin: 0; line-height: 1.65;
 }
 
-/* ── BLOCK: СЕЛЕКТИВНОСТЬ + КУРАТОР ─────── */
+/* -- BLOCK: SELECTIVITY v15 (split layout -- improved) -- */
 .selectivity { padding: 88px 0; background: var(--off-white); border-bottom: 1px solid var(--neutral-200); }
-.selectivity-inner { max-width: 800px; }
-.selectivity-inner > p {
+.selectivity-split {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 40px;
+  align-items: start;
+}
+@media(min-width:900px){
+  .selectivity-split {
+    grid-template-columns: 55% 45%;
+    gap: 48px;
+  }
+}
+.selectivity-left {}
+.selectivity-left > p {
   font-size: 16px; color: var(--text-secondary); line-height: 1.72; margin-bottom: 16px;
 }
-.selectivity-highlight {
-  margin: 28px 0; padding: 24px 28px;
-  background: var(--garnet); color: white;
-  border-radius: var(--radius-lg);
-  font-size: 16px; font-weight: 600; line-height: 1.65;
+/* v15: pull-quote -- border-left only, no giant quotation mark */
+.selectivity-pullquote {
+  margin: 24px 0;
+  padding: 20px 24px;
+  border-left: 4px solid var(--violet);
+  background: var(--violet-50);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  position: relative;
 }
-.criteria-tags {
-  display: flex; gap: 10px; flex-wrap: wrap; margin-top: 24px;
-}
-.criteria-tag {
-  font-size: 12px; font-weight: 700; padding: 8px 16px;
-  background: var(--surface); border: 1.5px solid var(--neutral-200);
-  border-radius: var(--radius-full); color: var(--text-primary);
+.selectivity-pullquote p {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.55;
+  margin: 0;
 }
 
-/* ── BLOCK: ПРИВЛЕЧЕНИЕ АУДИТОРИИ ────────── */
+/* v15-fix: selectivity right -- no wrapper, standalone cards */
+.selectivity-right {
+  background: none;
+  border-radius: 0;
+  border: none;
+  padding: 0;
+}
+.selectivity-right-title {
+  font-size: 11px; font-weight: 700; letter-spacing: 1.4px;
+  text-transform: uppercase; color: var(--violet);
+  margin-bottom: 16px;
+}
+.criteria-cards {
+  display: flex; flex-direction: column; gap: 12px;
+  margin-bottom: 24px;
+}
+.criteria-card {
+  display: flex; align-items: center; gap: 14px;
+  padding: 16px 18px;
+  background: var(--surface);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--neutral-200);
+  box-shadow: var(--shadow-sm);
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+.criteria-card:hover {
+  border-color: var(--violet-200);
+  box-shadow: var(--shadow-md);
+}
+.criteria-card-icon {
+  width: 40px; height: 40px; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: var(--radius-sm);
+  background: var(--violet-50);
+  color: var(--violet);
+  border: 1px solid var(--violet-100);
+}
+.criteria-card-icon svg { width: 18px; height: 18px; }
+.criteria-card-text {
+  font-size: 14px; font-weight: 700; color: var(--text-primary);
+  line-height: 1.4;
+}
+
+/* org types as pills */
+.org-types-label {
+  font-size: 10px; font-weight: 700; letter-spacing: 1.2px;
+  text-transform: uppercase; color: var(--text-muted);
+  margin-bottom: 10px;
+}
+.org-types-list {
+  display: flex; flex-wrap: wrap; gap: 8px;
+}
+.org-types-list span {
+  display: inline-flex; align-items: center;
+  font-size: 12px; font-weight: 600; color: var(--text-secondary);
+  padding: 5px 12px;
+  background: var(--neutral-100);
+  border-radius: var(--radius-full);
+  border: 1px solid var(--neutral-200);
+  line-height: 1.4;
+}
+.org-types-list span::before { display: none; }
+
+/* -- BLOCK: ATTRACT v15 (icon-list -- more visual weight) -- */
 .attract { padding: 88px 0; background: var(--surface); border-bottom: 1px solid var(--neutral-200); }
 .attract-inner { max-width: 800px; }
 .attract-inner > p {
   font-size: 16px; color: var(--text-secondary); line-height: 1.72; margin-bottom: 16px;
 }
+
+/* v15: instrument icon-list with more padding for visual weight */
+.attract-instruments {
+  display: flex; flex-direction: column; gap: 0;
+  margin: 28px 0;
+}
+.ai-item {
+  display: flex; align-items: center; gap: 16px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--neutral-100);
+}
+.ai-item:last-child { border-bottom: none; }
+.ai-icon {
+  width: 44px; height: 44px; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: var(--radius-md);
+  background: var(--violet-50);
+  color: var(--violet);
+  border: 1px solid var(--violet-100);
+}
+.ai-icon svg { width: 20px; height: 20px; }
+.ai-content { flex: 1; }
+.ai-title {
+  font-size: 15px; font-weight: 700; color: var(--text-primary);
+  line-height: 1.4; margin-bottom: 2px;
+}
+.ai-desc {
+  font-size: 13px; color: var(--text-muted); line-height: 1.5;
+}
+
 .attract-result {
   margin-top: 28px; padding: 24px 28px;
   background: linear-gradient(135deg, var(--violet-50) 0%, var(--garnet-50) 100%);
@@ -351,14 +772,32 @@ header {
   font-size: 16px; font-weight: 700; color: var(--text-primary); margin: 0; line-height: 1.65;
 }
 
-/* ── BLOCK: ВЫГОДА РЕЗИДЕНТА ─────────────── */
+/* -- BLOCK: BENEFIT -------------------------------- */
 .benefit { padding: 88px 0; background: var(--off-white); border-bottom: 1px solid var(--neutral-200); }
 .benefit-head { margin-bottom: 48px; }
+
+/* v12: stat-highlight for key value prop */
+.benefit-stat-highlight {
+  margin: 20px 0 24px;
+  padding: 20px 24px;
+  background: var(--violet-50);
+  border-left: 3px solid var(--violet);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+}
+.benefit-stat-highlight .bsh-title {
+  font-family: 'Onest', sans-serif;
+  font-size: 20px; font-weight: 700; color: var(--text-primary);
+  line-height: 1.3; margin-bottom: 4px;
+}
+.benefit-stat-highlight .bsh-sub {
+  font-size: 13px; font-weight: 600; color: var(--text-muted);
+}
+
 .benefit-facts {
   display: flex; flex-direction: column; gap: 6px;
   margin-top: 24px;
   padding: 14px 0 14px 16px;
-  border-left: 2px solid var(--violet-200, #c4b5fd);
+  border-left: 2px solid var(--violet-200);
   max-width: 480px;
 }
 .benefit-fact {
@@ -382,8 +821,9 @@ header {
   cursor:pointer; transition:all 0.2s; font-family:inherit;
   display:inline-flex; align-items:center; gap:7px;
 }
-.tab-btn.on  { background:var(--garnet); color:#fff; border-color:var(--garnet); }
-.tab-btn:hover:not(.on) { border-color:var(--garnet); color:var(--garnet); background:var(--garnet-50); }
+/* v12: active tab uses violet gradient */
+.tab-btn.on  { background:linear-gradient(135deg, #7B68EE 0%, #4FABF5 100%); color:#fff; border-color:transparent; }
+.tab-btn:hover:not(.on) { border-color:var(--violet); color:var(--violet); background:var(--violet-50); }
 
 .tab-panel { display:none; animation:fadeUp 0.35s ease both; }
 .tab-panel.on { display:grid; }
@@ -399,15 +839,22 @@ header {
   border-radius:var(--radius-lg); padding:28px 24px; transition:all 0.2s;
   position:relative; overflow:hidden;
 }
+/* v12: accent strip on hover */
+.ben-card::after {
+  content:''; position:absolute; bottom:0; left:0; right:0; height:2px;
+  background:linear-gradient(90deg, #7B68EE, #4FABF5);
+  opacity:0; transition:opacity 0.2s;
+}
 .ben-card:hover { box-shadow:var(--shadow-md); border-color:var(--neutral-300); }
+.ben-card:hover::after { opacity:1; }
 .ben-num {
-  font-family:'Onest',sans-serif; font-size:52px; font-weight:900;
+  font-family:'Onest',sans-serif; font-size:42px; font-weight:900;
   color:var(--neutral-200); line-height:1; margin-bottom:12px; letter-spacing:-2px;
 }
 .ben-title { font-size:16px; font-weight:800; margin-bottom:10px; }
 .ben-desc  { font-size:14px; color:var(--text-secondary); line-height:1.6; }
 
-/* ── EXPERT COUNCIL ───────────────────── */
+/* -- EXPERT COUNCIL -------------------------------- */
 .council { padding: 88px 0; background: var(--garnet-50); border-bottom: 1px solid var(--neutral-200); }
 .council-grid {
   display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px;
@@ -420,8 +867,21 @@ header {
   background: var(--surface); border: 1px solid var(--neutral-200);
   border-radius: var(--radius-lg); padding: 22px 16px;
   text-align: center; transition: all 0.25s;
+  position: relative; overflow: hidden;
+}
+/* v12: accent strip on hover */
+.council-card::after {
+  content:''; position:absolute; bottom:0; left:0; right:0; height:2px;
+  background:linear-gradient(90deg, #7B68EE, #4FABF5);
+  opacity:0; transition:opacity 0.2s;
+}
+/* v12: first row accent border-top */
+.council-card--lead {
+  border-top: 3px solid transparent;
+  border-image: linear-gradient(90deg, #7B68EE, #4FABF5) 1;
 }
 .council-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); border-color: transparent; }
+.council-card:hover::after { opacity:1; }
 .council-ava {
   width: 64px; height: 64px; border-radius: 50%;
   background: linear-gradient(135deg, var(--garnet) 0%, var(--garnet-light) 100%);
@@ -430,16 +890,16 @@ header {
   margin: 0 auto 12px;
 }
 .council-name { font-family: 'Onest',sans-serif; font-size: 14px; font-weight: 800; margin-bottom: 4px; line-height: 1.25; }
-.council-role { font-size: 11px; color: var(--text-secondary); line-height: 1.45; }
 .council-degree {
   display: inline-block; font-size: 10px; font-weight: 700;
   padding: 2px 8px; border-radius: var(--radius-full);
   background: var(--violet-50); color: var(--violet);
-  margin-top: 8px; letter-spacing: 0.3px;
+  margin-bottom: 8px; letter-spacing: 0.3px;
 }
+.council-role { font-size: 11px; color: var(--text-secondary); line-height: 1.45; }
 
-/* ── TEAM ────────────────────────────────── */
-.team { padding: 72px 0; background: var(--off-white); border-bottom: 1px solid var(--neutral-200); }
+/* -- TEAM ------------------------------------------ */
+.team { padding: 80px 0; background: var(--surface); border-bottom: 1px solid var(--neutral-200); }
 .team-grid {
   display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin-top: 36px;
 }
@@ -449,10 +909,18 @@ header {
   background: var(--surface); border: 1px solid var(--neutral-200);
   border-radius: var(--radius-xl); padding: 24px 18px;
   text-align: center; transition: all 0.25s;
+  position: relative; overflow: hidden;
+}
+/* v12: accent strip on hover */
+.team-card::after {
+  content:''; position:absolute; bottom:0; left:0; right:0; height:2px;
+  background:linear-gradient(90deg, #7B68EE, #4FABF5);
+  opacity:0; transition:opacity 0.2s;
 }
 .team-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+.team-card:hover::after { opacity:1; }
 .team-ava {
-  width: 72px; height: 72px; border-radius: 50%;
+  width: 80px; height: 80px; border-radius: 50%;
   display: flex; align-items: center; justify-content: center;
   font-size: 22px; font-weight: 900; color: white;
   margin: 0 auto 14px;
@@ -463,10 +931,15 @@ header {
   background: var(--off-white); border-radius: var(--radius-md);
   padding: 12px; text-align: left;
 }
-.cred-row { display: flex; gap: 6px; font-size: 12px; color: var(--text-muted); margin-bottom: 4px; line-height: 1.4; }
+.cred-row { display: flex; gap: 8px; font-size: 12px; color: var(--text-muted); margin-bottom: 4px; line-height: 1.4; align-items: flex-start; }
 .cred-row:last-child { margin-bottom: 0; }
+.cred-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--violet-200); flex-shrink: 0;
+  margin-top: 6px;
+}
 
-/* ── REGISTER (split layout) ──────────── */
+/* -- REGISTER (split layout) ---------------------- */
 .register {
   padding: 96px 0;
   background: linear-gradient(160deg, var(--off-white) 0%, var(--garnet-50) 100%);
@@ -491,16 +964,22 @@ header {
 .register-left .sec-title { font-size: 30px; }
 .register-left .sec-title span { color: var(--violet); }
 
-/* Steps on left */
+/* Steps */
 .steps-list { margin-top: 32px; display: flex; flex-direction: column; gap: 0; }
 .step-item {
   display: flex; gap: 16px; align-items: flex-start;
   position: relative; padding-bottom: 28px;
 }
 .step-item:last-child { padding-bottom: 0; }
+/* v12: dashed connector */
 .step-item:not(:last-child)::after {
   content: ''; position: absolute; left: 19px; top: 44px; bottom: 0;
-  width: 2px; background: var(--neutral-200);
+  width: 2px;
+  background: repeating-linear-gradient(
+    to bottom,
+    var(--neutral-200) 0, var(--neutral-200) 6px,
+    transparent 6px, transparent 12px
+  );
 }
 .step-num {
   width: 40px; height: 40px; border-radius: 50%; flex-shrink: 0;
@@ -510,10 +989,10 @@ header {
 }
 .step-content { padding-top: 6px; }
 .step-title {
-  font-family: 'Onest',sans-serif; font-size: 15px; font-weight: 800;
+  font-family: 'Onest',sans-serif; font-size: 16px; font-weight: 800;
   margin-bottom: 4px; color: var(--text-primary);
 }
-.step-desc { font-size: 13px; color: var(--text-secondary); line-height: 1.55; }
+.step-desc { font-size: 14px; color: var(--text-secondary); line-height: 1.55; }
 
 /* Quiz card */
 .quiz-card {
@@ -523,12 +1002,12 @@ header {
 }
 .quiz-prog-bar { height: 6px; background: var(--neutral-200); position: relative; }
 .quiz-prog-fill {
-  height: 100%; background: linear-gradient(90deg, var(--garnet), var(--garnet-light));
+  height: 100%; background: linear-gradient(90deg, var(--violet), var(--sky));
   transition: width 0.45s cubic-bezier(.4,0,.2,1);
   position: absolute; left: 0; top: 0; border-radius: 0 2px 2px 0;
 }
 .quiz-top {
-  background: linear-gradient(135deg, var(--garnet-dark), var(--garnet));
+  background: linear-gradient(135deg, var(--garnet-dark), var(--garnet), #2D3A6E);
   padding: 20px 24px; color: white;
 }
 .quiz-top h3 { font-size: 18px; font-weight: 800; margin-bottom: 4px; }
@@ -557,8 +1036,8 @@ header {
   background: var(--off-white); cursor: pointer; text-align: left;
   transition: all 0.2s; font-family: inherit;
 }
-.q-branch-btn:hover { border-color: var(--garnet); background: var(--garnet-50); }
-.q-branch-btn.picked { border-color: var(--garnet); background: var(--garnet-50); }
+.q-branch-btn:hover { border-color: var(--violet); background: var(--violet-50); }
+.q-branch-btn.picked { border-color: var(--violet); background: var(--violet-50); }
 .qb-icon { font-size: 20px; margin-bottom: 6px; }
 .qb-title { font-size: 14px; font-weight: 800; font-family: 'Onest',sans-serif; margin-bottom: 2px; }
 .qb-sub { font-size: 11px; color: var(--text-muted); line-height: 1.4; }
@@ -570,14 +1049,14 @@ header {
   border-radius: var(--radius-md); cursor: pointer; font-size: 13px; font-weight: 600;
   transition: all 0.18s; background: var(--off-white); font-family: inherit; text-align: left;
 }
-.q-opt:hover { border-color: var(--garnet); background: var(--garnet-50); }
-.q-opt.picked { border-color: var(--garnet); background: var(--garnet-50); color: var(--garnet); }
+.q-opt:hover { border-color: var(--violet); background: var(--violet-50); }
+.q-opt.picked { border-color: var(--violet); background: var(--violet-50); color: var(--violet); }
 .q-check {
   width: 20px; height: 20px; border-radius: 50%; border: 2px solid var(--neutral-300);
   flex-shrink: 0; display: flex; align-items: center; justify-content: center;
   font-size: 10px; transition: all 0.18s;
 }
-.q-opt.picked .q-check { background: var(--garnet); border-color: var(--garnet); color: white; }
+.q-opt.picked .q-check { background: var(--violet); border-color: var(--violet); color: white; }
 
 .q-form { display: flex; flex-direction: column; gap: 12px; margin-bottom: 20px; }
 .q-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
@@ -589,7 +1068,7 @@ header {
   border-radius: var(--radius-sm); font-size: 14px; font-family: inherit;
   background: var(--off-white); transition: border-color 0.15s;
 }
-.q-input:focus { outline: none; border-color: var(--garnet); background: white; }
+.q-input:focus { outline: none; border-color: var(--violet); background: white; }
 
 .q-nav { display: flex; justify-content: space-between; align-items: center; }
 .q-back {
@@ -603,9 +1082,9 @@ header {
   font-size: 11px; color: var(--text-muted); line-height: 1.55;
   margin-top: 14px; cursor: pointer;
 }
-.q-consent-check a { color: var(--garnet); }
+.q-consent-check a { color: var(--violet); }
 .q-consent-check input[type="checkbox"] {
-  accent-color: var(--garnet); flex-shrink: 0; margin-top: 2px; width: 15px; height: 15px;
+  accent-color: var(--violet); flex-shrink: 0; margin-top: 2px; width: 15px; height: 15px;
   cursor: pointer;
 }
 
@@ -618,7 +1097,7 @@ header {
   .quiz-top  { padding: 20px 20px; }
 }
 
-/* ── FOOTER ──────────────────────────────── */
+/* -- FOOTER ---------------------------------------- */
 footer { background: var(--dark); color: rgba(255,255,255,0.45); padding: 48px 0; }
 .footer-inner {
   display: flex; justify-content: space-between; align-items: flex-start;
@@ -654,8 +1133,21 @@ footer { background: var(--dark); color: rgba(255,255,255,0.45); padding: 48px 0
 </head>
 <body>
 
-<!-- ══ HEADER ═══════════════════════════════════════════════════ -->
-<header>
+<!-- == v13: STICKY TOP BAR (early booking) ========================= -->
+<div class="top-bar" id="topBar">
+  <div class="top-bar-inner">
+    <span class="top-bar-text">Раннее бронирование до&nbsp;31&nbsp;мая — максимальная выгода и&nbsp;признание для первых резидентов</span>
+    <div class="top-bar-actions">
+      <a href="#register" class="top-bar-link">Подробнее &rarr;</a>
+      <button class="top-bar-close" onclick="closeTopBar()" aria-label="Закрыть">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- == HEADER ================================================== -->
+<header id="mainHeader">
   <a href="/" class="logo">
     <img src="logo (1).png" alt="Платформа Технолидерства" class="logo-img">
   </a>
@@ -673,28 +1165,29 @@ footer { background: var(--dark); color: rgba(255,255,255,0.45); padding: 48px 0
 </header>
 
 
-<!-- ══ 1. HERO (v11 — раннее бронирование + 4 факта) ══════════ -->
+<!-- == 1. HERO v15 ================================================ -->
 <section class="hero" id="hero">
   <div class="hero-bg-orb hero-bg-orb-1"></div>
   <div class="hero-bg-orb hero-bg-orb-2"></div>
+  <div class="hero-bg-orb hero-bg-orb-3"></div>
   <div class="container">
     <div class="hero-inner">
 
       <div class="hero-content">
-        <!-- [1] KICKER -->
+        <!-- [1] KICKER with status gradient line -->
         <div class="hero-eyebrow">
           <span class="badge badge-garnet">Станьте партнером</span>
           <span class="hero-eyebrow-divider"></span>
           <span class="hero-eyebrow-label">участником или резидентом проекта</span>
         </div>
 
-        <!-- [2] H1 -->
+        <!-- [2] H1 -- two-level hierarchy -->
         <h1>
           <span class="accent">Кулибинская карта</span>
           <span class="h1-sub"><strong>в экосистеме поощрений для будущих инженеров</strong> <span class="accent-platform">Платформы Технолидерства</span></span>
         </h1>
 
-        <!-- [3] PROBLEM / SOLUTION -->
+        <!-- [3] PROBLEM / SOLUTION -- visual contrast -->
         <div class="hero-ps-group">
           <div class="hero-ps-block hero-ps-block--problem">
             <span class="hero-ps-label">Проблема</span>
@@ -710,12 +1203,24 @@ footer { background: var(--dark); color: rgba(255,255,255,0.45); padding: 48px 0
           </div>
         </div>
 
-        <!-- [4] QUALIFIER — 4 типа резидентов → якоря на табы выгод -->
+        <!-- [4] QUALIFIER -- pills with icons -->
         <div class="hero-qualifier">
-          <a href="#benefit" class="hero-qualifier-pill" onclick="switchTabByName('employers')">Корпорациям</a>
-          <a href="#benefit" class="hero-qualifier-pill" onclick="switchTabByName('education')">Образовательным организациям</a>
-          <a href="#benefit" class="hero-qualifier-pill" onclick="switchTabByName('ngo')">НКО</a>
-          <a href="#benefit" class="hero-qualifier-pill" onclick="switchTabByName('consultants')">Профориентологам и педагогам</a>
+          <a href="#benefit" class="hero-qualifier-pill" onclick="switchTabByName('employers')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8l-7 5V8l-7 5V4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"/><path d="M17 18h1"/><path d="M12 18h1"/><path d="M7 18h1"/></svg>
+            Корпорациям
+          </a>
+          <a href="#benefit" class="hero-qualifier-pill" onclick="switchTabByName('education')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="3" x2="21" y1="22" y2="22"/><line x1="6" x2="6" y1="18" y2="11"/><line x1="10" x2="10" y1="18" y2="11"/><line x1="14" x2="14" y1="18" y2="11"/><line x1="18" x2="18" y1="18" y2="11"/><polygon points="12 2 20 7 4 7"/></svg>
+            Образовательным организациям
+          </a>
+          <a href="#benefit" class="hero-qualifier-pill" onclick="switchTabByName('ngo')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+            НКО
+          </a>
+          <a href="#benefit" class="hero-qualifier-pill" onclick="switchTabByName('consultants')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>
+            Профориентологам и педагогам
+          </a>
         </div>
 
         <!-- [5] CTA -->
@@ -725,35 +1230,49 @@ footer { background: var(--dark); color: rgba(255,255,255,0.45); padding: 48px 0
 
       </div>
 
+      <!-- v15: RIGHT COLUMN -- Unified card (image + trust facts) -->
       <div class="hero-visual">
-        <img src="карта.png" alt="Кулибинская карта" class="hero-map-img">
+        <div class="hero-unified-card">
+          <img src="карта.png" alt="Кулибинская карта" class="hero-map-img">
 
-        <!-- [6] Факты — аннотации к визуалу -->
-        <div class="hero-facts">
-          <div class="hero-fact">
-            <div class="hero-fact-icon">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg>
+          <!-- Trust facts as lightweight annotation rows -->
+          <div class="hero-trust-facts">
+            <div class="hero-trust-fact">
+              <div class="hero-trust-fact-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg>
+              </div>
+              <div class="hero-trust-fact-content">
+                <div class="hero-trust-fact-title">Проект национального масштаба</div>
+                <div class="hero-trust-fact-desc">В русле движения к технологическому лидерству</div>
+              </div>
             </div>
-            <div class="hero-fact-text">Проект национального масштаба в русле движения к технологическому лидерству</div>
-          </div>
-          <div class="hero-fact">
-            <div class="hero-fact-icon">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+            <div class="hero-trust-fact">
+              <div class="hero-trust-fact-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+              </div>
+              <div class="hero-trust-fact-content">
+                <div class="hero-trust-fact-title">100% отвечает запросам общества</div>
+                <div class="hero-trust-fact-desc">И государственной стратегии</div>
+              </div>
             </div>
-            <div class="hero-fact-text">100% отвечает запросам общества и&nbsp;государства</div>
-          </div>
-          <div class="hero-fact">
-            <div class="hero-fact-icon">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            <div class="hero-trust-fact">
+              <div class="hero-trust-fact-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+              </div>
+              <div class="hero-trust-fact-content">
+                <div class="hero-trust-fact-title">Выдающиеся эксперты отрасли</div>
+                <div class="hero-trust-fact-desc">Собирает лидеров инженерного образования</div>
+              </div>
             </div>
-            <div class="hero-fact-text">Собирает выдающихся экспертов и&nbsp;лидеров отрасли</div>
           </div>
-        </div>
 
-        <!-- Раннее бронирование -->
-        <div class="hero-early-booking">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-          Раннее бронирование до&nbsp;31&nbsp;мая — максимальная выгода и&nbsp;признание для первых резидентов
+          <!-- Subtle footnote -->
+          <div class="hero-trust-footnote">
+            <div class="hero-trust-footnote-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg>
+            </div>
+            <div class="hero-trust-footnote-text">Отбор резидентов проводится Экспертным советом по технологическому лидерству</div>
+          </div>
         </div>
       </div>
 
@@ -762,15 +1281,89 @@ footer { background: var(--dark); color: rgba(255,255,255,0.45); padding: 48px 0
 </section>
 
 
-<!-- ══ 2. КУЛИБИНСКАЯ КАРТА — механизм (docx стр. 5–6) ═════════ -->
+<!-- == 2. KULIBIN CARD v13 -- mechanism + ecosystem diagram ======= -->
 <section class="kulibin-card" id="kulibin">
   <div class="container">
     <div class="kulibin-inner">
       <span class="sec-label">Механизм экосистемы</span>
       <h2 class="sec-title">Кулибинская карта — <span style="color:var(--violet)">инструмент лояльности и карьерной навигации</span></h2>
-      <p>
-        Основной механизм взаимодействия внутри платформы — это Кулибинская карта. Родители и дети, нацеленные на инженерную карьеру, через Кулибинскую карту аккумулируют баллы за активности на платформе и обменивают их на образовательные программы, курсы, продукты, платные подписки и мероприятия, предоставляемые резидентами.
-      </p>
+
+      <p>Основной механизм взаимодействия внутри платформы — это Кулибинская карта.</p>
+
+      <!-- v12: decomposed into icon-timeline -->
+      <div class="kulibin-mechanism">
+        <div class="km-item">
+          <div class="km-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+          </div>
+          <div class="km-text">Родители и дети, нацеленные на инженерную карьеру, через Кулибинскую карту <strong>аккумулируют баллы</strong> за активности на платформе</div>
+        </div>
+        <div class="km-item">
+          <div class="km-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 16V4m0 0L3 8m4-4l4 4"/><path d="M17 8v12m0 0l4-4m-4 4l-4-4"/></svg>
+          </div>
+          <div class="km-text"><strong>Обменивают</strong> их на образовательные программы, курсы, продукты, платные подписки и мероприятия</div>
+        </div>
+        <div class="km-item">
+          <div class="km-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8l-7 5V8l-7 5V4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"/><path d="M17 18h1"/><path d="M12 18h1"/><path d="M7 18h1"/></svg>
+          </div>
+          <div class="km-text">Продукты <strong>предоставляются резидентами</strong> Платформы</div>
+        </div>
+      </div>
+
+      <!-- v13: ecosystem diagram -->
+      <div class="ecosystem-diagram">
+        <div class="eco-label">Замкнутый цикл экосистемы</div>
+        <div class="eco-row">
+          <!-- Node: Family -->
+          <div class="eco-node">
+            <div class="eco-node-circle">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </div>
+            <div class="eco-node-label">Семья</div>
+          </div>
+
+          <!-- Connector: Family -> Platform -->
+          <div class="eco-connector">
+            <div class="eco-connector-text">активности, баллы</div>
+            <div class="eco-line"></div>
+          </div>
+
+          <!-- Node: Platform -->
+          <div class="eco-node">
+            <div class="eco-node-circle eco-node-circle--platform">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 2 7l10 5 10-5-10-5Z"/><path d="m2 17 10 5 10-5"/><path d="m2 12 10 5 10-5"/></svg>
+            </div>
+            <div class="eco-node-label">Платформа</div>
+          </div>
+
+          <!-- Connector: Platform -> Resident -->
+          <div class="eco-connector">
+            <div class="eco-connector-text">теплая аудитория</div>
+            <div class="eco-line"></div>
+          </div>
+
+          <!-- Node: Resident -->
+          <div class="eco-node">
+            <div class="eco-node-circle">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8l-7 5V8l-7 5V4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"/><path d="M17 18h1"/><path d="M12 18h1"/><path d="M7 18h1"/></svg>
+            </div>
+            <div class="eco-node-label">Резидент</div>
+          </div>
+        </div>
+
+        <!-- Bottom connector: Resident -> Family (closing the loop) -->
+        <div style="display:flex; justify-content:center; margin-top:16px;">
+          <div style="display:flex; align-items:center; gap:8px;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--neutral-300)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+            <span style="font-size:11px; font-weight:600; color:var(--text-muted);">курсы, программы, продукты</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--neutral-300)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+          </div>
+        </div>
+        <div style="width:80%; margin:4px auto 0; height:0; border-top:2px dashed var(--neutral-300);"></div>
+      </div>
+
       <div class="kulibin-accent">
         <p>Это создает прямую экономическую связь и мотивирует последовательное движение по выстроенному треку развития ребенка.</p>
       </div>
@@ -780,38 +1373,80 @@ footer { background: var(--dark); color: rgba(255,255,255,0.45); padding: 48px 0
 </section>
 
 
-<!-- ══ 3. СЕЛЕКТИВНОСТЬ + КУРАТОР (docx стр. 7–13) ═══════════ -->
+<!-- == 3. SELECTIVITY v15 -- split layout with aligned columns ===== -->
 <section class="selectivity" id="selectivity">
   <div class="container">
-    <div class="selectivity-inner">
-      <span class="sec-label">Селективность</span>
-      <h2 class="sec-title">Статус резидента присваивается <span style="color:var(--violet)">не всем желающим</span></h2>
 
-      <p>
-        Платформа берет на себя функцию экспертного куратора, избавляя родителя от необходимости самостоятельно анализировать переполненный рынок образовательных услуг и противоречивый рынок профориентационного консалтинга.
-      </p>
+    <div class="selectivity-split">
+      <!-- LEFT: heading + narrative (v15: H2 inside left column for alignment) -->
+      <div class="selectivity-left">
+        <span class="sec-label">Селективность</span>
+        <h2 class="sec-title">Статус резидента</h2>
+        <p class="sec-subtitle">присваивается не всем желающим</p>
 
-      <div class="selectivity-highlight">
-        Платформа через Экспертный совет приглашает только достойных и востребованных участников рынка — в свете Государственной повестки и Стратегии технологического лидерства.
+        <p>
+          Платформа берет на себя функцию экспертного куратора, избавляя родителя от необходимости самостоятельно анализировать переполненный рынок образовательных услуг и противоречивый рынок профориентационного консалтинга.
+        </p>
+
+        <div class="selectivity-pullquote">
+          <p>Платформа через Экспертный совет приглашает только достойных и востребованных участников рынка — в свете Государственной повестки и Стратегии технологического лидерства.</p>
+        </div>
+
+        <a href="#register" class="sec-cta">Пройти отбор <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
       </div>
 
-      <p>
-        Платформа проводит строгий отбор среди образовательных учреждений, онлайн-школ, корпоративных академий, профориентационных агентств, технических кружков, частных колледжей и некоммерческих организаций. Критериями являются качество контента, соответствие ценностям технологического лидерства и способность интегрировать свои продукты в единую, логичную траекторию учащегося.
-      </p>
+      <!-- RIGHT: structured criteria panel (v15: dark garnet background) -->
+      <div class="selectivity-right">
+        <div class="selectivity-right-title">Критерии отбора</div>
 
-      <div class="criteria-tags">
-        <span class="criteria-tag">Качество контента</span>
-        <span class="criteria-tag">Ценности технолидерства</span>
-        <span class="criteria-tag">Интеграция в траекторию</span>
-        <span class="criteria-tag">Верификация Экспертным советом</span>
+        <div class="criteria-cards">
+          <!-- 1. Quality -->
+          <div class="criteria-card">
+            <div class="criteria-card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+            </div>
+            <div class="criteria-card-text">Качество контента</div>
+          </div>
+          <!-- 2. Values -->
+          <div class="criteria-card">
+            <div class="criteria-card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>
+            </div>
+            <div class="criteria-card-text">Ценности технолидерства</div>
+          </div>
+          <!-- 3. Integration -->
+          <div class="criteria-card">
+            <div class="criteria-card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="2"/><path d="M12 2v4"/><path d="M12 18v4"/><path d="m4.93 4.93 2.83 2.83"/><path d="m16.24 16.24 2.83 2.83"/><path d="M2 12h4"/><path d="M18 12h4"/><path d="m4.93 19.07 2.83-2.83"/><path d="m16.24 7.76 2.83-2.83"/></svg>
+            </div>
+            <div class="criteria-card-text">Интеграция в траекторию</div>
+          </div>
+          <!-- 4. Verification -->
+          <div class="criteria-card">
+            <div class="criteria-card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.77 4 4 0 0 1 0 6.76 4 4 0 0 1-4.78 4.77 4 4 0 0 1-6.74 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z"/><path d="m9 12 2 2 4-4"/></svg>
+            </div>
+            <div class="criteria-card-text">Верификация Экспертным советом</div>
+          </div>
+        </div>
+
+        <div class="org-types-label">Типы организаций</div>
+        <div class="org-types-list">
+          <span>Образовательные учреждения</span>
+          <span>Онлайн-школы</span>
+          <span>Корпоративные академии</span>
+          <span>Профориентационные агентства</span>
+          <span>Технические кружки</span>
+          <span>Частные колледжи</span>
+          <span>НКО</span>
+        </div>
       </div>
-      <a href="#register" class="sec-cta">Пройти отбор <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
     </div>
   </div>
 </section>
 
 
-<!-- ══ 4. ПРИВЛЕЧЕНИЕ АУДИТОРИИ (docx стр. 13) ═══════════════ -->
+<!-- == 4. ATTRACT v15 -- icon-list with more visual weight ========= -->
 <section class="attract" id="attract">
   <div class="container">
     <div class="attract-inner">
@@ -819,8 +1454,53 @@ footer { background: var(--dark); color: rgba(255,255,255,0.45); padding: 48px 0
       <h2 class="sec-title">Привлечение <span style="color:var(--violet)">целевой аудитории</span></h2>
 
       <p>
-        Привлечение целевой аудитории (родителей) осуществляется платформой централизованно через ряд инструментов: открытые образовательные мероприятия, экспертные эфиры, проверенные диагностические методики для оценки склонностей ребенка и карьерные навигаторы, а также публикации авторитетных специалистов.
+        Привлечение целевой аудитории (родителей) осуществляется платформой централизованно через ряд инструментов:
       </p>
+
+      <!-- v15: icon-list of instruments with more visual weight -->
+      <div class="attract-instruments">
+        <div class="ai-item">
+          <div class="ai-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg>
+          </div>
+          <div class="ai-content">
+            <div class="ai-title">Открытые образовательные мероприятия</div>
+          </div>
+        </div>
+        <div class="ai-item">
+          <div class="ai-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect width="15" height="14" x="1" y="5" rx="2" ry="2"/></svg>
+          </div>
+          <div class="ai-content">
+            <div class="ai-title">Экспертные эфиры</div>
+          </div>
+        </div>
+        <div class="ai-item">
+          <div class="ai-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+          </div>
+          <div class="ai-content">
+            <div class="ai-title">Проверенные диагностические методики</div>
+            <div class="ai-desc">для оценки склонностей ребенка</div>
+          </div>
+        </div>
+        <div class="ai-item">
+          <div class="ai-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>
+          </div>
+          <div class="ai-content">
+            <div class="ai-title">Карьерные навигаторы</div>
+          </div>
+        </div>
+        <div class="ai-item">
+          <div class="ai-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" x2="8" y1="13" y2="13"/><line x1="16" x2="8" y1="17" y2="17"/></svg>
+          </div>
+          <div class="ai-content">
+            <div class="ai-title">Публикации авторитетных специалистов</div>
+          </div>
+        </div>
+      </div>
 
       <div class="attract-result">
         <p>Это формирует сообщество мотивированных и вовлеченных пользователей, широкого круга обладателей престижной Кулибинской карты.</p>
@@ -831,13 +1511,19 @@ footer { background: var(--dark); color: rgba(255,255,255,0.45); padding: 48px 0
 </section>
 
 
-<!-- ══ 5. ВЫГОДА РЕЗИДЕНТА (docx стр. 14) ═════════════════════ -->
+<!-- == 5. BENEFIT (v12 -- stat-highlight, violet tabs, accent strip) = -->
 <section class="benefit" id="benefit">
   <div class="container">
     <div class="benefit-head">
       <span class="sec-label">Ключевая выгода</span>
       <h2 class="sec-title">Что получает <span style="color:var(--violet)">резидент</span></h2>
-      <p class="sec-sub">Ключевая выгода для резидента заключается в доступе к подготовленной, теплой аудитории.</p>
+
+      <!-- v12: stat-highlight -->
+      <div class="benefit-stat-highlight">
+        <div class="bsh-title">Доступ к подготовленной, теплой аудитории</div>
+        <div class="bsh-sub">Ключевая выгода для резидента</div>
+      </div>
+
       <div class="benefit-facts">
         <div class="benefit-fact">
           <div class="benefit-fact-icon">
@@ -873,12 +1559,12 @@ footer { background: var(--dark); color: rgba(255,255,255,0.45); padding: 48px 0
       <button class="tab-btn" onclick="switchTab(this,'consultants')"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76" fill="currentColor" opacity="0.2"/></svg> Профориентологи</button>
     </div>
 
-    <!-- Корпорации -->
+    <!-- Corporations -->
     <div class="tab-panel on ben-grid" id="tp-employers">
       <div class="ben-card">
         <div class="ben-num">01</div>
         <h3 class="ben-title">Целенаправленный доступ к аудитории</h3>
-        <p class="ben-desc">Вы получаете не просто поток «лидов», а связку с родителями, которые уже понимают ценность инженерного образования. Кулибинская карта обеспечивает прямую экономическую связь с мотивированной аудиторией.</p>
+        <p class="ben-desc">Вы получаете не просто поток "лидов", а связку с родителями, которые уже понимают ценность инженерного образования. Кулибинская карта обеспечивает прямую экономическую связь с мотивированной аудиторией.</p>
       </div>
       <div class="ben-card">
         <div class="ben-num">02</div>
@@ -888,11 +1574,11 @@ footer { background: var(--dark); color: rgba(255,255,255,0.45); padding: 48px 0
       <div class="ben-card">
         <div class="ben-num">03</div>
         <h3 class="ben-title">Работа с поколением</h3>
-        <p class="ben-desc">Стажировочные треки, брендированные тесты навыков, прямые эфиры с вашими инженерами. Платформа централизованно привлекает вовлеченных пользователей — обладателей Кулибинской карты.</p>
+        <p class="ben-desc">Стажировочные треки, брендированные тесты навыков, прямые эфиры с вашими инженерами. Платформа централизованно привлекает вовлеченных пользователей -- обладателей Кулибинской карты.</p>
       </div>
     </div>
 
-    <!-- Образовательные организации -->
+    <!-- Education -->
     <div class="tab-panel ben-grid" id="tp-education">
       <div class="ben-card">
         <div class="ben-num">01</div>
@@ -907,11 +1593,11 @@ footer { background: var(--dark); color: rgba(255,255,255,0.45); padding: 48px 0
       <div class="ben-card">
         <div class="ben-num">03</div>
         <h3 class="ben-title">Снижение затрат на маркетинг</h3>
-        <p class="ben-desc">Платформа формирует сообщество мотивированных пользователей — широкий круг обладателей Кулибинской карты. Существенно повышает эффективность конверсии и снижает затраты на самостоятельный маркетинг.</p>
+        <p class="ben-desc">Платформа формирует сообщество мотивированных пользователей -- широкий круг обладателей Кулибинской карты. Существенно повышает эффективность конверсии и снижает затраты на самостоятельный маркетинг.</p>
       </div>
     </div>
 
-    <!-- НКО -->
+    <!-- NGO -->
     <div class="tab-panel ben-grid" id="tp-ngo">
       <div class="ben-card">
         <div class="ben-num">01</div>
@@ -930,7 +1616,7 @@ footer { background: var(--dark); color: rgba(255,255,255,0.45); padding: 48px 0
       </div>
     </div>
 
-    <!-- Профориентологи -->
+    <!-- Consultants -->
     <div class="tab-panel ben-grid" id="tp-consultants">
       <div class="ben-card">
         <div class="ben-num">01</div>
@@ -956,7 +1642,7 @@ footer { background: var(--dark); color: rgba(255,255,255,0.45); padding: 48px 0
 </section>
 
 
-<!-- ══ 6. ЭКСПЕРТНЫЙ СОВЕТ (из v6) ═════════════════════════════ -->
+<!-- == 6. EXPERT COUNCIL (v12 -- lead cards, degree before role) = -->
 <section class="council" id="council">
   <div class="container">
     <span class="sec-label">Экспертный совет</span>
@@ -964,34 +1650,36 @@ footer { background: var(--dark); color: rgba(255,255,255,0.45); padding: 48px 0
     <p class="sec-sub">Экспертный совет по технологическому лидерству в образовании. Верификация методик, контроль качества, формирование стандартов.</p>
 
     <div class="council-grid">
-      <div class="council-card">
+      <!-- v12: first 4 cards have lead accent -->
+      <div class="council-card council-card--lead">
         <div class="council-ava">ДМ</div>
         <div class="council-name">Махотин Дмитрий Александрович</div>
-        <div class="council-role">Исп. директор АНО &laquo;Национальный методический совет по технологическому образованию&raquo;, эксперт РАО</div>
         <div class="council-degree">канд. пед. наук</div>
+        <div class="council-role">Исп. директор АНО &laquo;Национальный методический совет по технологическому образованию&raquo;, эксперт РАО</div>
       </div>
-      <div class="council-card">
+      <div class="council-card council-card--lead">
         <div class="council-ava">ТЗ</div>
         <div class="council-name">Зарипова Татьяна Юрьевна</div>
-        <div class="council-role">Программный директор &laquo;EMBA: Технологическое лидерство&raquo; Университета Иннополис</div>
         <div class="council-degree">канд. юрид. наук</div>
+        <div class="council-role">Программный директор &laquo;EMBA: Технологическое лидерство&raquo; Университета Иннополис</div>
       </div>
-      <div class="council-card">
+      <div class="council-card council-card--lead">
         <div class="council-ava">ИН</div>
         <div class="council-name">Никитин Игорь Михайлович</div>
-        <div class="council-role">Руководитель Экспертной площадки Нацметодсовета по технологическому образованию</div>
         <div class="council-degree">канд. техн. наук</div>
+        <div class="council-role">Руководитель Экспертной площадки Нацметодсовета по технологическому образованию</div>
       </div>
-      <div class="council-card">
+      <div class="council-card council-card--lead">
         <div class="council-ava">МС</div>
         <div class="council-name">Сушков Максим Игоревич</div>
         <div class="council-role">Эксперт в области образовательных решений, экс-СЕО R:ED Robotics Education</div>
       </div>
+
       <div class="council-card">
         <div class="council-ava">НР</div>
         <div class="council-name">Родичев Николай Федорович</div>
-        <div class="council-role">Вед. научный сотрудник НОЦ РО ВШГУ Президентской академии</div>
         <div class="council-degree">канд. пед. наук</div>
+        <div class="council-role">Вед. научный сотрудник НОЦ РО ВШГУ Президентской академии</div>
       </div>
       <div class="council-card">
         <div class="council-ava">ЮБ</div>
@@ -1006,8 +1694,8 @@ footer { background: var(--dark); color: rgba(255,255,255,0.45); padding: 48px 0
       <div class="council-card">
         <div class="council-ava">ЮХ</div>
         <div class="council-name">Хрипунов Юрий Вадимович</div>
-        <div class="council-role">Директор проектного офиса ОГУ, эксперт ОЦ &laquo;Сириус&raquo;, ВНТП &laquo;Большие вызовы&raquo;</div>
         <div class="council-degree">канд. физ.-мат. наук</div>
+        <div class="council-role">Директор проектного офиса ОГУ, эксперт ОЦ &laquo;Сириус&raquo;, ВНТП &laquo;Большие вызовы&raquo;</div>
       </div>
       <div class="council-card">
         <div class="council-ava">АБ</div>
@@ -1027,15 +1715,15 @@ footer { background: var(--dark); color: rgba(255,255,255,0.45); padding: 48px 0
       <div class="council-card">
         <div class="council-ava">МЗ</div>
         <div class="council-name">Зенкин Михаил Александрович</div>
-        <div class="council-role">Зам. директора ГБНОУ &laquo;Академия Талантов&raquo;, член Экспертного совета по профориентации при Минпросвещения</div>
         <div class="council-degree">канд. филол. наук</div>
+        <div class="council-role">Зам. директора ГБНОУ &laquo;Академия Талантов&raquo;, член Экспертного совета по профориентации при Минпросвещения</div>
       </div>
     </div>
   </div>
 </section>
 
 
-<!-- ══ 7. КОМАНДА (из v6) ══════════════════════════════════════ -->
+<!-- == 7. TEAM (v12 -- violet dots, larger ava, surface bg) ===== -->
 <section class="team" id="team">
   <div class="container">
     <span class="sec-label">Команда</span>
@@ -1047,8 +1735,8 @@ footer { background: var(--dark); color: rgba(255,255,255,0.45); padding: 48px 0
         <div class="team-name">Основатель</div>
         <div class="team-role">Основатель &amp; CEO</div>
         <div class="team-creds">
-          <div class="cred-row"><span style="color:var(--neutral-300)">&#9642;</span><span>15 лет в EdTech и профориентации</span></div>
-          <div class="cred-row"><span style="color:var(--neutral-300)">&#9642;</span><span>Запускал образовательные продукты</span></div>
+          <div class="cred-row"><span class="cred-dot"></span><span>15 лет в EdTech и профориентации</span></div>
+          <div class="cred-row"><span class="cred-dot"></span><span>Запускал образовательные продукты</span></div>
         </div>
       </div>
       <div class="team-card">
@@ -1056,8 +1744,8 @@ footer { background: var(--dark); color: rgba(255,255,255,0.45); padding: 48px 0
         <div class="team-name">Методический совет</div>
         <div class="team-role">Директор по методике</div>
         <div class="team-creds">
-          <div class="cred-row"><span style="color:var(--neutral-300)">&#9642;</span><span>Кандидаты педагогических наук</span></div>
-          <div class="cred-row"><span style="color:var(--neutral-300)">&#9642;</span><span>40+ программ в портфеле</span></div>
+          <div class="cred-row"><span class="cred-dot"></span><span>Кандидаты педагогических наук</span></div>
+          <div class="cred-row"><span class="cred-dot"></span><span>40+ программ в портфеле</span></div>
         </div>
       </div>
       <div class="team-card">
@@ -1065,8 +1753,8 @@ footer { background: var(--dark); color: rgba(255,255,255,0.45); padding: 48px 0
         <div class="team-name">Технический лидер</div>
         <div class="team-role">CTO &amp; архитектор данных</div>
         <div class="team-creds">
-          <div class="cred-row"><span style="color:var(--neutral-300)">&#9642;</span><span>10+ лет в ML и data</span></div>
-          <div class="cred-row"><span style="color:var(--neutral-300)">&#9642;</span><span>Образовательные платформы</span></div>
+          <div class="cred-row"><span class="cred-dot"></span><span>10+ лет в ML и data</span></div>
+          <div class="cred-row"><span class="cred-dot"></span><span>Образовательные платформы</span></div>
         </div>
       </div>
       <div class="team-card">
@@ -1074,8 +1762,8 @@ footer { background: var(--dark); color: rgba(255,255,255,0.45); padding: 48px 0
         <div class="team-name">Развитие партнерств</div>
         <div class="team-role">Руководитель партнерств</div>
         <div class="team-creds">
-          <div class="cred-row"><span style="color:var(--neutral-300)">&#9642;</span><span>B2B в крупных компаниях</span></div>
-          <div class="cred-row"><span style="color:var(--neutral-300)">&#9642;</span><span>Корпоративные партнерства</span></div>
+          <div class="cred-row"><span class="cred-dot"></span><span>B2B в крупных компаниях</span></div>
+          <div class="cred-row"><span class="cred-dot"></span><span>Корпоративные партнерства</span></div>
         </div>
       </div>
     </div>
@@ -1083,12 +1771,12 @@ footer { background: var(--dark); color: rgba(255,255,255,0.45); padding: 48px 0
 </section>
 
 
-<!-- ══ 8. РЕГИСТРАЦИЯ — 3 шага (слева) + quiz (справа) ════════ -->
+<!-- == 8. REGISTER -- 3 steps (left) + quiz (right) ============= -->
 <section class="register" id="register">
   <div class="container">
     <div class="register-inner">
 
-      <!-- Left: 3 шага из docx (стр. 15–18) -->
+      <!-- Left: 3 steps -->
       <div class="register-left">
         <span class="sec-label">Как стать резидентом</span>
         <h2 class="sec-title" style="font-size:30px;">Три шага к <span style="color:var(--violet)">резидентству</span></h2>
@@ -1118,7 +1806,7 @@ footer { background: var(--dark); color: rgba(255,255,255,0.45); padding: 48px 0
         </div>
       </div>
 
-      <!-- Right: Quiz form (из v6) -->
+      <!-- Right: Quiz form -->
       <div>
       <div class="quiz-card">
         <div class="quiz-prog-bar">
@@ -1192,12 +1880,12 @@ footer { background: var(--dark); color: rgba(255,255,255,0.45); padding: 48px 0
             </div>
           </div>
 
-          <!-- Step 3: Возможности и формат -->
+          <!-- Step 3 -->
           <div class="q-step" id="qs3">
             <div class="q-title">Что вас интересует?</div>
             <div class="q-opts" id="q3opts-org">
               <button class="q-opt" onclick="pick(this)"><span class="q-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span> Резидентство Кулибинской карты</button>
-              <button class="q-opt" onclick="pick(this)"><span class="q-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span> Эфиры — выступления экспертов</button>
+              <button class="q-opt" onclick="pick(this)"><span class="q-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span> Эфиры -- выступления экспертов</button>
               <button class="q-opt" onclick="pick(this)"><span class="q-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span> Размещение контента и программ</button>
               <button class="q-opt" onclick="pick(this)"><span class="q-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span> Статус Официального Партнера</button>
               <button class="q-opt" onclick="pick(this)"><span class="q-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span> Раннее бронирование резидентства</button>
@@ -1214,7 +1902,7 @@ footer { background: var(--dark); color: rgba(255,255,255,0.45); padding: 48px 0
             </div>
           </div>
 
-          <!-- Step 4 — form -->
+          <!-- Step 4 -- form -->
           <div class="q-step" id="qs4">
             <div class="q-title">Отлично! Оставьте контакты</div>
             <div class="q-form">
@@ -1238,7 +1926,7 @@ footer { background: var(--dark); color: rgba(255,255,255,0.45); padding: 48px 0
 
           <!-- Success -->
           <div class="quiz-ok" id="qok">
-            <div style="font-size:52px;margin-bottom:16px;"><svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="var(--garnet)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg></div>
+            <div style="font-size:52px;margin-bottom:16px;"><svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="var(--violet)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg></div>
             <h3>Заявка принята!</h3>
             <p>Мы свяжемся с вами для персонального предложения и инструкции по началу сотрудничества.</p>
             <a href="#kulibin" class="btn btn-garnet btn-lg">Подробнее о Платформе &rarr;</a>
@@ -1253,7 +1941,7 @@ footer { background: var(--dark); color: rgba(255,255,255,0.45); padding: 48px 0
 </section>
 
 
-<!-- ══ FOOTER ═══════════════════════════════════════════════════ -->
+<!-- == FOOTER ==================================================== -->
 <footer>
   <div class="container">
     <div class="footer-inner">
@@ -1278,7 +1966,7 @@ footer { background: var(--dark); color: rgba(255,255,255,0.45); padding: 48px 0
       <div>
         <div class="footer-nav-title">Контакты</div>
         <div class="footer-nav">
-          <a href="mailto:partners@techleader.ru">partners@techleader.ru</a>
+          <a href="mailto:partners@технолидерство.рф">partners@технолидерство.рф</a>
           <a href="#register">Подать заявку</a>
         </div>
       </div>
@@ -1299,7 +1987,15 @@ footer { background: var(--dark); color: rgba(255,255,255,0.45); padding: 48px 0
 
 
 <script>
-/* ── Benefits tabs ── */
+/* -- v13: Top bar close -- */
+function closeTopBar(){
+  var bar = document.getElementById('topBar');
+  var header = document.getElementById('mainHeader');
+  if(bar) bar.classList.add('hidden');
+  if(header) header.classList.add('top-bar-closed');
+}
+
+/* -- Benefits tabs -- */
 function switchTab(btn, id){
   document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('on'));
   document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('on'));
@@ -1316,7 +2012,7 @@ function switchTabByName(id){
   });
 }
 
-/* ── Quiz ── */
+/* -- Quiz -- */
 let cur = 1;
 const TOTAL_STEPS = 4;
 let quizBranch = 'org';
